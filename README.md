@@ -1,2 +1,2 @@
 # schooleo
-A great app to speed up your school processes.
+A great app to speed up your school processes!
