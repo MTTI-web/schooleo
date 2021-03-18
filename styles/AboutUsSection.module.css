@@ -1,0 +1,30 @@
+.about-us-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 40px;
+    height: calc(100vh - 80px);
+    min-height: 335px;
+    padding-bottom: 40px;
+}
+
+.about-us-card {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212;
+    padding: 22px 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border: 2px solid #a239a0;
+    box-shadow: 0 0 10px 0.1px #c270c0;
+}
+
+.about-us-content {
+    color: #a239a0;
+    word-spacing: 1px;
+    letter-spacing: 0.7px;
+    text-align: justify;
+}

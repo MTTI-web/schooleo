@@ -1,0 +1,21 @@
+.section-heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-heading-text {
+    font-size: 200%;
+    color: #a239a0;
+    font-weight: 600;
+}
+
+.section-heading-underline {
+    display: block;
+    margin-top: 10px;
+    height: 2px;
+    width: 100px;
+    content: "";
+    background-color: #a239a0;
+}
