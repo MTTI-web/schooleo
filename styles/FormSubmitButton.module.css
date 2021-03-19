@@ -1,0 +1,21 @@
+.form-submit-button {
+    margin-top: 20px;
+    padding: 5px 7px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #0da3bf;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #0da3bf;
+    color: #282828;
+}
+
+.form-submit-button:hover {
+    background-color: transparent;
+    color: #0da3bf;
+}

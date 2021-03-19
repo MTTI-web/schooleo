@@ -7,7 +7,7 @@
 
 .section-heading-text {
     font-size: 200%;
-    color: #a239a0;
+    color: #0da3bf;
     font-weight: 600;
 }
 
@@ -16,6 +16,6 @@
     margin-top: 10px;
     height: 2px;
     width: 100px;
-    content: "";
-    background-color: #a239a0;
+    content: '';
+    background-color: #0da3bf;
 }

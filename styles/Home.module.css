@@ -1,57 +1,57 @@
 .homepage {
-  background-color: #212121;
+    background-color: #212121;
 }
 
 .landing-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(100vh - 80px);
-  position: relative;
-  background-color: transparent;
-  z-index: 1;
-  border-bottom: 2px solid #a239a0;
-  box-shadow: 0 0 10px 0.5px #c270c0;
-  min-height: 225px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    position: relative;
+    background-color: transparent;
+    z-index: 1;
+    border-bottom: 2px solid #0da3bf;
+    box-shadow: 0 0 10px 0.5px #b3f5ff;
+    min-height: 225px;
 }
 
 .landing-section::before {
-  display: flex;
-  position: absolute;
-  content: "";
-  width: 75%;
-  height: 35%;
-  top: 0;
-  left: 0;
-  background-color: #d6a9d5;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
+    display: flex;
+    position: absolute;
+    content: '';
+    width: 75%;
+    height: 35%;
+    top: 0;
+    left: 0;
+    background-color: #79e2f2;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
 }
 
 .landing-section::after {
-  display: flex;
-  position: absolute;
-  content: "";
-  width: 55%;
-  height: 25%;
-  bottom: 0;
-  right: 0;
-  background-color: #d6a9d5;
-  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+    display: flex;
+    position: absolute;
+    content: '';
+    width: 55%;
+    height: 25%;
+    bottom: 0;
+    right: 0;
+    background-color: #79e2f2;
+    clip-path: polygon(0 100%, 100% 100%, 100% 0);
 }
 
 .app-hero {
-  transform: translateX(-15%);
+    transform: translateX(-15%);
 }
 
 .app-name {
-  font-size: 350%;
-  font-weight: 700;
-  color: #a239a0;
+    font-size: 350%;
+    font-weight: 700;
+    color: #0da3bf;
 }
 
 .app-description {
-  font-size: 120%;
-  color: #c270c0;
-  max-width: 85%;
-  text-align: left;
+    font-size: 120%;
+    color: #b3f5ff;
+    max-width: 85%;
+    text-align: left;
 }

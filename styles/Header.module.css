@@ -1,6 +1,6 @@
 .header {
     height: 80px;
-    border-bottom: 2px solid #a239a0;
+    border-bottom: 2px solid #0da3bf;
     background-color: #121212;
     display: flex;
     align-items: center;
@@ -9,13 +9,13 @@
     right: 0;
     left: 0;
     z-index: 10;
-    box-shadow: 0 0 10px 0.1px #c270c0;
+    box-shadow: 0 0 10px 0.1px #b3f5ff;
 }
 
 .app-name {
     font-size: 200%;
     font-weight: 400;
-    color: #a239a0;
+    color: #0da3bf;
     position: absolute;
     left: 20px;
 }
@@ -34,7 +34,7 @@
     color: #fff;
     margin-left: 20px;
     font-size: 120%;
-    background-color: #a239a0;
+    background-color: #0da3bf;
     padding: 7px 12px;
     border-radius: 7px;
     display: flex;
@@ -43,15 +43,15 @@
     user-select: none;
     cursor: pointer;
     position: relative;
-    box-shadow: 0 4px #c270c0;
+    box-shadow: 0 4px #b3f5ff;
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .nav-link:hover {
-    box-shadow: 0 2px #c270c0;
+    box-shadow: 0 2px #b3f5ff;
     transform: translateY(2px);
 }
 
 .nav-link:active {
-    transform: scale(0.97)
+    transform: scale(0.97);
 }

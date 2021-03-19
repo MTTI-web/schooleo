@@ -18,12 +18,12 @@
     padding: 22px 25px;
     border-radius: 10px;
     margin-top: 30px;
-    border: 2px solid #a239a0;
-    box-shadow: 0 0 10px 0.1px #c270c0;
+    border: 2px solid #0da3bf;
+    box-shadow: 0 0 10px 0.1px #d0c7e6;
 }
 
 .about-us-content {
-    color: #a239a0;
+    color: #0da3bf;
     word-spacing: 1px;
     letter-spacing: 0.7px;
     text-align: justify;
