@@ -1,7 +1,7 @@
-import styles from '../../styles/FormLabel.module.css';
+import styles from '../styles/FormLabel.module.css';
 import { useState } from 'react';
 
-function FormLabel({ type, children, id, required }) {
+function FormLabel({ type, children, id }) {
     const [active, setActive] = useState(false);
     const [currentInput, setCurrentInput] = useState('');
     return (
@@ -12,7 +12,7 @@ function FormLabel({ type, children, id, required }) {
                     active || currentInput
                         ? {
                               fontSize: '80%',
-                              top: '-7px',
+                              top: '-5px',
                               left: '3px',
                               color: '#79e2f2',
                           }
@@ -30,7 +30,7 @@ function FormLabel({ type, children, id, required }) {
                 value={currentInput}
                 onInput={(e) => setCurrentInput(e.currentTarget.value)}
                 autoComplete="off"
-                required={required ? true : false}
+                required
                 style={
                     active || currentInput
                         ? {

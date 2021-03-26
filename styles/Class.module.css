@@ -1,0 +1,16 @@
+.classroom-section {
+    background-color: #212121;
+    min-height: 100vh;
+}
+
+.classroom-name {
+    background-color: #0da3bf;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    font-size: 150%;
+    font-weight: 500;
+}

@@ -1,14 +1,20 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-    const [isSignedIn, setIsSignedIn] = useState(false);
+    const [user, setUser] = useState(null);
+    useEffect(() => {
+        if (user) {
+            console.log('Current user:', user);
+            localStorage.setItem('user', JSON.stringify(user.email));
+        }
+    }, [user]);
     return (
         <AppContext.Provider
             value={{
-                isSignedIn,
-                setIsSignedIn,
+                user,
+                setUser,
             }}
         >
             {children}

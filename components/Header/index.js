@@ -1,10 +1,11 @@
-import styles from '../styles/Header.module.css';
+import styles from '../../styles/Header.module.css';
 import { useRouter } from 'next/router';
-import { useGlobalContext } from './context';
+import { useGlobalContext } from '../context';
+import CurrentUser from './CurrentUser';
 
 function Header() {
     const router = useRouter();
-    const { isSignedIn } = useGlobalContext();
+    const { user } = useGlobalContext();
     return (
         <header className={styles.header}>
             <h1 className={styles['app-name']}>Schooleo</h1>
@@ -16,7 +17,7 @@ function Header() {
                     >
                         Home
                     </li>
-                    {isSignedIn ? (
+                    {user ? (
                         <li
                             onClick={() => router.replace('/dashboard')}
                             className={styles['nav-link']}
@@ -24,16 +25,16 @@ function Header() {
                             Dashboard
                         </li>
                     ) : null}
-                    {!isSignedIn ? (
+                    {!user ? (
                         <>
                             <li
-                                onClick={() => router.replace('/dashboard')}
+                                onClick={() => router.replace('/sign_up')}
                                 className={styles['nav-link']}
                             >
                                 Sign up
                             </li>{' '}
                             <li
-                                onClick={() => router.replace('/login')}
+                                onClick={() => router.replace('/sign_in')}
                                 className={styles['nav-link']}
                             >
                                 Sign in
@@ -41,6 +42,7 @@ function Header() {
                         </>
                     ) : null}
                 </ul>
+                {user ? <CurrentUser /> : null}
             </nav>
         </header>
     );

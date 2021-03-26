@@ -1,0 +1,25 @@
+.create-class-button {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background-color: transparent;
+    border-radius: 50%;
+    outline: none;
+    border: 2px solid #0da3bf;
+    color: #0da3bf;
+    font-size: 170%;
+    cursor: pointer;
+    padding-bottom: 1.5px;
+    transition: background-color 0.2s, color, 0.2s;
+}
+
+.create-class-button:hover {
+    background-color: #0da3bf;
+    color: #fff;
+    box-shadow: 0 0 10px 0.1px #0da3bf;
+}

@@ -1,0 +1,92 @@
+.class-list-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.class-section-heading {
+    color: #0da3bf;
+    font-size: 150%;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.no-classes-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.no-classes-message h3 {
+    font-weight: 400;
+    color: #0db8d9;
+    font-size: 140%;
+    margin-bottom: 17px;
+}
+
+.no-classes-message button {
+    padding: 7px 10px;
+    font-size: 110%;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid #0db8d9;
+    color: #0db8d9;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-weight: 400;
+}
+
+.no-classes-message button:hover {
+    background-color: #0db8d9;
+    color: #212121;
+}
+
+.classList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80%;
+    grid-gap: 15px;
+}
+
+.class {
+    border: 2px solid #0da3bf;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #0db8d9;
+    border-radius: 7px;
+    box-shadow: 0 0 2px 0.001px #b3f5ff;
+    cursor: pointer;
+    transition: box-shadow 0.1s;
+}
+
+.class:hover {
+    box-shadow: 0 0 6px 3px #b3f5ff;
+}
+
+.class-name {
+    font-size: 130%;
+}
+
+.class-details {
+    width: 90%;
+    margin-top: 10px;
+}
+
+.detail-title {
+    color: #aaa;
+    margin-right: 6px;
+    display: inline-flex;
+}
+
+.class-subject {
+    color: #f0f0f0;
+    font-size: 90%;
+}

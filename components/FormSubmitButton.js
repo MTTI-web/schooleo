@@ -1,9 +1,9 @@
-import styles from '../../styles/FormSubmitButton.module.css';
+import styles from '../styles/FormSubmitButton.module.css';
 
-function FormSubmitButton() {
+function FormSubmitButton({ children }) {
     return (
         <button type="submit" className={styles['form-submit-button']}>
-            Create Account
+            {children}
         </button>
     );
 }
