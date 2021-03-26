@@ -3,17 +3,73 @@
     min-height: 100vh;
 }
 
-.classroom-name {
+.classroom-header {
     background-color: #0da3bf;
-    text-align: center;
     width: 100%;
     display: flex;
     height: 50px;
     align-items: center;
     justify-content: center;
     padding: 7px;
+    position: relative;
+}
+
+.main-header-items {
+    z-index: 6;
+    text-align: center;
     font-size: 150%;
     font-weight: 500;
 }
 
-/* You will not be able to learn anything in Scratch, you can also make games in Python, I've made one game. You don't need any prior knowledge tp  */
+.back-button,
+.show-details-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #b3f5ff;
+    color: #121212;
+    border: 1.5px solid #121212;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1.5px;
+    transition: box-shadow 0.1s;
+    font-size: 70%;
+    box-shadow: 0 0 5px 3px transparent;
+    transition: font-size 0.2s, box-shadow 0.2s;
+}
+
+.back-button {
+    left: 10px;
+}
+
+.show-details-button {
+    right: 10px;
+    font-size: 120%;
+    padding-top: 3px;
+}
+
+.back-button:hover,
+.show-details-button:hover {
+    font-size: 80%;
+    box-shadow: 0 0 5px 3px #b3f5ff;
+}
+
+.classroom-details {
+    position: absolute;
+    top: -100%;
+    background-color: #0da3bf;
+    font-size: 110%;
+    font-weight: 400;
+    width: 100%;
+    padding: 10px;
+    transition: top 0.2s, opacity 0.2s;
+    z-index: 5;
+}
+
+.detail-title {
+    color: #424242;
+}

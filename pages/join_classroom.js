@@ -9,7 +9,7 @@ import { useGlobalContext } from '../components/context';
 import { useRouter } from 'next/router';
 
 function JoinClassroom() {
-    const { user, setUser } = useGlobalContext();
+    const { user, setUser, setCursorType } = useGlobalContext();
     const router = useRouter();
     const [loading, setLoading] = useState(false);
     const handleSubmit = async (e) => {
@@ -30,6 +30,8 @@ function JoinClassroom() {
         console.log('Classroom joining data from API:', classroomData);
         if (classroomData.success) {
             setUser(classroomData.user);
+            router.replace('/dashboard');
+            setCursorType('default');
         }
     };
     useEffect(() => {

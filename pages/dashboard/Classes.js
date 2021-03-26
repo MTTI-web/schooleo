@@ -14,11 +14,12 @@ function Classes() {
                         <div
                             className={styles.class}
                             key={index}
-                            onClick={() =>
+                            onClick={() => {
                                 router.replace(
                                     `/classroom/${classItem.creationTime}`
-                                )
-                            }
+                                );
+                                setCursorType('default');
+                            }}
                             onMouseOver={() => setCursorType('pointer')}
                             onMouseLeave={() => setCursorType('default')}
                         >
