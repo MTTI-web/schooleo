@@ -7,10 +7,14 @@ import FormSubmitButton from '../../components/FormSubmitButton';
 import SectionHeading from '../../components/SectionHeading';
 import styles from '../../styles/SignIn.module.css';
 import fetchAPI from '../../utils/fetchAPI';
+import { useState } from 'react';
 
 function SignIn() {
     const { user, setUser } = useGlobalContext();
     const router = useRouter();
+    const [doesUserExist, setDoesUserExist] = useState(true);
+    const [isPasswordCorrect, setIsPasswordCorrect] = useState(true);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         if (user) {
             router.replace('/dashboard');
@@ -18,6 +22,9 @@ function SignIn() {
     }, [user]);
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsPasswordCorrect(true);
+        setDoesUserExist(true);
+        setLoading(true);
         const userData = await fetchAPI({
             url: '/auth/teacher/sign_in',
             method: 'post',
@@ -26,9 +33,16 @@ function SignIn() {
                 password: e.currentTarget.password.value,
             },
         });
+        setLoading(false);
         console.log('Logged in user:', userData);
         if (userData.user) {
             setUser(userData.user);
+        } else if (!userData.success) {
+            if (userData.message === 'No user found') {
+                setDoesUserExist(false);
+            } else if (userData.message === 'Password is incorrect') {
+                setIsPasswordCorrect(false);
+            }
         }
     };
     return (
@@ -46,10 +60,22 @@ function SignIn() {
                     <FormLabel type="email" id="email">
                         Email
                     </FormLabel>
+                    {!doesUserExist ? (
+                        <p className={styles['status-message']}>
+                            We could not find user with entered email.
+                        </p>
+                    ) : null}
                     <FormLabel type="password" id="password">
                         Password
                     </FormLabel>
-                    <FormSubmitButton>Sign In</FormSubmitButton>
+                    {!isPasswordCorrect ? (
+                        <p className={styles['status-message']}>
+                            The password entered is incorrect.
+                        </p>
+                    ) : null}
+                    <FormSubmitButton disabled={loading}>
+                        {loading ? 'Loading...' : 'Sign In'}
+                    </FormSubmitButton>
                 </form>
             </div>
         </section>

@@ -40,3 +40,9 @@
 .sign-in-page::-webkit-scrollbar-thumb:hover {
     background-color: #0da3bf;
 }
+
+.status-message {
+    width: 80%;
+    color: #f00;
+    font-size: 85%;
+}

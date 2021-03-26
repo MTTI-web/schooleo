@@ -38,10 +38,12 @@ function Classes() {
                 </div>
             ) : (
                 <div className={styles['no-classes-message']}>
-                    <h3>You have no classes right now.</h3>
+                    <h3>You have no classrooms right now.</h3>
                     <button
                         type="button"
                         onClick={() => router.replace('/create_class')}
+                        onMouseOver={() => setCursorType('pointer')}
+                        onMouseLeave={() => setCursorType('default')}
                     >
                         Create One
                     </button>
