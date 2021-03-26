@@ -11,7 +11,7 @@ import fetchAPI from '../../utils/fetchAPI';
 
 function StudentSignUpForm({ setUserType }) {
     const [country, setCountry] = useState(null);
-    const { setUser } = useGlobalContext();
+    const { setUser, setCursorType } = useGlobalContext();
     const router = useRouter();
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,6 +41,8 @@ function StudentSignUpForm({ setUserType }) {
             <div
                 className={styles['back-button']}
                 onClick={() => setUserType(undefined)}
+                onMouseOver={() => setCursorType('pointer')}
+                onMouseLeave={() => setCursorType('default')}
             >
                 ←
             </div>

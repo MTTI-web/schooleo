@@ -5,7 +5,7 @@ import CurrentUser from './CurrentUser';
 
 function Header() {
     const router = useRouter();
-    const { user } = useGlobalContext();
+    const { user, setCursorType } = useGlobalContext();
     return (
         <header className={styles.header}>
             <h1 className={styles['app-name']}>Schooleo</h1>
@@ -14,6 +14,8 @@ function Header() {
                     <li
                         onClick={() => router.replace('/')}
                         className={styles['nav-link']}
+                        onMouseOver={() => setCursorType('pointer')}
+                        onMouseLeave={() => setCursorType('default')}
                     >
                         Home
                     </li>
@@ -21,6 +23,8 @@ function Header() {
                         <li
                             onClick={() => router.replace('/dashboard')}
                             className={styles['nav-link']}
+                            onMouseOver={() => setCursorType('pointer')}
+                            onMouseLeave={() => setCursorType('default')}
                         >
                             Dashboard
                         </li>
@@ -30,12 +34,16 @@ function Header() {
                             <li
                                 onClick={() => router.replace('/sign_up')}
                                 className={styles['nav-link']}
+                                onMouseOver={() => setCursorType('pointer')}
+                                onMouseLeave={() => setCursorType('default')}
                             >
                                 Sign up
                             </li>{' '}
                             <li
                                 onClick={() => router.replace('/sign_in')}
                                 className={styles['nav-link']}
+                                onMouseOver={() => setCursorType('pointer')}
+                                onMouseLeave={() => setCursorType('default')}
                             >
                                 Sign in
                             </li>

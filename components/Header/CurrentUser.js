@@ -3,13 +3,19 @@ import { useState } from 'react';
 import styles from '../../styles/CurrentUser.module.css';
 
 function CurrentUser() {
-    const { user, setUser } = useGlobalContext();
+    const { user, setUser, setCursorType } = useGlobalContext();
     const [showSignOutButton, setShowSignOutButton] = useState(false);
     return (
         <div
             className={styles['current-user']}
-            onMouseOver={() => setShowSignOutButton(true)}
-            onMouseLeave={() => setShowSignOutButton(false)}
+            onMouseOver={() => {
+                setShowSignOutButton(true);
+                setCursorType('pointer');
+            }}
+            onMouseLeave={() => {
+                setShowSignOutButton(false);
+                setCursorType('default');
+            }}
         >
             {user.username}
             <div

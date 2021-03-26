@@ -1,7 +1,9 @@
 import styles from '../styles/ChooseSignUpMethod.module.css';
+import { useGlobalContext } from './context';
 import SectionHeading from './SectionHeading';
 
 function ChooseSignUpMethod({ setUserType }) {
+    const { setCursorType } = useGlobalContext();
     const handleClick = (e) => {
         setUserType(e.currentTarget.textContent.toLowerCase());
     };
@@ -13,6 +15,8 @@ function ChooseSignUpMethod({ setUserType }) {
                     type="button"
                     className={styles['sign-up-option']}
                     onClick={handleClick}
+                    onMouseOver={() => setCursorType('pointer')}
+                    onMouseLeave={() => setCursorType('default')}
                 >
                     Teacher
                 </button>
@@ -20,6 +24,8 @@ function ChooseSignUpMethod({ setUserType }) {
                     type="button"
                     className={styles['sign-up-option']}
                     onClick={handleClick}
+                    onMouseOver={() => setCursorType('pointer')}
+                    onMouseLeave={() => setCursorType('default')}
                 >
                     Student
                 </button>

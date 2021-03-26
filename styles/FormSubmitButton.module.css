@@ -5,7 +5,6 @@
     border: none;
     outline: none;
     background-color: #0da3bf;
-    cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
     font-size: 100%;
     display: flex;
@@ -13,6 +12,7 @@
     align-items: center;
     border: 2px solid #0da3bf;
     color: #282828;
+    cursor: none;
 }
 
 .form-submit-button:hover {

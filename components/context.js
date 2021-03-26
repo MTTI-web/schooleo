@@ -4,6 +4,7 @@ const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [cursorType, setCursorType] = useState('default');
     useEffect(() => {
         if (user) {
             console.log('Current user:', user);
@@ -15,6 +16,8 @@ const AppProvider = ({ children }) => {
             value={{
                 user,
                 setUser,
+                cursorType,
+                setCursorType,
             }}
         >
             {children}

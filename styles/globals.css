@@ -5,10 +5,12 @@
     font-family: 'Rubik', 'Calibri', 'Arial';
     font-size: 20px;
     user-select: none;
+    cursor: none;
 }
 
 body {
     position: relative;
+    cursor: none;
 }
 
 body::-webkit-scrollbar {

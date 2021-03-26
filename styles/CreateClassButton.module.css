@@ -13,7 +13,6 @@
     border: 2px solid #0da3bf;
     color: #0da3bf;
     font-size: 170%;
-    cursor: pointer;
     padding-bottom: 1.5px;
     transition: background-color 0.2s, color, 0.2s;
 }

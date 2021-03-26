@@ -1,11 +1,18 @@
 import styles from '../styles/FormLabel.module.css';
 import { useState } from 'react';
+import { useGlobalContext } from './context';
 
 function FormLabel({ type, children, id }) {
     const [active, setActive] = useState(false);
     const [currentInput, setCurrentInput] = useState('');
+    const { setCursorType } = useGlobalContext();
     return (
-        <label htmlFor={id} className={styles['login-form-label']}>
+        <label
+            htmlFor={id}
+            className={styles['login-form-label']}
+            onMouseOver={() => setCursorType('pointer')}
+            onMouseLeave={() => setCursorType('default')}
+        >
             <div
                 className={styles['field-name']}
                 style={

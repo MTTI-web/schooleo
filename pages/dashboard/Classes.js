@@ -3,7 +3,7 @@ import { useGlobalContext } from '../../components/context';
 import styles from '../../styles/Classes.module.css';
 
 function Classes() {
-    const { user } = useGlobalContext();
+    const { user, setCursorType } = useGlobalContext();
     const router = useRouter();
     return user ? (
         <div className={styles['class-list-section']}>
@@ -19,6 +19,8 @@ function Classes() {
                                     `/classroom/${classItem.creationTime}`
                                 )
                             }
+                            onMouseOver={() => setCursorType('pointer')}
+                            onMouseLeave={() => setCursorType('default')}
                         >
                             <div className={styles['class-name']}>
                                 {classItem.name}

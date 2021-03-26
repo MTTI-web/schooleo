@@ -1,8 +1,10 @@
 const { useState } = require('react');
 import styles from '../styles/Dropdown.module.css';
+import { useGlobalContext } from './context';
 
 function Dropdown({ title, options, setOption, option }) {
     const [open, setOpen] = useState(false);
+    const { setCursorType } = useGlobalContext();
 
     return (
         <div className={styles['dropdown-container']}>
@@ -17,6 +19,8 @@ function Dropdown({ title, options, setOption, option }) {
                 onBlur={(e) => {
                     e.currentTarget.style.outline = 'none';
                 }}
+                onMouseOver={() => setCursorType('pointer')}
+                onMouseLeave={() => setCursorType('default')}
             >
                 {title}: {option}
             </div>
