@@ -3,7 +3,6 @@ import styles from '../../styles/Dashboard.module.css';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useGlobalContext } from '../../components/context';
-import SectionHeading from '../../components/SectionHeading';
 import Classes from './Classes';
 import CreateClassButton from './CreateClassButton';
 

@@ -12,11 +12,14 @@ import fetchAPI from '../../utils/fetchAPI';
 function StudentSignUpForm({ setUserType }) {
     const [country, setCountry] = useState(null);
     const { setUser, setCursorType } = useGlobalContext();
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setCursorType('default');
         console.log('Student name:', e.currentTarget.studentName.value);
         if (country) {
+            setLoading(true);
             const userData = await fetchAPI({
                 url: '/auth/student/sign_up',
                 method: 'post',
@@ -27,6 +30,7 @@ function StudentSignUpForm({ setUserType }) {
                     nationality: country,
                 },
             });
+            setLoading(false);
             console.log('User:', userData.user);
             setUser(userData.user);
             router.replace('/dashboard');
@@ -62,7 +66,9 @@ function StudentSignUpForm({ setUserType }) {
                 option={country}
                 title="Country"
             />
-            <FormSubmitButton>Create Account</FormSubmitButton>
+            <FormSubmitButton disabled={loading}>
+                Create Account
+            </FormSubmitButton>
         </form>
     );
 }

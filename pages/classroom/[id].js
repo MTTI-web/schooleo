@@ -4,6 +4,7 @@ import { useGlobalContext } from '../../components/context';
 import fetchAPI from '../../utils/fetchAPI';
 import styles from '../../styles/Class.module.css';
 import Head from 'next/head';
+import ClassroomContent from '../../components/ClassroomContent';
 
 function Class() {
     const router = useRouter();
@@ -19,13 +20,15 @@ function Class() {
                 method: 'post',
                 body: {
                     email: user.email,
+                    userType: user.userType,
                     classroomID,
                 },
             });
+            setLoading(false);
             console.log('Class data:', classData);
             if (classData.success) {
                 setClassroomDetails(classData.classroom);
-                setLoading(false);
+                console.log('New classroom details set:', classData.classroom);
             } else {
                 console.log('Could not find details for the given class.');
             }
@@ -35,7 +38,7 @@ function Class() {
     }, [user]);
     return (
         <section className={styles['classroom-section']}>
-            {!loading ? (
+            {!loading && classroomDetails ? (
                 <>
                     <Head>
                         <title>{classroomDetails.name} • Schooleo</title>
@@ -47,6 +50,7 @@ function Class() {
             ) : (
                 <h1>Loading</h1>
             )}
+            <ClassroomContent />
         </section>
     );
 }

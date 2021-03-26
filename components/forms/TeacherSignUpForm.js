@@ -11,12 +11,15 @@ import fetchAPI from '../../utils/fetchAPI';
 
 function TeacherSignUpForm({ setUserType }) {
     const [country, setCountry] = useState(null);
+    const [loading, setLoading] = useState(false);
     const { setUser, setCursorType } = useGlobalContext();
     const router = useRouter();
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setCursorType('default');
         console.log('Teacher name:', e.currentTarget.teacherName.value);
         if (country) {
+            setLoading(true);
             const userData = await fetchAPI({
                 url: '/auth/teacher/sign_up',
                 method: 'post',
@@ -27,6 +30,7 @@ function TeacherSignUpForm({ setUserType }) {
                     nationality: country,
                 },
             });
+            setLoading(false);
             console.log('User:', userData.user);
             setUser(userData.user);
             router.replace('/dashboard');
@@ -62,7 +66,9 @@ function TeacherSignUpForm({ setUserType }) {
                 option={country}
                 title="Country"
             />
-            <FormSubmitButton>Create Account</FormSubmitButton>
+            <FormSubmitButton disabled={loading}>
+                Create Account
+            </FormSubmitButton>
         </form>
     );
 }

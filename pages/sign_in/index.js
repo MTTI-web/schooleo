@@ -10,7 +10,7 @@ import fetchAPI from '../../utils/fetchAPI';
 import { useState } from 'react';
 
 function SignIn() {
-    const { user, setUser } = useGlobalContext();
+    const { user, setUser, setCursorType } = useGlobalContext();
     const router = useRouter();
     const [doesUserExist, setDoesUserExist] = useState(true);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState(true);
@@ -22,11 +22,12 @@ function SignIn() {
     }, [user]);
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setCursorType('default');
         setIsPasswordCorrect(true);
         setDoesUserExist(true);
         setLoading(true);
         const userData = await fetchAPI({
-            url: '/auth/teacher/sign_in',
+            url: '/auth/sign_in',
             method: 'post',
             body: {
                 email: e.currentTarget.email.value,

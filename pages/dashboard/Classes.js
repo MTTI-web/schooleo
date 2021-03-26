@@ -41,11 +41,20 @@ function Classes() {
                     <h3>You have no classrooms right now.</h3>
                     <button
                         type="button"
-                        onClick={() => router.replace('/create_class')}
+                        onClick={() => {
+                            router.replace(
+                                user.userType === 'teacher'
+                                    ? '/create_classroom'
+                                    : '/join_classroom'
+                            );
+                            setCursorType('default');
+                        }}
                         onMouseOver={() => setCursorType('pointer')}
                         onMouseLeave={() => setCursorType('default')}
                     >
-                        Create One
+                        {user.userType === 'teacher'
+                            ? 'Create One'
+                            : 'Join One'}
                     </button>
                 </div>
             )}
