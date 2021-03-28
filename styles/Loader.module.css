@@ -5,7 +5,7 @@
     border-radius: 50%;
     border-right-color: transparent;
     border-left-color: transparent;
-    animation: spin linear infinite 1s;
+    animation: spin linear infinite 0.7s;
     z-index: 20;
 }
 
