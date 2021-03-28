@@ -12,10 +12,10 @@ function Classes() {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         if (user) {
-            setLoading(true);
             if (user.userType === 'student') {
                 console.log(user.classrooms);
                 user.classrooms.forEach(async (classroom) => {
+                    setLoading(true);
                     console.log(
                         'Getting details for the classroom:',
                         classroom
@@ -61,11 +61,10 @@ function Classes() {
                             });
                         }
                     }
+                    setLoading(false);
                 });
-                setLoading(false);
             } else if (user.userType === 'teacher') {
                 setClassrooms(user.classrooms);
-                setLoading(false);
             }
         }
     }, []);
