@@ -13,7 +13,6 @@ function Classes() {
     useEffect(() => {
         if (user) {
             if (user.userType === 'student') {
-                let counter = 0;
                 console.log(user.classrooms);
                 user.classrooms.forEach(async (classroom) => {
                     console.log(
@@ -61,12 +60,8 @@ function Classes() {
                             });
                         }
                     }
-                    counter++;
-                    console.log(counter);
-                    if (counter === user.classrooms.length) {
-                        setLoading(false);
-                    }
                 });
+                setLoading(false);
             } else if (user.userType === 'teacher') {
                 setClassrooms(user.classrooms);
                 setLoading(false);
