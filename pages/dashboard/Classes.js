@@ -18,7 +18,7 @@ function Classes() {
                         classroom
                     );
                     const classroomFromAPI = await fetchAPI({
-                        url: '/class/get_details',
+                        url: '/class/get_details_from_teacher',
                         method: 'post',
                         body: {
                             classroomID: classroom.creationTime,
