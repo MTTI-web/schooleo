@@ -1,0 +1,19 @@
+.loader {
+    height: 50px;
+    width: 50px;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    animation: spin linear infinite 1s;
+    z-index: 20;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

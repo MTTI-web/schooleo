@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useGlobalContext } from '../../components/context';
+import Loader from '../../components/Loader';
 import styles from '../../styles/Classes.module.css';
 import fetchAPI from '../../utils/fetchAPI';
 
@@ -8,9 +9,11 @@ function Classes() {
     const { user, setCursorType, setUser } = useGlobalContext();
     const router = useRouter();
     const [classrooms, setClassrooms] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         if (user) {
             if (user.userType === 'student') {
+                let counter = 0;
                 console.log(user.classrooms);
                 user.classrooms.forEach(async (classroom) => {
                     console.log(
@@ -58,9 +61,15 @@ function Classes() {
                             });
                         }
                     }
+                    counter++;
+                    console.log(counter);
+                    if (counter === user.classrooms.length) {
+                        setLoading(false);
+                    }
                 });
             } else if (user.userType === 'teacher') {
                 setClassrooms(user.classrooms);
+                setLoading(false);
             }
         }
     }, []);
@@ -70,7 +79,8 @@ function Classes() {
     return user ? (
         <div className={styles['class-list-section']}>
             <h2 className={styles['class-section-heading']}>Classrooms</h2>
-            {user && classrooms.length ? (
+            {loading && <Loader />}
+            {user && !loading && classrooms.length ? (
                 <div className={styles.classList}>
                     {classrooms.map((classItem, index) => {
                         if (classItem) {
@@ -114,26 +124,28 @@ function Classes() {
                     })}
                 </div>
             ) : (
-                <div className={styles['no-classes-message']}>
-                    <h3>You have no classrooms right now.</h3>
-                    <button
-                        type="button"
-                        onClick={() => {
-                            router.replace(
-                                user.userType === 'teacher'
-                                    ? '/create_classroom'
-                                    : '/join_classroom'
-                            );
-                            setCursorType('default');
-                        }}
-                        onMouseOver={() => setCursorType('pointer')}
-                        onMouseLeave={() => setCursorType('default')}
-                    >
-                        {user.userType === 'teacher'
-                            ? 'Create One'
-                            : 'Join One'}
-                    </button>
-                </div>
+                !loading && (
+                    <div className={styles['no-classes-message']}>
+                        <h3>You have no classrooms right now.</h3>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                router.replace(
+                                    user.userType === 'teacher'
+                                        ? '/create_classroom'
+                                        : '/join_classroom'
+                                );
+                                setCursorType('default');
+                            }}
+                            onMouseOver={() => setCursorType('pointer')}
+                            onMouseLeave={() => setCursorType('default')}
+                        >
+                            {user.userType === 'teacher'
+                                ? 'Create One'
+                                : 'Join One'}
+                        </button>
+                    </div>
+                )
             )}
         </div>
     ) : null;
