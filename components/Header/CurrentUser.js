@@ -21,7 +21,10 @@ function CurrentUser() {
             <div
                 className={styles['sign-out-button']}
                 style={showSignOutButton ? { opacity: '100%' } : null}
-                onClick={() => setUser(null)}
+                onClick={() => {
+                    setUser(null);
+                    localStorage.setItem('user', null);
+                }}
             >
                 Sign Out
             </div>
