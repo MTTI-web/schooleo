@@ -9,14 +9,15 @@ export default function Home() {
     const { user, setUser } = useGlobalContext();
     useEffect(async () => {
         if (!user) {
-            const userEmailFromLocalStorage = localStorage.getItem('user');
+            const userEmailFromLocalStorage = localStorage
+                .getItem('user')
+                .slice(1, -1);
             console.log(
-                'User email from Local Storage:',
-                userEmailFromLocalStorage
+                `User email from Local Storage: ${userEmailFromLocalStorage}`
             );
             if (userEmailFromLocalStorage) {
                 const userData = await fetchAPI({
-                    url: '/auth/teacher/get_user',
+                    url: '/auth/get_user',
                     method: 'post',
                     body: { email: userEmailFromLocalStorage },
                 });

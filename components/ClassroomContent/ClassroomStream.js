@@ -4,14 +4,14 @@ import { useEffect, useState } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
 import { useGlobalContext } from '../context';
 
-// const socket = io.connect('http://localhost:5000');
+// const socket = io.connect('http://localhost:4000');
 
 function ClassroomStream() {
-    const { setCursorType } = useGlobalContext();
+    const { setCursorType, user } = useGlobalContext();
     const [messages, setMessages] = useState([]);
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e.currentTarget);
+        console.log(`Message is: ${e.currentTarget.messageInput.value}`);
     };
     useEffect(() => {}, []);
     return (
@@ -30,8 +30,8 @@ function ClassroomStream() {
             >
                 <input
                     type="text"
-                    name="message-input"
-                    id="message-input"
+                    name="messageInput"
+                    id="messageInput"
                     onMouseOver={() => setCursorType('pointer')}
                     onMouseLeave={() => setCursorType('default')}
                 />

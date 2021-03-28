@@ -22,8 +22,10 @@ function MembersList({ students, style = {}, setShowMembers }) {
                 <div className={styles['title-underline']}></div>
             </div>
             <ol className={styles['members-list']}>
-                {students.map(({ name }) => (
-                    <li className={styles['member']}>{name}</li>
+                {students.map(({ name }, index) => (
+                    <li className={styles['member']} key={index}>
+                        {name}
+                    </li>
                 ))}
             </ol>
         </div>
