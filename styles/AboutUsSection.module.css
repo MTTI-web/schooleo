@@ -1,12 +1,9 @@
 .about-us-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    display: block;
     padding-top: 40px;
     height: calc(100vh - 80px);
-    min-height: 335px;
-    padding-bottom: 40px;
+    min-height: 412px;
+    padding-bottom: 20px;
 }
 
 .about-us-card {
@@ -20,6 +17,8 @@
     margin-top: 30px;
     border: 2px solid #0da3bf;
     box-shadow: 0 0 10px 0.1px #d0c7e6;
+    margin-bottom: 40px;
+    margin-left: 10%;
 }
 
 .about-us-content {

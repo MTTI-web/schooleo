@@ -5,7 +5,8 @@ import fetchAPI from '../../utils/fetchAPI';
 import styles from '../../styles/Class.module.css';
 import Head from 'next/head';
 import ClassroomContent from '../../components/ClassroomContent';
-import { FaAngleDown } from 'react-icons/fa';
+import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import MembersList from '../../components/MembersList';
 
 function Class() {
     const router = useRouter();
@@ -14,6 +15,8 @@ function Class() {
     const [loading, setLoading] = useState(true);
     const [classroomDetails, setClassroomDetails] = useState(null);
     const [showClassroomDetails, setShowClassroomDetails] = useState(false);
+    const [copiedCodeStatus, setCopiedCodeStatus] = useState(false);
+    const [showMembers, setShowMembers] = useState(false);
 
     useEffect(async () => {
         if (user) {
@@ -38,6 +41,14 @@ function Class() {
             router.replace('/');
         }
     }, [user]);
+    useEffect(() => {
+        if (copiedCodeStatus) {
+            const timeout = setTimeout(() => {
+                setCopiedCodeStatus(false);
+            }, 3000);
+            return () => clearTimeout(timeout);
+        }
+    }, [copiedCodeStatus, setCopiedCodeStatus]);
     return (
         <section className={styles['classroom-section']}>
             <Head>
@@ -76,7 +87,7 @@ function Class() {
                         onMouseOver={() => setCursorType('pointer')}
                         onMouseLeave={() => setCursorType('default')}
                     >
-                        <FaAngleDown />
+                        {showClassroomDetails ? <FaAngleUp /> : <FaAngleDown />}
                     </div>
                 </div>
                 {classroomDetails && (
@@ -113,11 +124,75 @@ function Class() {
                                     classroomDetails.creationTime
                                 ).toLocaleString()}
                             </div>
+                            <div className={styles['classroom-join-code']}>
+                                <span className={styles['detail-title']}>
+                                    Join code:
+                                </span>{' '}
+                                {classroomDetails.creationTime}
+                                <span
+                                    className={styles['copied-code-status']}
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(
+                                            classroomDetails.creationTime
+                                        );
+                                        setCopiedCodeStatus(true);
+                                    }}
+                                    onMouseOver={() => setCursorType('pointer')}
+                                    onMouseLeave={() =>
+                                        setCursorType('default')
+                                    }
+                                >
+                                    {copiedCodeStatus
+                                        ? 'Copied to clipboard'
+                                        : 'Copy join code'}
+                                </span>
+                            </div>
+                            {user && user.userType === 'teacher' && (
+                                <button
+                                    type="button"
+                                    onMouseOver={() => setCursorType('pointer')}
+                                    onMouseLeave={() =>
+                                        setCursorType('default')
+                                    }
+                                    onClick={() => {
+                                        setShowMembers(true);
+                                        setShowClassroomDetails(false);
+                                    }}
+                                    className={styles['show-members-button']}
+                                >
+                                    Show Members
+                                </button>
+                            )}
                         </div>
                     </>
                 )}
             </div>
-            <ClassroomContent />
+            {user && classroomDetails && (
+                <>
+                    {user.userType === 'teacher' && (
+                        <MembersList
+                            students={classroomDetails.students}
+                            style={
+                                showMembers
+                                    ? {
+                                          height: 'auto',
+                                          overflowY: 'scroll',
+                                          pointerEvents: 'all',
+                                          opacity: '100%',
+                                      }
+                                    : {
+                                          height: '0',
+                                          overflowY: 'hidden',
+                                          pointerEvents: 'none',
+                                          opacity: '0',
+                                      }
+                            }
+                            setShowMembers={setShowMembers}
+                        />
+                    )}
+                    <ClassroomContent />
+                </>
+            )}
         </section>
     );
 }

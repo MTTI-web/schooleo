@@ -40,7 +40,8 @@
 }
 
 .app-hero {
-    transform: translateX(-15%);
+    width: 70%;
+    transform: translateX(-50px);
 }
 
 .app-name {
@@ -50,7 +51,7 @@
 }
 
 .app-description {
-    font-size: 120%;
+    font-size: 115%;
     color: #b3f5ff;
     max-width: 85%;
     text-align: left;

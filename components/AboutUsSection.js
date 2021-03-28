@@ -7,16 +7,18 @@ function AboutUsSection() {
             <SectionHeading>About Us</SectionHeading>
             <div className={styles['about-us-card']}>
                 <p className={styles['about-us-content']}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Cras quis venenatis mi, quis tristique urna. Nulla vulputate
-                    est nisl, sit amet efficitur enim maximus et. Maecenas
-                    faucibus commodo ante, sit amet ultrices nisi consectetur
-                    ut. Praesent mollis est quam, sit amet bibendum neque
-                    placerat nec. Aliquam lobortis ipsum leo, vulputate congue
-                    augue maximus id. Phasellus id ipsum massa. Aliquam eget
-                    sollicitudin est. Cras vitae lacus vel velit pulvinar
-                    malesuada. Praesent congue risus mauris, nec consectetur dui
-                    faucibus ac. Etiam pharetra orci at nisl egestas convallis.
+                    Web development is the work involved in developing a Web
+                    site for the Internet (World Wide Web) or an intranet (a
+                    private network). A more comprehensive list of tasks to
+                    which Web development commonly refers, may include Web
+                    engineering, Web design, Web content development, client
+                    liaison, client-side/server-side scripting, Web server and
+                    network security configuration, and e-commerce development.
+                    Among Web professionals, "Web development" usually refers to
+                    the main non-design aspects of building Web sites: writing
+                    markup and coding. Web development may use content
+                    management systems (CMS) to make content changes easier and
+                    available with basic technical skills.
                 </p>
             </div>
         </div>

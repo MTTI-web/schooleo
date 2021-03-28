@@ -20,6 +20,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    position: relative;
 }
 
 .join-classroom-page::-webkit-scrollbar {
@@ -37,4 +38,30 @@
 
 .join-classroom-page::-webkit-scrollbar-thumb:hover {
     background-color: #0da3bf;
+}
+
+.status-message {
+    width: 80%;
+    color: #f00;
+    font-size: 85%;
+}
+
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #0da3bf;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1px;
+    transition: box-shadow 0.1s;
+}
+
+.back-button:hover {
+    box-shadow: 0 0 3px 1.5px #b3f5ff;
 }

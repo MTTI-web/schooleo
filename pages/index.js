@@ -38,8 +38,9 @@ export default function Home() {
                 <div className={styles['app-hero']}>
                     <div className={styles['app-name']}>Schooleo</div>
                     <div className={styles['app-description']}>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.
+                        I don't know whether you know that I know web
+                        development or not, but just telling, I know web dev and
+                        I made this website.
                     </div>
                 </div>
             </div>

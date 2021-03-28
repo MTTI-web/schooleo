@@ -12,8 +12,10 @@ function JoinClassroom() {
     const { user, setUser, setCursorType } = useGlobalContext();
     const router = useRouter();
     const [loading, setLoading] = useState(false);
+    const [isPasswordCorrect, setIsPasswordCorrect] = useState(true);
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsPasswordCorrect(true);
         setLoading(true);
         console.log(`Join code: ${e.currentTarget.joinCode.value}`);
         const classroomData = await fetchAPI({
@@ -32,13 +34,22 @@ function JoinClassroom() {
             setUser(classroomData.user);
             router.replace('/dashboard');
             setCursorType('default');
+        } else {
+            if (!classroomData.isPasswordCorrect) {
+                setIsPasswordCorrect(false);
+                console.log(
+                    'Password entered while joining classroom is wrong.'
+                );
+            }
         }
     };
+
     useEffect(() => {
         if (!user) {
             router.replace('/');
         }
     }, [user]);
+
     return (
         <section>
             <Head>
@@ -50,6 +61,14 @@ function JoinClassroom() {
                     autoComplete="off"
                     onSubmit={handleSubmit}
                 >
+                    <div
+                        className={styles['back-button']}
+                        onClick={() => router.replace('/dashboard')}
+                        onMouseOver={() => setCursorType('pointer')}
+                        onMouseLeave={() => setCursorType('default')}
+                    >
+                        ←
+                    </div>
                     <SectionHeading>Join Classroom</SectionHeading>
                     <FormLabel type="email" id="teacherEmail">
                         Teacher's Email
@@ -60,6 +79,11 @@ function JoinClassroom() {
                     <FormLabel type="password" id="password">
                         Password
                     </FormLabel>
+                    {!isPasswordCorrect ? (
+                        <p className={styles['status-message']}>
+                            The password entered is incorrect.
+                        </p>
+                    ) : null}
                     <FormSubmitButton disabled={loading}>
                         {loading ? 'Loading...' : 'Join Class'}
                     </FormSubmitButton>

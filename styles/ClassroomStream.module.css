@@ -1,4 +1,41 @@
 .classroom-stream {
     background-color: #424242;
     height: calc(100vh - 130px);
+    position: relative;
+}
+
+.message-entry-form {
+    position: absolute;
+    height: 50px;
+    bottom: 0;
+    display: grid;
+    width: 100%;
+    grid-template-columns: calc(100% - 50px) 50px;
+}
+
+.message-entry-form input {
+    height: 100%;
+    padding: 10px;
+    font-size: 105%;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid #0da3bf;
+    color: #0da3bf;
+    border-right-width: 0;
+}
+
+.message-entry-form button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid #0da3bf;
+    color: #0da3bf;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.message-entry-form button:hover {
+    background-color: #0da3bf;
+    color: #fff;
 }

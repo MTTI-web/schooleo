@@ -1,6 +1,7 @@
 .classroom-section {
     background-color: #212121;
     min-height: 100vh;
+    position: relative;
 }
 
 .classroom-header {
@@ -72,4 +73,22 @@
 
 .detail-title {
     color: #424242;
+}
+
+.show-members-button {
+    display: flex;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+}
+
+.show-members-button:hover {
+    text-decoration: underline;
+}
+
+.copied-code-status {
+    color: #282828;
+    font-size: 80%;
+    margin-left: 5px;
 }
