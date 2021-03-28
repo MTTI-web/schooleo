@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import styles from '../styles/MembersList.module.css';
 import { useGlobalContext } from './context';
 

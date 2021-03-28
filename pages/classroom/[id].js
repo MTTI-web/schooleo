@@ -20,15 +20,27 @@ function Class() {
 
     useEffect(async () => {
         if (user) {
-            const classData = await fetchAPI({
-                url: '/class/get_details',
-                method: 'post',
-                body: {
-                    email: user.email,
-                    userType: user.userType,
-                    classroomID,
-                },
-            });
+            const classData = await fetchAPI(
+                user.userType === 'student'
+                    ? {
+                          url: '/class/get_details_from_teacher',
+                          method: 'post',
+                          body: {
+                              email: user.email,
+                              userType: user.userType,
+                              classroomID,
+                          },
+                      }
+                    : {
+                          url: '/class/get_details',
+                          method: 'post',
+                          body: {
+                              email: user.email,
+                              userType: user.userType,
+                              classroomID,
+                          },
+                      }
+            );
             setLoading(false);
             console.log('Class data:', classData);
             if (classData.success) {
