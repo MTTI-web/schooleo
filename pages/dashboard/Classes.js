@@ -65,6 +65,7 @@ function Classes() {
                 });
             } else if (user.userType === 'teacher') {
                 setClassrooms(user.classrooms);
+                setLoading(false);
             }
         }
     }, []);
