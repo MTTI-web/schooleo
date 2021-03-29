@@ -1,0 +1,11 @@
+.show-members-button {
+    display: flex;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+}
+
+.show-members-button:hover {
+    text-decoration: underline;
+}

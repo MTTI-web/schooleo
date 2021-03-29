@@ -5,9 +5,11 @@ import fetchAPI from '../../utils/fetchAPI';
 import styles from '../../styles/Class.module.css';
 import Head from 'next/head';
 import ClassroomContent from '../../components/ClassroomContent';
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import MembersList from '../../components/MembersList';
 import Loader from '../../components/Loader';
+import ClassroomDetails from '../../components/ClassroomDetails';
+import ShowDetailsButton from '../../components/ShowDetailsButton';
+import ClassroomBackButton from '../../components/ClassroomBackButton';
 
 function Class() {
     const router = useRouter();
@@ -16,7 +18,6 @@ function Class() {
     const [loading, setLoading] = useState(true);
     const [classroomDetails, setClassroomDetails] = useState(null);
     const [showClassroomDetails, setShowClassroomDetails] = useState(false);
-    const [copiedCodeStatus, setCopiedCodeStatus] = useState(false);
     const [showMembers, setShowMembers] = useState(false);
 
     useEffect(async () => {
@@ -42,14 +43,6 @@ function Class() {
             router.replace('/');
         }
     }, [user]);
-    useEffect(() => {
-        if (copiedCodeStatus) {
-            const timeout = setTimeout(() => {
-                setCopiedCodeStatus(false);
-            }, 3000);
-            return () => clearTimeout(timeout);
-        }
-    }, [copiedCodeStatus, setCopiedCodeStatus]);
     return (
         <section
             className={styles['classroom-section']}
@@ -78,139 +71,24 @@ function Class() {
                 <>
                     <div className={styles['classroom-header']}>
                         <div className={styles['main-header-items']}>
-                            <div
-                                className={styles['back-button']}
-                                onClick={() => {
-                                    router.replace('/dashboard');
-                                    setCursorType('default');
-                                }}
-                                onMouseOver={() => setCursorType('pointer')}
-                                onMouseLeave={() => setCursorType('default')}
-                            >
-                                ←
-                            </div>
+                            <ClassroomBackButton />
                             {classroomDetails && classroomDetails.name}
-                            <div
-                                className={styles['show-details-button']}
-                                onClick={(e) => {
-                                    if (
-                                        !e.target.classList.contains(
-                                            'classroom-details'
-                                        )
-                                    )
-                                        setShowClassroomDetails(
-                                            !showClassroomDetails
-                                        );
-                                }}
-                                onMouseOver={() => setCursorType('pointer')}
-                                onMouseLeave={() => setCursorType('default')}
-                            >
-                                {showClassroomDetails ? (
-                                    <FaAngleUp />
-                                ) : (
-                                    <FaAngleDown />
-                                )}
-                            </div>
+                            <ShowDetailsButton
+                                showClassroomDetails={showClassroomDetails}
+                                setShowClassroomDetails={
+                                    setShowClassroomDetails
+                                }
+                            />
                         </div>
                         {classroomDetails && (
-                            <>
-                                <div
-                                    className={styles['classroom-details']}
-                                    style={
-                                        showClassroomDetails
-                                            ? {
-                                                  top: '50px',
-                                                  opacity: '100%',
-                                                  pointerEvents: 'all',
-                                                  color: '#121212',
-                                              }
-                                            : {
-                                                  top: '-100%',
-                                                  opacity: '0',
-                                                  pointerEvents: 'none',
-                                                  color: '#0da3bf',
-                                              }
-                                    }
-                                >
-                                    <div
-                                        className={styles['classroom-subject']}
-                                    >
-                                        <span
-                                            className={styles['detail-title']}
-                                        >
-                                            Subject:
-                                        </span>{' '}
-                                        {classroomDetails.subject}
-                                    </div>
-                                    <div
-                                        className={
-                                            styles['classroom-creation-time']
-                                        }
-                                    >
-                                        <span
-                                            className={styles['detail-title']}
-                                        >
-                                            Classroom created at:
-                                        </span>{' '}
-                                        {new Date(
-                                            classroomDetails.creationTime
-                                        ).toLocaleString()}
-                                    </div>
-                                    <div
-                                        className={
-                                            styles['classroom-join-code']
-                                        }
-                                    >
-                                        <span
-                                            className={styles['detail-title']}
-                                        >
-                                            Join code:
-                                        </span>{' '}
-                                        {classroomDetails.creationTime}
-                                        <span
-                                            className={
-                                                styles['copied-code-status']
-                                            }
-                                            onClick={() => {
-                                                navigator.clipboard.writeText(
-                                                    classroomDetails.creationTime
-                                                );
-                                                setCopiedCodeStatus(true);
-                                            }}
-                                            onMouseOver={() =>
-                                                setCursorType('pointer')
-                                            }
-                                            onMouseLeave={() =>
-                                                setCursorType('default')
-                                            }
-                                        >
-                                            {copiedCodeStatus
-                                                ? 'Copied to clipboard'
-                                                : 'Copy join code'}
-                                        </span>
-                                    </div>
-                                    {user && user.userType === 'teacher' && (
-                                        <button
-                                            type="button"
-                                            onMouseOver={() =>
-                                                setCursorType('pointer')
-                                            }
-                                            onMouseLeave={() =>
-                                                setCursorType('default')
-                                            }
-                                            onClick={() => {
-                                                setShowMembers(true);
-                                                setShowClassroomDetails(false);
-                                            }}
-                                            className={
-                                                styles['show-members-button']
-                                            }
-                                        >
-                                            Show Members
-                                        </button>
-                                    )}
-                                </div>
-                            </>
+                            <ClassroomDetails
+                                showClassroomDetails={showClassroomDetails}
+                                classroomDetails={classroomDetails}
+                                setShowClassroomDetails={
+                                    setShowClassroomDetails
+                                }
+                                setShowMembers={setShowMembers}
+                            />
                         )}
                     </div>
                     {user && classroomDetails && (

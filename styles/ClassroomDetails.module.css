@@ -1,0 +1,21 @@
+.classroom-details {
+    position: absolute;
+    top: -100%;
+    background-color: #0da3bf;
+    font-size: 110%;
+    font-weight: 400;
+    width: 100%;
+    padding: 10px;
+    transition: top 0.2s, opacity 0.2s;
+    z-index: 5;
+}
+
+.detail-title {
+    color: #424242;
+}
+
+.copied-code-status {
+    color: #282828;
+    font-size: 80%;
+    margin-left: 5px;
+}

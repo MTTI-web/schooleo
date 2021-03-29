@@ -1,0 +1,23 @@
+.back-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #b3f5ff;
+    color: #121212;
+    border: 1.5px solid #121212;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1.5px;
+    transition: box-shadow 0.1s;
+    font-size: 70%;
+    box-shadow: 0 0 5px 3px transparent;
+    transition: font-size 0.2s, box-shadow 0.2s;
+}
+
+.back-button {
+    left: 10px;
+}
