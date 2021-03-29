@@ -76,7 +76,10 @@ function Classes() {
         }
     }, []);
     useEffect(() => {
-        console.log('Classrooms:', classrooms);
+        console.log('Rendered classrooms:', classrooms);
+        if (user) {
+            console.log('User classrooms:', user.classrooms);
+        }
     }, [classrooms]);
     return user ? (
         <div className={styles['class-list-section']}>

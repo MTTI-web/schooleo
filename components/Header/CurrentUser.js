@@ -1,9 +1,11 @@
 import { useGlobalContext } from '../context';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import styles from '../../styles/CurrentUser.module.css';
 
 function CurrentUser() {
-    const { user, setUser, setCursorType } = useGlobalContext();
+    const { user, setCursorType } = useGlobalContext();
+    const router = useRouter();
     const [showSignOutButton, setShowSignOutButton] = useState(false);
     return (
         <div
@@ -22,11 +24,10 @@ function CurrentUser() {
                 className={styles['sign-out-button']}
                 style={showSignOutButton ? { opacity: '100%' } : null}
                 onClick={() => {
-                    setUser(null);
-                    localStorage.setItem('user', null);
+                    router.replace('/user_info');
                 }}
             >
-                Sign Out
+                Account
             </div>
         </div>
     );

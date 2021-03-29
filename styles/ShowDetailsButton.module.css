@@ -16,10 +16,11 @@
     font-size: 70%;
     box-shadow: 0 0 5px 3px transparent;
     transition: font-size 0.2s, box-shadow 0.2s;
-}
-
-.show-details-button {
     right: 10px;
     font-size: 120%;
     padding-top: 3px;
+}
+
+.show-details-button:hover {
+    box-shadow: 0 0 4px 3px #b3f5ff;
 }
