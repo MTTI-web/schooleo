@@ -14,55 +14,61 @@ function Classes() {
         if (user) {
             if (user.userType === 'student') {
                 console.log(user.classrooms);
-                user.classrooms.forEach(async (classroom) => {
-                    setLoading(true);
-                    console.log(
-                        'Getting details for the classroom:',
-                        classroom
-                    );
-                    const classroomFromAPI = await fetchAPI({
-                        url: '/class/get_details_from_teacher',
-                        method: 'post',
-                        body: {
-                            classroomID: classroom.creationTime,
-                            userType: 'teacher',
-                            email: classroom.teacherEmail,
-                        },
-                    });
-                    console.log('Classroom from API:', classroomFromAPI);
-                    if (classroomFromAPI.success) {
-                        setClassrooms([
-                            ...classrooms,
-                            classroomFromAPI.classroom,
-                        ]);
-                        setUser({
-                            ...user,
-                            classrooms: [
-                                classroomFromAPI.classroom,
-                                ...user.classrooms.filter(
-                                    (classroom) =>
-                                        classroom.creationTime !==
-                                        classroomFromAPI.classroom.creationTime
-                                ),
-                            ],
+                if (user.classrooms.length) {
+                    user.classrooms.forEach(async (classroom) => {
+                        setLoading(true);
+                        console.log(
+                            'Getting details for the classroom:',
+                            classroom
+                        );
+                        const classroomFromAPI = await fetchAPI({
+                            url: '/class/get_details_from_teacher',
+                            method: 'post',
+                            body: {
+                                classroomID: classroom.creationTime,
+                                userType: 'teacher',
+                                email: classroom.teacherEmail,
+                            },
                         });
-                    } else if (
-                        classroomFromAPI.message === 'Classroom does not exist'
-                    ) {
-                        if (user.classrooms.length) {
+                        console.log('Classroom from API:', classroomFromAPI);
+                        if (classroomFromAPI.success) {
+                            setClassrooms([
+                                ...classrooms,
+                                classroomFromAPI.classroom,
+                            ]);
                             setUser({
                                 ...user,
-                                classrooms: user.classrooms.filter(
-                                    (classroom) =>
-                                        classroom?.creationTime !==
-                                        classroomFromAPI?.classroom
-                                            ?.creationTime
-                                ),
+                                classrooms: [
+                                    classroomFromAPI.classroom,
+                                    ...user.classrooms.filter(
+                                        (classroom) =>
+                                            classroom.creationTime !==
+                                            classroomFromAPI.classroom
+                                                .creationTime
+                                    ),
+                                ],
                             });
+                        } else if (
+                            classroomFromAPI.message ===
+                            'Classroom does not exist'
+                        ) {
+                            if (user.classrooms.length) {
+                                setUser({
+                                    ...user,
+                                    classrooms: user.classrooms.filter(
+                                        (classroom) =>
+                                            classroom?.creationTime !==
+                                            classroomFromAPI?.classroom
+                                                ?.creationTime
+                                    ),
+                                });
+                            }
                         }
-                    }
-                    setLoading(false);
-                });
+                        setLoading(false);
+                    });
+                    return;
+                }
+                setLoading(false);
             } else if (user.userType === 'teacher') {
                 setClassrooms(user.classrooms);
                 setLoading(false);
