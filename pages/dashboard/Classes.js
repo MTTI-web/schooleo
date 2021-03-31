@@ -1,13 +1,13 @@
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useGlobalContext } from '../../components/context';
 import Loader from '../../components/Loader';
 import styles from '../../styles/Classes.module.css';
 import fetchAPI from '../../utils/fetchAPI';
+import ClassroomListItem from '../../components/ClassroomListItem';
+import NoClassesMessage from '../../components/NoClassesMessage';
 
 function Classes() {
-    const { user, setCursorType, setUser } = useGlobalContext();
-    const router = useRouter();
+    const { user, setUser } = useGlobalContext();
     const [classrooms, setClassrooms] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -90,38 +90,11 @@ function Classes() {
                     {classrooms.map((classItem, index) => {
                         if (classItem) {
                             return (
-                                <div
-                                    className={styles.class}
-                                    key={index}
-                                    onClick={() => {
-                                        router.replace(
-                                            `/classroom/${classItem.creationTime}`
-                                        );
-                                        setCursorType('default');
-                                    }}
-                                    onMouseOver={() => setCursorType('pointer')}
-                                    onMouseLeave={() =>
-                                        setCursorType('default')
-                                    }
-                                >
-                                    <div className={styles['class-name']}>
-                                        {classItem.name}
-                                    </div>
-                                    <div className={styles['class-details']}>
-                                        <div
-                                            className={styles['class-subject']}
-                                        >
-                                            <div
-                                                className={
-                                                    styles['detail-title']
-                                                }
-                                            >
-                                                Subject:
-                                            </div>
-                                            {classItem.subject}
-                                        </div>
-                                    </div>
-                                </div>
+                                <ClassroomListItem
+                                    classItem={classItem}
+                                    index={index}
+                                    setClassrooms={setClassrooms}
+                                />
                             );
                         } else {
                             return null;
@@ -129,28 +102,7 @@ function Classes() {
                     })}
                 </div>
             ) : (
-                !loading && (
-                    <div className={styles['no-classes-message']}>
-                        <h3>You have no classrooms right now.</h3>
-                        <button
-                            type="button"
-                            onClick={() => {
-                                router.replace(
-                                    user.userType === 'teacher'
-                                        ? '/create_classroom'
-                                        : '/join_classroom'
-                                );
-                                setCursorType('default');
-                            }}
-                            onMouseOver={() => setCursorType('pointer')}
-                            onMouseLeave={() => setCursorType('default')}
-                        >
-                            {user.userType === 'teacher'
-                                ? 'Create One'
-                                : 'Join One'}
-                        </button>
-                    </div>
-                )
+                !loading && <NoClassesMessage />
             )}
         </div>
     ) : null;

@@ -4,6 +4,7 @@
     height: calc(100vh - 80px);
     min-height: 412px;
     padding-bottom: 20px;
+    position: relative;
 }
 
 .about-us-card {

@@ -13,6 +13,7 @@ function Cursor() {
                 height: '15px',
                 backgroundColor: '#ffffff50',
                 boxShadow: '0 0 5px 3px #fff',
+                opacity: '0',
             });
         }
         if (cursorType === 'default') {
@@ -21,6 +22,7 @@ function Cursor() {
                 height: '10px',
                 backgroundColor: '#0dc7e6',
                 boxShadow: '0 0 5px 3px #0da3bf50',
+                opacity: '100%',
             });
         }
     }, [cursorType]);
@@ -50,8 +52,8 @@ function Cursor() {
                             ? {
                                   left: position.x,
                                   top: position.y,
-                                  width: '35px',
-                                  height: '35px',
+                                  width: '30px',
+                                  height: '30px',
                                   borderWidth: '2px',
                                   borderColor: '#fff',
                               }
@@ -64,6 +66,25 @@ function Cursor() {
                                   borderWidth: '1px',
                               }
                         : null
+                }
+            ></span>
+            <span
+                className={styles['cursor-inner-pointer']}
+                style={
+                    cursorType === 'pointer'
+                        ? {
+                              width: '3px',
+                              height: '3px',
+                              left: position.x,
+                              top: position.y,
+                              boxShadow: '0 0 10px 4px #fff',
+                          }
+                        : {
+                              width: '0',
+                              height: '0',
+                              left: position.x,
+                              top: position.y,
+                          }
                 }
             ></span>
         </div>
