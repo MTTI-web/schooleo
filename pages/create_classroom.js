@@ -38,7 +38,7 @@ function CreateClass() {
             console.log('New class created in DB:', userData);
             if (userData.user) {
                 setUser(userData.user);
-                router.replace('/dashboard');
+                router.replace('/classrooms');
             }
         }
     };

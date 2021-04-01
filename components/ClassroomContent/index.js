@@ -11,13 +11,14 @@ function ClassroomContent({ classroom }) {
         setWidth(innerWidth);
         const handler = () => {
             setWidth(innerWidth);
+            setIsColumnOpen(false);
         };
         addEventListener('resize', handler);
         return () => removeEventListener('resize', handler);
     }, []);
     return (
         <div className={styles['classroom-content']}>
-            {width && (
+            {width <= 730 && (
                 <div
                     className={styles['open-functional-column-button']}
                     onClick={() => setIsColumnOpen(!isColumnOpen)}

@@ -33,7 +33,7 @@ function TeacherSignUpForm({ setUserType }) {
             setLoading(false);
             console.log('User:', userData.user);
             setUser(userData.user);
-            router.replace('/dashboard');
+            router.replace('/classrooms');
         }
     };
     return (

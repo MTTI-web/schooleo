@@ -6,10 +6,9 @@ import fetchAPI from '../../utils/fetchAPI';
 import ClassroomListItem from '../../components/ClassroomListItem';
 import NoClassesMessage from '../../components/NoClassesMessage';
 
-function Classes() {
+function Classes({ loading, setLoading }) {
     const { user, setUser } = useGlobalContext();
     const [classrooms, setClassrooms] = useState([]);
-    const [loading, setLoading] = useState(true);
     useEffect(() => {
         if (user) {
             if (user.userType === 'student') {
@@ -82,8 +81,10 @@ function Classes() {
         }
     }, [classrooms]);
     return user ? (
-        <div className={styles['class-list-section']}>
-            <h2 className={styles['class-section-heading']}>Classrooms</h2>
+        <div
+            className={styles['class-list-section']}
+            style={loading ? { marginTop: '0' } : { marginTop: '40px' }}
+        >
             {loading && <Loader />}
             {user && !loading && classrooms.length ? (
                 <div className={styles.classList}>

@@ -3,15 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.class-section-heading {
-    color: #0da3bf;
-    font-size: 150%;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-weight: 500;
+    margin-top: 40px;
 }
 
 .no-classes-message {

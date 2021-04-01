@@ -17,7 +17,7 @@ function SignIn() {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         if (user) {
-            router.replace('/dashboard');
+            router.replace('/classrooms');
         }
     }, [user]);
     const handleSubmit = async (e) => {

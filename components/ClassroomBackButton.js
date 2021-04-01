@@ -9,7 +9,7 @@ function ClassroomBackButton() {
         <div
             className={styles['back-button']}
             onClick={() => {
-                router.replace('/dashboard');
+                router.replace('/classrooms');
                 setCursorType('default');
             }}
             onMouseOver={() => setCursorType('pointer')}

@@ -42,14 +42,14 @@ function Header() {
                     {user ? (
                         <li
                             onClick={() => {
-                                router.replace('/dashboard');
+                                router.replace('/classrooms');
                                 setIsNavOpen(false);
                             }}
                             className={styles['nav-link']}
                             onMouseOver={() => setCursorType('pointer')}
                             onMouseLeave={() => setCursorType('default')}
                         >
-                            Dashboard
+                            Classrooms
                         </li>
                     ) : null}
                     {!user ? (

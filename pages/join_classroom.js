@@ -32,7 +32,7 @@ function JoinClassroom() {
         console.log('Classroom joining data from API:', classroomData);
         if (classroomData.success) {
             setUser(classroomData.user);
-            router.replace('/dashboard');
+            router.replace('/classrooms');
             setCursorType('default');
         } else {
             if (!classroomData.isPasswordCorrect) {
@@ -63,7 +63,7 @@ function JoinClassroom() {
                 >
                     <div
                         className={styles['back-button']}
-                        onClick={() => router.replace('/dashboard')}
+                        onClick={() => router.replace('/classrooms')}
                         onMouseOver={() => setCursorType('pointer')}
                         onMouseLeave={() => setCursorType('default')}
                     >
