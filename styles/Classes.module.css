@@ -134,3 +134,15 @@
     transform: scale(1.05);
     box-shadow: 0 0 5px 2px #0db8d9;
 }
+
+@media screen and (max-width: 950px) {
+    .classList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 565px) {
+    .classList {
+        grid-template-columns: 1fr;
+    }
+}

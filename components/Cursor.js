@@ -6,6 +6,15 @@ function Cursor() {
     const [position, setPosition] = useState({});
     const { cursorType } = useGlobalContext();
     const [cursorStyles, setCursorStyles] = useState({});
+    const [width, setWidth] = useState(1024);
+    useEffect(() => {
+        setWidth(innerWidth);
+        const handler = () => {
+            setWidth(innerWidth);
+        };
+        addEventListener('resize', handler);
+        return () => removeEventListener('resize', handler);
+    }, []);
     useEffect(() => {
         if (cursorType === 'pointer') {
             setCursorStyles({
@@ -35,59 +44,65 @@ function Cursor() {
         return () => removeEventListener('mousemove', handleMouseMove);
     }, []);
     return (
-        <div className={styles['cursor-background']}>
-            <span
-                className={styles.cursor}
-                style={
-                    Object.keys(position).length
-                        ? { ...cursorStyles, left: position.x, top: position.y }
-                        : null
-                }
-            ></span>
-            <span
-                className={styles['cursor-border']}
-                style={
-                    Object.keys(position).length
-                        ? cursorType === 'pointer'
+        width > 680 && (
+            <div className={styles['cursor-background']}>
+                <span
+                    className={styles.cursor}
+                    style={
+                        Object.keys(position).length
                             ? {
+                                  ...cursorStyles,
                                   left: position.x,
                                   top: position.y,
-                                  width: '30px',
-                                  height: '30px',
-                                  borderWidth: '2px',
-                                  borderColor: '#fff',
+                              }
+                            : null
+                    }
+                ></span>
+                <span
+                    className={styles['cursor-border']}
+                    style={
+                        Object.keys(position).length
+                            ? cursorType === 'pointer'
+                                ? {
+                                      left: position.x,
+                                      top: position.y,
+                                      width: '30px',
+                                      height: '30px',
+                                      borderWidth: '2px',
+                                      borderColor: '#fff',
+                                  }
+                                : {
+                                      left: position.x,
+                                      top: position.y,
+                                      width: '25px',
+                                      height: '25px',
+                                      borderColor: '#0dc7e6',
+                                      borderWidth: '1px',
+                                  }
+                            : null
+                    }
+                ></span>
+                <span
+                    className={styles['cursor-inner-pointer']}
+                    style={
+                        cursorType === 'pointer'
+                            ? {
+                                  width: '3px',
+                                  height: '3px',
+                                  left: position.x,
+                                  top: position.y,
+                                  boxShadow: '0 0 10px 4px #fff',
                               }
                             : {
+                                  width: '0',
+                                  height: '0',
                                   left: position.x,
                                   top: position.y,
-                                  width: '25px',
-                                  height: '25px',
-                                  borderColor: '#0dc7e6',
-                                  borderWidth: '1px',
                               }
-                        : null
-                }
-            ></span>
-            <span
-                className={styles['cursor-inner-pointer']}
-                style={
-                    cursorType === 'pointer'
-                        ? {
-                              width: '3px',
-                              height: '3px',
-                              left: position.x,
-                              top: position.y,
-                              boxShadow: '0 0 10px 4px #fff',
-                          }
-                        : {
-                              width: '0',
-                              height: '0',
-                              left: position.x,
-                              top: position.y,
-                          }
-                }
-            ></span>
-        </div>
+                    }
+                ></span>
+            </div>
+        )
     );
 }
 

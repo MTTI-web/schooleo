@@ -2,17 +2,37 @@ import styles from '../../styles/Header.module.css';
 import { useRouter } from 'next/router';
 import { useGlobalContext } from '../context';
 import CurrentUser from './CurrentUser';
+import OpenNav from './OpenNav';
+import { useEffect, useState } from 'react';
 
 function Header() {
     const router = useRouter();
     const { user, setCursorType } = useGlobalContext();
+    const [isNavOpen, setIsNavOpen] = useState(false);
+    useEffect(() => {
+        const handler = () => {
+            setIsNavOpen(false);
+        };
+        addEventListener('resize', handler);
+        () => removeEventListener('resize', handler);
+    }, []);
     return (
         <header className={styles.header}>
             <h1 className={styles['app-name']}>Schooleo</h1>
-            <nav className={styles.nav}>
+            <nav
+                className={styles.nav}
+                style={
+                    isNavOpen && window.innerWidth <= 680
+                        ? { opacity: '100%', pointerEvents: 'all' }
+                        : { opacity: '0', pointerEvents: 'none' }
+                }
+            >
                 <ul className={styles['nav-links']}>
                     <li
-                        onClick={() => router.replace('/')}
+                        onClick={() => {
+                            router.replace('/');
+                            setIsNavOpen(false);
+                        }}
                         className={styles['nav-link']}
                         onMouseOver={() => setCursorType('pointer')}
                         onMouseLeave={() => setCursorType('default')}
@@ -21,7 +41,10 @@ function Header() {
                     </li>
                     {user ? (
                         <li
-                            onClick={() => router.replace('/dashboard')}
+                            onClick={() => {
+                                router.replace('/dashboard');
+                                setIsNavOpen(false);
+                            }}
                             className={styles['nav-link']}
                             onMouseOver={() => setCursorType('pointer')}
                             onMouseLeave={() => setCursorType('default')}
@@ -32,7 +55,10 @@ function Header() {
                     {!user ? (
                         <>
                             <li
-                                onClick={() => router.replace('/sign_up')}
+                                onClick={() => {
+                                    router.replace('/sign_up');
+                                    setIsNavOpen(false);
+                                }}
                                 className={styles['nav-link']}
                                 onMouseOver={() => setCursorType('pointer')}
                                 onMouseLeave={() => setCursorType('default')}
@@ -40,7 +66,10 @@ function Header() {
                                 Sign up
                             </li>{' '}
                             <li
-                                onClick={() => router.replace('/sign_in')}
+                                onClick={() => {
+                                    router.replace('/sign_in');
+                                    setIsNavOpen(false);
+                                }}
                                 className={styles['nav-link']}
                                 onMouseOver={() => setCursorType('pointer')}
                                 onMouseLeave={() => setCursorType('default')}
@@ -50,8 +79,9 @@ function Header() {
                         </>
                     ) : null}
                 </ul>
-                {user ? <CurrentUser /> : null}
+                {user ? <CurrentUser setIsNavOpen={setIsNavOpen} /> : null}
             </nav>
+            <OpenNav setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} />
         </header>
     );
 }

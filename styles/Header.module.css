@@ -24,6 +24,9 @@
     position: absolute;
     right: 20px;
     display: flex;
+    opacity: 100%;
+    pointer-events: all;
+    transition: opacity 0.2s;
 }
 
 .nav-links {
@@ -54,4 +57,59 @@
 
 .nav-link:active {
     transform: scale(0.97);
+}
+
+.open-nav-button {
+    position: fixed;
+    top: 40px;
+    transform: translateY(-50%);
+    right: 20px;
+    font-size: 160%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.open-nav-svg {
+    color: #0da3bf;
+    font-size: 90%;
+}
+
+@media screen and (max-width: 680px) {
+    .nav {
+        top: 100%;
+        height: calc(100vh - 80px);
+        width: 100vw;
+        background-color: #212121;
+        z-index: -1;
+        flex-direction: column;
+        right: 0;
+        padding-top: 20px;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .nav-links {
+        flex-direction: column;
+        width: 80%;
+    }
+    .nav-link {
+        background-color: none;
+        height: 40px;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+    .open-nav-button {
+        opacity: 100%;
+        pointer-events: all;
+    }
+}
+@media screen and (min-width: 680px) {
+    .nav {
+        pointer-events: all !important;
+        opacity: 100% !important;
+    }
 }

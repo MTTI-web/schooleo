@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/CurrentUser.module.css';
 
-function CurrentUser() {
+function CurrentUser({ setIsNavOpen }) {
     const { user, setCursorType } = useGlobalContext();
     const router = useRouter();
     const [showSignOutButton, setShowSignOutButton] = useState(false);
@@ -25,6 +25,7 @@ function CurrentUser() {
                 style={showSignOutButton ? { opacity: '100%' } : null}
                 onClick={() => {
                     router.replace('/user_info');
+                    setIsNavOpen(false);
                 }}
             >
                 Account

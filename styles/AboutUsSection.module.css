@@ -1,7 +1,7 @@
 .about-us-section {
     display: block;
     padding-top: 40px;
-    height: calc(100vh - 80px);
+    /* min-height: calc(100vh - 80px); */
     min-height: 412px;
     padding-bottom: 20px;
     position: relative;

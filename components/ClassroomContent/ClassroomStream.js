@@ -4,11 +4,13 @@ import { FaPaperPlane } from 'react-icons/fa';
 import { useGlobalContext } from '../context';
 import Loader from '../Loader';
 import fetchAPI from '../../utils/fetchAPI';
+import { useRouter } from 'next/router';
 
 // const socket = io.connect('http://localhost:4000');
 
 function ClassroomStream({ classroom }) {
     const { setCursorType, user } = useGlobalContext();
+    const router = useRouter();
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(true);
     const handleSubmit = async (e) => {
@@ -79,14 +81,18 @@ function ClassroomStream({ classroom }) {
         setLoading(false);
         const messagesContainer = document.querySelector('#messages');
         messagesContainer.scrollTo(0, messagesContainer.scrollHeight);
-        const handleKeyDown = () =>
-            document.querySelector('#messageInput').focus();
-        addEventListener('keydown', handleKeyDown);
-        () => removeEventListener('keydown', handleKeyDown);
     }, []);
     return (
         <div className={styles['classroom-stream']}>
-            <div className={styles.messages} id="messages">
+            <div
+                className={styles.messages}
+                id="messages"
+                style={
+                    loading
+                        ? { justifyContent: 'center', alignItems: 'center' }
+                        : { justifyContent: 'normal', alignItems: 'normal' }
+                }
+            >
                 {loading ? (
                     <Loader />
                 ) : (
@@ -121,6 +127,7 @@ function ClassroomStream({ classroom }) {
                     onMouseOver={() => setCursorType('pointer')}
                     onMouseLeave={() => setCursorType('default')}
                     autoComplete="off"
+                    placeholder="Post a message..."
                 />
                 <button
                     type="submit"

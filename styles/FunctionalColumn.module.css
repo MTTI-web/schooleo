@@ -1,0 +1,21 @@
+.functional-column {
+    background-color: #212121;
+    transition: opacity 0.2s;
+    color: #fefefe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 730px) {
+    .functional-column {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+}
