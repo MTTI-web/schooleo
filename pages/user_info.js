@@ -11,7 +11,7 @@ function UserInfo() {
         if (!user) {
             router.replace('/');
         }
-    }, []);
+    }, [user]);
     return (
         <section className={styles['user-info-section']}>
             <SignOutButton />

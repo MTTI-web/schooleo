@@ -114,7 +114,7 @@ function Class() {
                                     setShowMembers={setShowMembers}
                                 />
                             )}
-                            <ClassroomContent />
+                            <ClassroomContent classroom={classroomDetails} />
                         </>
                     )}
                 </>

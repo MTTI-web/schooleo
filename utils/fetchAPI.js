@@ -1,6 +1,6 @@
 const fetchAPI = async ({ url, method, body = {} }) => {
-    // const apiURL = 'http://localhost:5000';
-    const apiURL = 'https://schooleo-api.herokuapp.com';
+    const apiURL = 'http://localhost:5000';
+    // const apiURL = 'https://schooleo-api.herokuapp.com';
     let response = {};
     if (method === 'get') {
         response = await fetch(`${apiURL}${url}`);
