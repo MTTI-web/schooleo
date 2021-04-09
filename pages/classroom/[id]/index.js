@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useGlobalContext } from '../../components/context';
-import fetchAPI from '../../utils/fetchAPI';
-import styles from '../../styles/Class.module.css';
+import { useGlobalContext } from '../../../components/context';
+import fetchAPI from '../../../utils/fetchAPI';
+import styles from '../../../styles/Class.module.css';
 import Head from 'next/head';
-import ClassroomContent from '../../components/ClassroomContent';
-import MembersList from '../../components/MembersList';
-import Loader from '../../components/Loader';
-import ClassroomDetails from '../../components/ClassroomDetails';
-import ShowDetailsButton from '../../components/ShowDetailsButton';
-import ClassroomBackButton from '../../components/ClassroomBackButton';
+import ClassroomContent from '../../../components/ClassroomContent';
+import MembersList from '../../../components/MembersList';
+import Loader from '../../../components/Loader';
+import ClassroomDetails from '../../../components/ClassroomDetails';
+import ShowDetailsButton from '../../../components/ShowDetailsButton';
+import ClassroomBackButton from '../../../components/ClassroomBackButton';
 
 function Class() {
     const router = useRouter();
@@ -93,28 +93,29 @@ function Class() {
                     </div>
                     {user && classroomDetails && (
                         <>
-                            {user.userType === 'teacher' && (
-                                <MembersList
-                                    students={classroomDetails.students}
-                                    style={
-                                        showMembers
-                                            ? {
-                                                  height: 'auto',
-                                                  overflowY: 'scroll',
-                                                  pointerEvents: 'all',
-                                                  opacity: '100%',
-                                              }
-                                            : {
-                                                  height: '0',
-                                                  overflowY: 'hidden',
-                                                  pointerEvents: 'none',
-                                                  opacity: '0',
-                                              }
-                                    }
-                                    setShowMembers={setShowMembers}
-                                />
-                            )}
-                            <ClassroomContent classroom={classroomDetails} />
+                            <MembersList
+                                students={classroomDetails.students}
+                                style={
+                                    showMembers
+                                        ? {
+                                              height: 'auto',
+                                              overflowY: 'scroll',
+                                              pointerEvents: 'all',
+                                              opacity: '100%',
+                                          }
+                                        : {
+                                              height: '0',
+                                              overflowY: 'hidden',
+                                              pointerEvents: 'none',
+                                              opacity: '0',
+                                          }
+                                }
+                                setShowMembers={setShowMembers}
+                            />
+                            <ClassroomContent
+                                classroom={classroomDetails}
+                                classroomDetails={classroomDetails}
+                            />
                         </>
                     )}
                 </>

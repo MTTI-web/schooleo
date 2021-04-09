@@ -3,8 +3,73 @@
     transition: opacity 0.2s;
     color: #fefefe;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    flex-direction: column;
+    padding: 30px 20px;
+    overflow-y: scroll;
+    max-height: calc(100vh - 130px);
+}
+
+.functional-column::-webkit-scrollbar {
+    width: 10px;
+}
+
+.functional-column::-webkit-scrollbar-track {
+    background-color: #b3f5ff;
+}
+
+.functional-column::-webkit-scrollbar-thumb {
+    background-color: #0da3bf;
+    border-radius: 5px;
+}
+
+.functional-column::-webkit-scrollbar-thumb:hover {
+    background-color: #0da3bf;
+}
+
+.create-assignment-button {
+    padding: 5px 6px;
+    font-size: 100%;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid #0db8d9;
+    color: #0db8d9;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    font-weight: 400;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.create-assignment-button:hover {
+    background-color: #0db8d9;
+    color: #212121;
+}
+
+.assignments-container {
+    background-color: #424242;
+    padding: 10px;
+    width: 80%;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 2px solid #0db8d9;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.assignment {
+    background-color: #212121;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1.5px solid #0db8d9;
+    color: #0db8d9;
+    width: 100%;
+}
+
+.assignment:not(:first-child) {
+    margin-top: 10px;
 }
 
 @media screen and (max-width: 730px) {

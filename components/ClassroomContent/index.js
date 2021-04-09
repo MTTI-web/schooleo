@@ -4,7 +4,7 @@ import FunctionalColumn from './FunctionalColumn';
 import { useEffect, useState } from 'react';
 import { FaEllipsisV, FaTimes } from 'react-icons/fa';
 
-function ClassroomContent({ classroom }) {
+function ClassroomContent({ classroom, classroomDetails }) {
     const [isColumnOpen, setIsColumnOpen] = useState(false);
     const [width, setWidth] = useState(1024);
     useEffect(() => {
@@ -34,7 +34,10 @@ function ClassroomContent({ classroom }) {
                     )}
                 </div>
             )}
-            <FunctionalColumn isColumnOpen={isColumnOpen} />
+            <FunctionalColumn
+                isColumnOpen={isColumnOpen}
+                classroomDetails={classroomDetails}
+            />
             <ClassroomStream classroom={classroom} />
         </div>
     );

@@ -18,6 +18,7 @@
     position: absolute;
     transform: translate(-50%, -50%);
     transition: width 0.1s, height 0.1s, opacity 0.1s;
+    mix-blend-mode: difference;
 }
 
 .cursor-border {
@@ -30,6 +31,7 @@
     position: absolute;
     border-radius: 50%;
     transition: width 0.1s, height 0.1s;
+    mix-blend-mode: difference;
 }
 
 .cursor-inner-pointer {

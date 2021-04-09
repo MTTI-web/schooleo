@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useGlobalContext } from '../../components/context';
 import Classes from './Classes';
-import CreateClassButton from './CreateClassButton';
+import CreateClassButton from '../../components/CreateButton';
 import { useState } from 'react';
 
 function Dashboard() {
@@ -16,6 +16,14 @@ function Dashboard() {
             router.replace('/');
         }
     }, [user]);
+    const handleClick = () => {
+        router.replace(
+            user.userType === 'teacher'
+                ? '/create_classroom'
+                : '/join_classroom'
+        );
+        setCursorType('default');
+    };
     return (
         <section
             className={styles['dashboard']}
@@ -34,7 +42,7 @@ function Dashboard() {
             </Head>
             <h1 className={styles['section-heading']}>Classrooms</h1>
             <Classes loading={loading} setLoading={setLoading} />
-            <CreateClassButton />
+            <CreateClassButton handleClick={handleClick} />
         </section>
     );
 }

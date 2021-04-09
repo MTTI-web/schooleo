@@ -2,6 +2,7 @@
     background-color: #212121;
     min-height: 100vh;
     position: relative;
+    overflow: -moz-hidden-unscrollable;
 }
 
 .classroom-header {

@@ -25,7 +25,6 @@ function Classes({ loading, setLoading }) {
                             method: 'post',
                             body: {
                                 classroomID: classroom.creationTime,
-                                userType: 'teacher',
                                 email: classroom.teacherEmail,
                             },
                         });

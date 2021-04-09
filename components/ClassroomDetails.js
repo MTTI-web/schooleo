@@ -69,7 +69,7 @@ function ClassroomDetails({
                         : 'Copy join code'}
                 </span>
             </div>
-            {user && user.userType === 'teacher' && (
+            {user && (
                 <ShowMembersButton
                     setShowClassroomDetails={setShowClassroomDetails}
                     setShowMembers={setShowMembers}

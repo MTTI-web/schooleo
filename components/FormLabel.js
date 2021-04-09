@@ -2,9 +2,9 @@ import styles from '../styles/FormLabel.module.css';
 import { useState } from 'react';
 import { useGlobalContext } from './context';
 
-function FormLabel({ type, children, id }) {
+function FormLabel({ type, children, id, initialValue = '', style = {} }) {
     const [active, setActive] = useState(false);
-    const [currentInput, setCurrentInput] = useState('');
+    const [currentInput, setCurrentInput] = useState(initialValue);
     const { setCursorType } = useGlobalContext();
     return (
         <label
@@ -12,6 +12,7 @@ function FormLabel({ type, children, id }) {
             className={styles['login-form-label']}
             onMouseOver={() => setCursorType('pointer')}
             onMouseLeave={() => setCursorType('default')}
+            style={style}
         >
             <div
                 className={styles['field-name']}
@@ -19,8 +20,8 @@ function FormLabel({ type, children, id }) {
                     active || currentInput
                         ? {
                               fontSize: '80%',
-                              top: '-5px',
-                              left: '3px',
+                              top: '0px',
+                              left: '7px',
                               color: '#79e2f2',
                           }
                         : null
@@ -41,7 +42,7 @@ function FormLabel({ type, children, id }) {
                 style={
                     active || currentInput
                         ? {
-                              borderBottomColor: '#79e2f2',
+                              borderColor: '#79e2f2',
                           }
                         : null
                 }

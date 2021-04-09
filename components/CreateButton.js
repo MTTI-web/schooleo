@@ -1,10 +1,9 @@
 import { useRouter } from 'next/router';
-import { useGlobalContext } from '../../components/context';
-import styles from '../../styles/CreateClassButton.module.css';
+import { useGlobalContext } from './context';
+import styles from '../styles/CreateClassButton.module.css';
 
-function CreateClassButton() {
+function CreateButton({ handleClick }) {
     const { user } = useGlobalContext();
-    const router = useRouter();
     const { setCursorType } = useGlobalContext();
     return user ? (
         <button
@@ -12,11 +11,7 @@ function CreateClassButton() {
             className={styles['create-class-button']}
             title={user.userType === 'teacher' ? 'Create Class' : 'Join Class'}
             onClick={() => {
-                router.replace(
-                    user.userType === 'teacher'
-                        ? '/create_classroom'
-                        : '/join_classroom'
-                );
+                handleClick();
                 setCursorType('default');
             }}
             onMouseOver={() => setCursorType('pointer')}
@@ -27,4 +22,4 @@ function CreateClassButton() {
     ) : null;
 }
 
-export default CreateClassButton;
+export default CreateButton;
