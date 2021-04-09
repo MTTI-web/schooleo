@@ -55,7 +55,10 @@ function CreateAssignment() {
             question: '',
             answer: '',
         };
-        setQuestions([...questions, newQuestion]);
+        setAssignment({
+            ...assignment,
+            questions: [...assignment.questions, newQuestion],
+        });
     };
     return (
         <section className={styles['create-assignment-section']}>
