@@ -2,7 +2,14 @@ import styles from '../styles/FormLabel.module.css';
 import { useState } from 'react';
 import { useGlobalContext } from './context';
 
-function FormLabel({ type, children, id, initialValue = '', style = {} }) {
+function FormLabel({
+    type,
+    children,
+    id,
+    initialValue = '',
+    style = {},
+    onInput = null,
+}) {
     const [active, setActive] = useState(false);
     const [currentInput, setCurrentInput] = useState(initialValue);
     const { setCursorType } = useGlobalContext();
@@ -10,7 +17,7 @@ function FormLabel({ type, children, id, initialValue = '', style = {} }) {
         <label
             htmlFor={id}
             className={styles['login-form-label']}
-            onMouseOver={() => setCursorType('pointer')}
+            onMouseEnter={() => setCursorType('pointer')}
             onMouseLeave={() => setCursorType('default')}
             style={style}
         >
@@ -36,7 +43,10 @@ function FormLabel({ type, children, id, initialValue = '', style = {} }) {
                 onFocus={() => setActive(true)}
                 onBlur={() => setActive(false)}
                 value={currentInput}
-                onInput={(e) => setCurrentInput(e.currentTarget.value)}
+                onInput={(e) => {
+                    setCurrentInput(e.currentTarget.value);
+                    if (onInput) onInput(e);
+                }}
                 autoComplete="off"
                 required
                 style={

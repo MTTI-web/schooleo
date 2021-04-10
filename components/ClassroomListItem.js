@@ -48,7 +48,7 @@ function ClassroomListItem({ classItem, index, setClassrooms }) {
                     setCursorType('default');
                 }
             }}
-            onMouseOver={() => setCursorType('pointer')}
+            onMouseEnter={() => setCursorType('pointer')}
             onMouseLeave={() => setCursorType('default')}
         >
             {user && user.userType === 'student' && (

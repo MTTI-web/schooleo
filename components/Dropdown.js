@@ -19,7 +19,7 @@ function Dropdown({ title, options, setOption, option }) {
                 onBlur={(e) => {
                     e.currentTarget.style.outline = 'none';
                 }}
-                onMouseOver={() => setCursorType('pointer')}
+                onMouseEnter={() => setCursorType('pointer')}
                 onMouseLeave={() => setCursorType('default')}
             >
                 {title}: {option}

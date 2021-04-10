@@ -64,7 +64,7 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
                                 `/classroom/${classroomID}/assignment/${creationTime}`
                             );
                         }}
-                        onMouseOver={() => setCursorType('pointer')}
+                        onMouseEnter={() => setCursorType('pointer')}
                         onMouseLeave={() => setCursorType('default')}
                     >
                         {name}
@@ -74,7 +74,7 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
                     <button
                         className={styles['create-assignment-button']}
                         onClick={handleAssignmentCreation}
-                        onMouseOver={() => setCursorType('pointer')}
+                        onMouseEnter={() => setCursorType('pointer')}
                         onMouseLeave={() => setCursorType('default')}
                     >
                         Create Assignment

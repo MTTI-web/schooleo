@@ -11,7 +11,7 @@ function ShowDetailsButton({ showClassroomDetails, setShowClassroomDetails }) {
                 if (!e.target.classList.contains('classroom-details'))
                     setShowClassroomDetails(!showClassroomDetails);
             }}
-            onMouseOver={() => setCursorType('pointer')}
+            onMouseEnter={() => setCursorType('pointer')}
             onMouseLeave={() => setCursorType('default')}
         >
             {showClassroomDetails ? <FaAngleUp /> : <FaAngleDown />}

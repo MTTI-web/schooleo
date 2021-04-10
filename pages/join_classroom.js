@@ -64,7 +64,7 @@ function JoinClassroom() {
                     <div
                         className={styles['back-button']}
                         onClick={() => router.replace('/classrooms')}
-                        onMouseOver={() => setCursorType('pointer')}
+                        onMouseEnter={() => setCursorType('pointer')}
                         onMouseLeave={() => setCursorType('default')}
                     >
                         ←

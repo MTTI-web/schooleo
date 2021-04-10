@@ -18,7 +18,7 @@ function NoClassesMessage() {
                     );
                     setCursorType('default');
                 }}
-                onMouseOver={() => setCursorType('pointer')}
+                onMouseEnter={() => setCursorType('pointer')}
                 onMouseLeave={() => setCursorType('default')}
             >
                 {user.userType === 'teacher' ? 'Create One' : 'Join One'}

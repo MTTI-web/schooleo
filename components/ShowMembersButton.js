@@ -6,7 +6,7 @@ function ShowMembersButton({ setShowMembers, setShowClassroomDetails }) {
     return (
         <button
             type="button"
-            onMouseOver={() => setCursorType('pointer')}
+            onMouseEnter={() => setCursorType('pointer')}
             onMouseLeave={() => setCursorType('default')}
             onClick={() => {
                 setShowMembers(true);

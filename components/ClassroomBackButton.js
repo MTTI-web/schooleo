@@ -12,7 +12,7 @@ function ClassroomBackButton() {
                 router.replace('/classrooms');
                 setCursorType('default');
             }}
-            onMouseOver={() => setCursorType('pointer')}
+            onMouseEnter={() => setCursorType('pointer')}
             onMouseLeave={() => setCursorType('default')}
         >
             ←

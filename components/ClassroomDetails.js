@@ -61,7 +61,7 @@ function ClassroomDetails({
                         );
                         setCopiedCodeStatus(true);
                     }}
-                    onMouseOver={() => setCursorType('pointer')}
+                    onMouseEnter={() => setCursorType('pointer')}
                     onMouseLeave={() => setCursorType('default')}
                 >
                     {copiedCodeStatus

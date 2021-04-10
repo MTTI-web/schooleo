@@ -34,7 +34,7 @@ function Header() {
                             setIsNavOpen(false);
                         }}
                         className={styles['nav-link']}
-                        onMouseOver={() => setCursorType('pointer')}
+                        onMouseEnter={() => setCursorType('pointer')}
                         onMouseLeave={() => setCursorType('default')}
                     >
                         Home
@@ -46,7 +46,7 @@ function Header() {
                                 setIsNavOpen(false);
                             }}
                             className={styles['nav-link']}
-                            onMouseOver={() => setCursorType('pointer')}
+                            onMouseEnter={() => setCursorType('pointer')}
                             onMouseLeave={() => setCursorType('default')}
                         >
                             Classrooms
@@ -60,7 +60,7 @@ function Header() {
                                     setIsNavOpen(false);
                                 }}
                                 className={styles['nav-link']}
-                                onMouseOver={() => setCursorType('pointer')}
+                                onMouseEnter={() => setCursorType('pointer')}
                                 onMouseLeave={() => setCursorType('default')}
                             >
                                 Sign up
@@ -71,7 +71,7 @@ function Header() {
                                     setIsNavOpen(false);
                                 }}
                                 className={styles['nav-link']}
-                                onMouseOver={() => setCursorType('pointer')}
+                                onMouseEnter={() => setCursorType('pointer')}
                                 onMouseLeave={() => setCursorType('default')}
                             >
                                 Sign in

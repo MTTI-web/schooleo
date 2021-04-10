@@ -14,7 +14,7 @@ function NoQuestionsMessage({ handleClick }) {
                     handleClick();
                     setCursorType('default');
                 }}
-                onMouseOver={() => setCursorType('pointer')}
+                onMouseEnter={() => setCursorType('pointer')}
                 onMouseLeave={() => setCursorType('default')}
             >
                 Create Question

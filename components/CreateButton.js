@@ -14,7 +14,7 @@ function CreateButton({ handleClick }) {
                 handleClick();
                 setCursorType('default');
             }}
-            onMouseOver={() => setCursorType('pointer')}
+            onMouseEnter={() => setCursorType('pointer')}
             onMouseLeave={() => setCursorType('default')}
         >
             +

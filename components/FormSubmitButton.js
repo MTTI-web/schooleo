@@ -7,7 +7,7 @@ function FormSubmitButton({ children, disabled }) {
         <button
             type="submit"
             className={styles['form-submit-button']}
-            onMouseOver={() => setCursorType('pointer')}
+            onMouseEnter={() => setCursorType('pointer')}
             onMouseLeave={() => setCursorType('default')}
             disabled={disabled}
         >

@@ -45,7 +45,7 @@ function StudentSignUpForm({ setUserType }) {
             <div
                 className={styles['back-button']}
                 onClick={() => setUserType(undefined)}
-                onMouseOver={() => setCursorType('pointer')}
+                onMouseEnter={() => setCursorType('pointer')}
                 onMouseLeave={() => setCursorType('default')}
             >
                 ←

@@ -15,7 +15,7 @@ function ChooseSignUpMethod({ setUserType }) {
                     type="button"
                     className={styles['sign-up-option']}
                     onClick={handleClick}
-                    onMouseOver={() => setCursorType('pointer')}
+                    onMouseEnter={() => setCursorType('pointer')}
                     onMouseLeave={() => setCursorType('default')}
                 >
                     Teacher
@@ -24,7 +24,7 @@ function ChooseSignUpMethod({ setUserType }) {
                     type="button"
                     className={styles['sign-up-option']}
                     onClick={handleClick}
-                    onMouseOver={() => setCursorType('pointer')}
+                    onMouseEnter={() => setCursorType('pointer')}
                     onMouseLeave={() => setCursorType('default')}
                 >
                     Student

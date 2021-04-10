@@ -6,7 +6,7 @@ function SignOutButton() {
     return (
         <div
             className={styles['sign-out-button']}
-            onMouseOver={() => setCursorType('pointer')}
+            onMouseEnter={() => setCursorType('pointer')}
             onMouseLeave={() => setCursorType('default')}
             onClick={() => {
                 setUser(null);

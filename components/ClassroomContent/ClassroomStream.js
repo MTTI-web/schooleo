@@ -124,14 +124,14 @@ function ClassroomStream({ classroom }) {
                     type="text"
                     name="messageInput"
                     id="messageInput"
-                    onMouseOver={() => setCursorType('pointer')}
+                    onMouseEnter={() => setCursorType('pointer')}
                     onMouseLeave={() => setCursorType('default')}
                     autoComplete="off"
                     placeholder="Post a message..."
                 />
                 <button
                     type="submit"
-                    onMouseOver={() => setCursorType('pointer')}
+                    onMouseEnter={() => setCursorType('pointer')}
                     onMouseLeave={() => setCursorType('default')}
                 >
                     <FaPaperPlane />

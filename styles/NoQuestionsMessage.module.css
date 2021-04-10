@@ -8,13 +8,13 @@
 .no-questions-message h3 {
     font-weight: 400;
     color: #0db8d9;
-    font-size: 140%;
+    font-size: 110%;
     margin-bottom: 17px;
 }
 
 .no-questions-message button {
     padding: 7px 10px;
-    font-size: 110%;
+    font-size: 100%;
     background-color: transparent;
     outline: none;
     border: 2px solid #0db8d9;

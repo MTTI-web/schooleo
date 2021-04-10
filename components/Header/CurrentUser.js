@@ -10,7 +10,7 @@ function CurrentUser({ setIsNavOpen }) {
     return (
         <div
             className={styles['current-user']}
-            onMouseOver={() => {
+            onMouseEnter={() => {
                 setShowSignOutButton(true);
                 setCursorType('pointer');
             }}
