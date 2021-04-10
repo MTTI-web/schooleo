@@ -1,7 +1,13 @@
 import styles from '../styles/CreateAssignment.module.css';
 import FormLabel from './FormLabel';
 
-function AssignmentQuestion({ question, setAssignment, assignment, index }) {
+function AssignmentQuestion({
+    question,
+    setAssignment,
+    assignment,
+    index,
+    setShowSavedAlert,
+}) {
     return (
         <div className={styles.question}>
             <div className={styles['question-container']}>
@@ -25,6 +31,7 @@ function AssignmentQuestion({ question, setAssignment, assignment, index }) {
                                 },
                             ],
                         });
+                        setShowSavedAlert(false);
                     }}
                 >
                     Question
@@ -51,6 +58,7 @@ function AssignmentQuestion({ question, setAssignment, assignment, index }) {
                                 },
                             ],
                         });
+                        setShowSavedAlert(false);
                     }}
                 >
                     Answer

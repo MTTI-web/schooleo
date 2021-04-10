@@ -8,7 +8,7 @@ import CreateButton from '../../../../components/CreateButton';
 import AssignmentQuestion from '../../../../components/AssignmentQuestion';
 import Loader from '../../../../components/Loader';
 import fetchAPI from '../../../../utils/fetchAPI';
-import { FaSave } from 'react-icons/fa';
+import { FaCheck, FaSave } from 'react-icons/fa';
 
 function CreateAssignment() {
     const { user, setCursorType } = useGlobalContext();
@@ -16,6 +16,7 @@ function CreateAssignment() {
     const [assignment, setAssignment] = useState({});
     const [loading, setLoading] = useState(true);
     const [classroom, setClassroom] = useState(null);
+    const [showSavedAlert, setShowSavedAlert] = useState(true);
     useEffect(async () => {
         if (!user) {
             router.replace('/');
@@ -103,12 +104,13 @@ function CreateAssignment() {
                             value={assignment.name}
                             onMouseEnter={() => setCursorType('pointer')}
                             onMouseLeave={() => setCursorType('default')}
-                            onInput={(e) =>
+                            onInput={(e) => {
                                 setAssignment({
                                     ...assignment,
                                     name: e.currentTarget.value,
-                                })
-                            }
+                                });
+                                setShowSavedAlert(true);
+                            }}
                         />
                     </div>
                     {assignment.questions?.length ? (
@@ -119,6 +121,7 @@ function CreateAssignment() {
                                 index={index}
                                 setAssignment={setAssignment}
                                 assignment={assignment}
+                                setShowSavedAlert={setShowSavedAlert}
                             />
                         ))
                     ) : (
@@ -126,8 +129,17 @@ function CreateAssignment() {
                             handleClick={handleCreateQuestionButtonClick}
                         />
                     )}
-                    <button type="submit" className={styles['save-button']}>
-                        <FaSave />
+                    <button
+                        type="submit"
+                        className={styles['save-button']}
+                        onMouseOver={() => setCursorType('pointer')}
+                        onMouseLeave={() => setCursorType('default')}
+                        onClick={() => setShowSavedAlert(true)}
+                    >
+                        <div className={styles['saved-alert']}>
+                            {showSavedAlert ? 'Saved' : 'Not Saved'}
+                        </div>
+                        {showSavedAlert ? <FaCheck /> : <FaSave />}
                     </button>
                 </form>
             ) : (
