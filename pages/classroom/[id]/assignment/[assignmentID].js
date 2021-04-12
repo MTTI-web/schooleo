@@ -109,7 +109,7 @@ function CreateAssignment() {
                                     ...assignment,
                                     name: e.currentTarget.value,
                                 });
-                                setShowSavedAlert(true);
+                                setShowSavedAlert(false);
                             }}
                         />
                     </div>
