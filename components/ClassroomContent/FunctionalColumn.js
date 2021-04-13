@@ -61,7 +61,11 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
                         onClick={() => {
                             setCursorType('default');
                             router.replace(
-                                `/classroom/${classroomID}/assignment/${creationTime}`
+                                `/classroom/${classroomID}/assignment/${creationTime}/${
+                                    user.userType === 'teacher'
+                                        ? 'edit'
+                                        : 'attempt'
+                                }`
                             );
                         }}
                         onMouseEnter={() => setCursorType('pointer')}

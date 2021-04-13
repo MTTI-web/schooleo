@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useGlobalContext } from '../../../../components/context';
-import NoQuestionsMessage from '../../../../components/NoQuestionsMessage';
-import styles from '../../../../styles/CreateAssignment.module.css';
-import CreateButton from '../../../../components/CreateButton';
-import AssignmentQuestion from '../../../../components/AssignmentQuestion';
-import Loader from '../../../../components/Loader';
-import fetchAPI from '../../../../utils/fetchAPI';
+import { useGlobalContext } from '../../../../../components/context';
+import NoQuestionsMessage from '../../../../../components/NoQuestionsMessage';
+import styles from '../../../../../styles/CreateAssignment.module.css';
+import CreateButton from '../../../../../components/CreateButton';
+import AssignmentQuestion from '../../../../../components/AssignmentQuestion';
+import Loader from '../../../../../components/Loader';
+import fetchAPI from '../../../../../utils/fetchAPI';
 import { FaCheck, FaSave } from 'react-icons/fa';
 
 function CreateAssignment() {
@@ -17,6 +17,7 @@ function CreateAssignment() {
     const [loading, setLoading] = useState(true);
     const [classroom, setClassroom] = useState(null);
     const [showSavedAlert, setShowSavedAlert] = useState(true);
+    const [isSaveLoading, setIsSaveLoading] = useState(false);
     useEffect(async () => {
         if (!user) {
             router.replace('/');
@@ -53,6 +54,7 @@ function CreateAssignment() {
     }, [assignment]);
 
     const handleCreateQuestionButtonClick = () => {
+        setShowSavedAlert(false);
         const newQuestion = {
             question: '',
             answer: '',
@@ -76,10 +78,8 @@ function CreateAssignment() {
                     className={styles['questions-form']}
                     onSubmit={async (e) => {
                         e.preventDefault();
-                        const values = Array.from(
-                            e.currentTarget.querySelectorAll('input')
-                        ).map((input) => input.value);
-                        console.log(values);
+                        setShowSavedAlert(true);
+                        setIsSaveLoading(true);
                         const apiData = await fetchAPI({
                             url: '/class/assignment/update',
                             method: 'post',
@@ -93,6 +93,7 @@ function CreateAssignment() {
                                 assignmentID: assignment.creationTime,
                             },
                         });
+                        setIsSaveLoading(false);
                         console.log('Assignment save data:', apiData);
                     }}
                 >
@@ -139,7 +140,13 @@ function CreateAssignment() {
                         <div className={styles['saved-alert']}>
                             {showSavedAlert ? 'Saved' : 'Not Saved'}
                         </div>
-                        {showSavedAlert ? <FaCheck /> : <FaSave />}
+                        {isSaveLoading ? (
+                            <Loader />
+                        ) : showSavedAlert ? (
+                            <FaCheck />
+                        ) : (
+                            <FaSave />
+                        )}
                     </button>
                 </form>
             ) : (

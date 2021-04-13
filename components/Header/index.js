@@ -18,7 +18,7 @@ function Header() {
     }, []);
     return (
         <header className={styles.header}>
-            <img src={schooleoLogo} className={styles['app-name']} />
+            <h1 className={styles['app-name']}>Schooleo</h1>
             <nav
                 className={styles.nav}
                 style={
