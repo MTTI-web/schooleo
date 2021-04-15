@@ -5,7 +5,7 @@ import { useState } from 'react';
 import fetchAPI from '../utils/fetchAPI';
 import { useRouter } from 'next/router';
 
-function ClassroomListItem({ classItem, index, setClassrooms }) {
+function ClassroomListItem({ classItem, index }) {
     const { user, setCursorType, setUser } = useGlobalContext();
     const [showMoreClassroomOptions, setShowMoreClassroomOptions] = useState(
         false
@@ -24,7 +24,6 @@ function ClassroomListItem({ classItem, index, setClassrooms }) {
         console.log(classroomLeaveData);
         if (classroomLeaveData.success) {
             setUser(classroomLeaveData.student);
-            setClassrooms(classroomLeaveData.student.classrooms);
         }
     };
     return (

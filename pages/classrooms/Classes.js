@@ -8,14 +8,12 @@ import NoClassesMessage from '../../components/NoClassesMessage';
 
 function Classes({ loading, setLoading }) {
     const { user, setUser } = useGlobalContext();
-    const [classrooms, setClassrooms] = useState([]);
     useEffect(() => {
         if (user) {
             if (user.userType === 'student') {
-                console.log(user.classrooms);
                 if (user.classrooms.length) {
+                    setLoading(true);
                     user.classrooms.forEach(async (classroom) => {
-                        setLoading(true);
                         console.log(
                             'Getting details for the classroom:',
                             classroom
@@ -30,10 +28,6 @@ function Classes({ loading, setLoading }) {
                         });
                         console.log('Classroom from API:', classroomFromAPI);
                         if (classroomFromAPI.success) {
-                            setClassrooms([
-                                ...classrooms,
-                                classroomFromAPI.classroom,
-                            ]);
                             setUser({
                                 ...user,
                                 classrooms: [
@@ -74,26 +68,24 @@ function Classes({ loading, setLoading }) {
         }
     }, []);
     useEffect(() => {
-        console.log('Rendered classrooms:', classrooms);
         if (user) {
             console.log('User classrooms:', user.classrooms);
         }
-    }, [classrooms]);
+    }, [user]);
     return user ? (
         <div
             className={styles['class-list-section']}
             style={loading ? { marginTop: '0' } : { marginTop: '40px' }}
         >
             {loading && <Loader />}
-            {user && !loading && classrooms.length ? (
+            {user && !loading && user.classrooms.length ? (
                 <div className={styles.classList}>
-                    {classrooms.map((classItem, index) => {
+                    {user.classrooms.map((classItem, index) => {
                         if (classItem) {
                             return (
                                 <ClassroomListItem
                                     classItem={classItem}
                                     index={index}
-                                    setClassrooms={setClassrooms}
                                 />
                             );
                         } else {
