@@ -62,7 +62,6 @@ function Classes({ loading, setLoading }) {
                 }
                 setLoading(false);
             } else if (user.userType === 'teacher') {
-                setClassrooms(user.classrooms);
                 setLoading(false);
             }
         }
