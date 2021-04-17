@@ -7,8 +7,8 @@ import Classes from './Classes';
 import CreateClassButton from '../../components/CreateButton';
 import { useState } from 'react';
 
-function Dashboard() {
-    const { user } = useGlobalContext();
+function Classrooms() {
+    const { user, setCursorType } = useGlobalContext();
     const router = useRouter();
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -38,7 +38,7 @@ function Dashboard() {
             }
         >
             <Head>
-                <title>Dashboard</title>
+                <title>Classrooms</title>
             </Head>
             <h1 className={styles['section-heading']}>Classrooms</h1>
             <Classes loading={loading} setLoading={setLoading} />
@@ -47,4 +47,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default Classrooms;

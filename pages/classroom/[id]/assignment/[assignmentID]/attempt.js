@@ -5,7 +5,7 @@ import { useGlobalContext } from '../../../../../components/context';
 import NoQuestionsMessage from '../../../../../components/NoQuestionsMessage';
 import styles from '../../../../../styles/CreateAssignment.module.css';
 import CreateButton from '../../../../../components/CreateButton';
-import AssignmentQuestion from '../../../../../components/AssignmentQuestion';
+import AssignmentQuestion from '../../../../../components/AttemptAssignmentQuestion';
 import Loader from '../../../../../components/Loader';
 import fetchAPI from '../../../../../utils/fetchAPI';
 import { FaCheck, FaSave } from 'react-icons/fa';
@@ -98,21 +98,9 @@ function CreateAssignment() {
                     }}
                 >
                     <div className={styles['assignment-name-container']}>
-                        <input
-                            type="text"
-                            name="assignmentName"
-                            id="assignmentName"
-                            value={assignment.name}
-                            onMouseEnter={() => setCursorType('pointer')}
-                            onMouseLeave={() => setCursorType('default')}
-                            onInput={(e) => {
-                                setAssignment({
-                                    ...assignment,
-                                    name: e.currentTarget.value,
-                                });
-                                setShowSavedAlert(false);
-                            }}
-                        />
+                        <div className={styles['attempt-assignment-name']}>
+                            {assignment.name}
+                        </div>
                     </div>
                     {assignment.questions?.length ? (
                         assignment.questions.map((question, index) => (

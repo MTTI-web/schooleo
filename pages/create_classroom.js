@@ -12,11 +12,11 @@ function CreateClass() {
     const router = useRouter();
     const { user, setUser } = useGlobalContext();
     useEffect(() => {
-        // if (!user) {
-        //     router.replace('/');
-        // } else if (user && user.userType !== 'teacher') {
-        //     router.replace('/');
-        // }
+        if (!user) {
+            router.replace('/');
+        } else if (user && user.userType !== 'teacher') {
+            router.replace('/');
+        }
     }, []);
     const handleSubmit = async (e) => {
         e.preventDefault();

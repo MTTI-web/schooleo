@@ -40,7 +40,8 @@
     align-items: center;
 }
 
-.assignment-name-container input {
+.assignment-name-container input,
+.attempt-assignment-name {
     width: 80%;
     background-color: transparent;
     height: 90%;
@@ -78,6 +79,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.attempt-question-container {
+    width: 90%;
+    color: #79e2f2;
+    min-height: 50px;
+    margin-left: 5%;
+    padding: 10px auto;
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    margin-bottom: -15px;
 }
 
 .answer-container {

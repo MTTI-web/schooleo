@@ -5,7 +5,7 @@ import { useGlobalContext } from '../../../../../components/context';
 import NoQuestionsMessage from '../../../../../components/NoQuestionsMessage';
 import styles from '../../../../../styles/CreateAssignment.module.css';
 import CreateButton from '../../../../../components/CreateButton';
-import AssignmentQuestion from '../../../../../components/AssignmentQuestion';
+import AssignmentQuestion from '../../../../../components/EditAssignmentQuestion';
 import Loader from '../../../../../components/Loader';
 import fetchAPI from '../../../../../utils/fetchAPI';
 import { FaCheck, FaSave } from 'react-icons/fa';

@@ -55,25 +55,34 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
         >
             Functional Column
             <div className={styles['assignments-container']}>
-                {classroomDetails.assignments.map(({ name, creationTime }) => (
-                    <div
-                        className={styles.assignment}
-                        onClick={() => {
-                            setCursorType('default');
-                            router.replace(
-                                `/classroom/${classroomID}/assignment/${creationTime}/${
-                                    user.userType === 'teacher'
-                                        ? 'edit'
-                                        : 'attempt'
-                                }`
-                            );
-                        }}
-                        onMouseEnter={() => setCursorType('pointer')}
-                        onMouseLeave={() => setCursorType('default')}
-                    >
-                        {name}
+                {classroomDetails.assignments.length > 0 ? (
+                    classroomDetails.assignments.map(
+                        ({ name, creationTime }, index) => (
+                            <div
+                                key={index}
+                                className={styles.assignment}
+                                onClick={() => {
+                                    setCursorType('default');
+                                    router.replace(
+                                        `/classroom/${classroomID}/assignment/${creationTime}/${
+                                            user.userType === 'teacher'
+                                                ? 'edit'
+                                                : 'attempt'
+                                        }`
+                                    );
+                                }}
+                                onMouseEnter={() => setCursorType('pointer')}
+                                onMouseLeave={() => setCursorType('default')}
+                            >
+                                {name}
+                            </div>
+                        )
+                    )
+                ) : (
+                    <div className={styles['no-assignments-message']}>
+                        There are no assignments right now.
                     </div>
-                ))}
+                )}
                 {user && user.userType === 'teacher' && (
                     <button
                         className={styles['create-assignment-button']}
