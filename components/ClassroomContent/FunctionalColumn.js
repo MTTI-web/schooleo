@@ -24,7 +24,13 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
             creationTime: assignmentCreationTime,
             name: 'Untitled Assignment',
             questions: [],
-            studentsSubmitted: [],
+            students: [
+                ...classroomDetails.students.map(({ _id, username }) => ({
+                    id: _id,
+                    username,
+                    score: null,
+                })),
+            ],
         };
         const apiData = await fetchAPI({
             url: '/class/assignment/create',
@@ -41,7 +47,7 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
             console.log('New assignment could not be created.');
         }
         router.replace(
-            `/classroom/${classroomID}/assignment/${assignmentCreationTime}`
+            `/classroom/${classroomID}/assignment/${assignmentCreationTime}/edit`
         );
     };
     return (

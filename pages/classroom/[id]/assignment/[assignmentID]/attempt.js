@@ -123,7 +123,6 @@ function CreateAssignment() {
                         className={styles['save-button']}
                         onMouseOver={() => setCursorType('pointer')}
                         onMouseLeave={() => setCursorType('default')}
-                        onClick={() => setShowSavedAlert(true)}
                     >
                         <div className={styles['saved-alert']}>
                             {showSavedAlert ? 'Saved' : 'Not Saved'}
