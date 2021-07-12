@@ -1,0 +1,70 @@
+.settings-section {
+  background-color: #212121;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.settings-section-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: #282828;
+  font-weight: 400;
+  font-size: 130%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #0db8d9;
+}
+
+.setting {
+  background-color: #121212;
+  width: 70%;
+  margin-top: 40px;
+  border: 2px solid #0db8d9;
+  border-radius: 10px;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.setting-heading {
+  font-weight: 400;
+  color: #0db8d9;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 110%;
+}
+
+.setting-options {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  min-height: 150px;
+  margin-top: 20px;
+}
+
+.setting-option {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #212121;
+  border: 2px solid #0db8d9;
+  border-radius: 7px;
+  font-weight: 300;
+  font-size: 140%;
+  transition: transform 0.2s;
+}
+
+.setting-option:hover {
+  transform: scale(1.03);
+}

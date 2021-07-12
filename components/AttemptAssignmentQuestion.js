@@ -8,7 +8,6 @@ function AttemptAssignmentQuestion({
     setAssignment,
     assignment,
     index,
-    setShowSavedAlert,
 }) {
     const { setCursorType } = useGlobalContext();
     return (
@@ -38,7 +37,6 @@ function AttemptAssignmentQuestion({
                                     },
                                 ],
                             });
-                            setShowSavedAlert(false);
                         }}
                     >
                         Answer

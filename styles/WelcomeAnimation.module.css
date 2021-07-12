@@ -1,37 +1,37 @@
 .welcome-animation {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: #212121;
-    z-index: 11;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 100%;
-    transition: opacity 0.5s;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #212121;
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 100%;
+  transition: opacity 0.5s;
 }
 
 .app-svg {
-    width: 50%;
-    height: auto;
+  width: 50%;
+  height: auto;
 }
 
 .app-svg path {
-    stroke-dasharray: 236.87px;
-    stroke-dashoffset: 236.87px;
-    stroke-width: 2px;
-    fill: transparent;
-    animation: stroke-appear 3s forwards;
+  stroke-dasharray: 236.87px;
+  stroke-dashoffset: 236.87px;
+  stroke-width: 2px;
+  fill: transparent;
+  animation: stroke-appear 3s forwards;
 }
 
 @keyframes stroke-appear {
-    80% {
-        fill: transparent;
-    }
-    to {
-        stroke-dashoffset: 0;
-        fill: #0da3bf;
-    }
+  80% {
+    fill: transparent;
+  }
+  to {
+    stroke-dashoffset: 0;
+    fill: #0da3bf;
+  }
 }

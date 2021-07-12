@@ -1,67 +1,67 @@
 .join-classroom-page {
-    background-color: #212121;
-    height: calc(100vh - 80px);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding-bottom: 20px;
-    overflow-y: scroll;
-    padding-top: 20px;
+  background-color: #212121;
+  height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 20px;
+  overflow-y: scroll;
+  padding-top: 20px;
 }
 
 .join-classroom-form {
-    width: 60%;
-    padding: 20px;
-    background-color: #121212;
-    margin-top: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0.1px #b3f5ff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    position: relative;
+  width: 60%;
+  padding: 20px;
+  background-color: #121212;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0.1px #b3f5ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
 }
 
 .join-classroom-page::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 .join-classroom-page::-webkit-scrollbar-track {
-    background-color: #b3f5ff;
+  background-color: #b3f5ff;
 }
 
 .join-classroom-page::-webkit-scrollbar-thumb {
-    background-color: #0da3bf;
-    border-radius: 5px;
+  background-color: #0da3bf;
+  border-radius: 5px;
 }
 
 .join-classroom-page::-webkit-scrollbar-thumb:hover {
-    background-color: #0da3bf;
+  background-color: #0da3bf;
 }
 
 .status-message {
-    width: 80%;
-    color: #f00;
-    font-size: 85%;
+  width: 80%;
+  color: #f00;
+  font-size: 85%;
 }
 
 .back-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #0da3bf;
-    color: #fff;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 1px;
-    transition: box-shadow 0.1s;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #0da3bf;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1px;
+  transition: box-shadow 0.1s;
 }
 
 .back-button:hover {
-    box-shadow: 0 0 3px 1.5px #b3f5ff;
+  box-shadow: 0 0 3px 1.5px #b3f5ff;
 }

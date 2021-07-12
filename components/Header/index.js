@@ -4,86 +4,106 @@ import { useGlobalContext } from '../context';
 import CurrentUser from './CurrentUser';
 import OpenNav from './OpenNav';
 import { useEffect, useState } from 'react';
+import Sidebar from './Sidebar';
+import UserMessage from '../UserMessage';
+import Menu from '../../public/icons/menu.svg';
 
 function Header() {
-    const router = useRouter();
-    const { user, setCursorType } = useGlobalContext();
-    const [isNavOpen, setIsNavOpen] = useState(false);
-    useEffect(() => {
-        const handler = () => {
-            setIsNavOpen(false);
-        };
-        addEventListener('resize', handler);
-        () => removeEventListener('resize', handler);
-    }, []);
-    return (
-        <header className={styles.header}>
-            <h1 className={styles['app-name']}>Schooleo</h1>
-            <nav
-                className={styles.nav}
-                style={
-                    isNavOpen && window.innerWidth <= 680
-                        ? { opacity: '100%', pointerEvents: 'all' }
-                        : { opacity: '0', pointerEvents: 'none' }
-                }
+  const router = useRouter();
+  const { user, setCursorType } = useGlobalContext();
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  useEffect(() => {
+    const handler = () => {
+      setIsNavOpen(false);
+    };
+    addEventListener('resize', handler);
+    () => removeEventListener('resize', handler);
+  }, []);
+  return (
+    <header className={styles.header}>
+      <Sidebar
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+      />
+      <div
+        className={styles['open-sidebar-button']}
+        onMouseEnter={() => setCursorType('pointer')}
+        onMouseLeave={() => setCursorType('default')}
+        onClick={() => setIsSidebarOpen(true)}
+      >
+        <Menu />
+      </div>
+      <h1 className={styles['app-name']}>Schooleo</h1>
+      <UserMessage id="clearing-database">
+        We are changing the data structure in the database, so all your data
+        will be deleted.
+      </UserMessage>
+      <nav
+        className={styles.nav}
+        style={
+          isNavOpen && window.innerWidth <= 680
+            ? { opacity: '100%', pointerEvents: 'all' }
+            : { opacity: '0', pointerEvents: 'none' }
+        }
+      >
+        <ul className={styles['nav-links']}>
+          <li
+            onClick={() => {
+              router.replace('/');
+              setIsNavOpen(false);
+            }}
+            className={styles['nav-link']}
+            onMouseEnter={() => setCursorType('pointer')}
+            onMouseLeave={() => setCursorType('default')}
+          >
+            Home
+          </li>
+          {user ? (
+            <li
+              onClick={() => {
+                router.replace('/classrooms');
+                setIsNavOpen(false);
+              }}
+              className={styles['nav-link']}
+              onMouseEnter={() => setCursorType('pointer')}
+              onMouseLeave={() => setCursorType('default')}
             >
-                <ul className={styles['nav-links']}>
-                    <li
-                        onClick={() => {
-                            router.replace('/');
-                            setIsNavOpen(false);
-                        }}
-                        className={styles['nav-link']}
-                        onMouseEnter={() => setCursorType('pointer')}
-                        onMouseLeave={() => setCursorType('default')}
-                    >
-                        Home
-                    </li>
-                    {user ? (
-                        <li
-                            onClick={() => {
-                                router.replace('/classrooms');
-                                setIsNavOpen(false);
-                            }}
-                            className={styles['nav-link']}
-                            onMouseEnter={() => setCursorType('pointer')}
-                            onMouseLeave={() => setCursorType('default')}
-                        >
-                            Classrooms
-                        </li>
-                    ) : null}
-                    {!user ? (
-                        <>
-                            <li
-                                onClick={() => {
-                                    router.replace('/sign_up');
-                                    setIsNavOpen(false);
-                                }}
-                                className={styles['nav-link']}
-                                onMouseEnter={() => setCursorType('pointer')}
-                                onMouseLeave={() => setCursorType('default')}
-                            >
-                                Sign up
-                            </li>{' '}
-                            <li
-                                onClick={() => {
-                                    router.replace('/sign_in');
-                                    setIsNavOpen(false);
-                                }}
-                                className={styles['nav-link']}
-                                onMouseEnter={() => setCursorType('pointer')}
-                                onMouseLeave={() => setCursorType('default')}
-                            >
-                                Sign in
-                            </li>
-                        </>
-                    ) : null}
-                </ul>
-                {user ? <CurrentUser setIsNavOpen={setIsNavOpen} /> : null}
-            </nav>
-            <OpenNav setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} />
-        </header>
-    );
+              Classrooms
+            </li>
+          ) : null}
+          {!user ? (
+            <>
+              <li
+                onClick={() => {
+                  router.replace('/sign_up');
+                  setIsNavOpen(false);
+                }}
+                className={styles['nav-link']}
+                onMouseEnter={() => setCursorType('pointer')}
+                onMouseLeave={() => setCursorType('default')}
+              >
+                Sign up
+              </li>{' '}
+              <li
+                onClick={() => {
+                  router.replace('/sign_in');
+                  setIsNavOpen(false);
+                }}
+                className={styles['nav-link']}
+                onMouseEnter={() => setCursorType('pointer')}
+                onMouseLeave={() => setCursorType('default')}
+              >
+                Sign in
+              </li>
+            </>
+          ) : null}
+        </ul>
+        {user ? <CurrentUser setIsNavOpen={setIsNavOpen} /> : null}
+      </nav>
+      <OpenNav setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} />
+    </header>
+  );
 }
 
 export default Header;

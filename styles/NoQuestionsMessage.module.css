@@ -10,6 +10,9 @@
     color: #0db8d9;
     font-size: 110%;
     margin-bottom: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .no-questions-message button {

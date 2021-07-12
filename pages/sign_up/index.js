@@ -7,24 +7,24 @@ import StudentSignUpForm from '../../components/forms/StudentSignUpForm';
 import ChooseSignUpMethod from '../../components/ChooseSignUpMethod';
 
 function SignUp() {
-    const [userType, setUserType] = useState(undefined);
-    const router = useRouter();
-    return (
-        <section className={styles['login-section']}>
-            <Head>
-                <title>Sign Up • Schooleo</title>
-            </Head>
-            <div className={styles['login-page']}>
-                {!userType ? (
-                    <ChooseSignUpMethod setUserType={setUserType} />
-                ) : userType === 'teacher' ? (
-                    <TeacherSignUpForm setUserType={setUserType} />
-                ) : (
-                    <StudentSignUpForm setUserType={setUserType} />
-                )}
-            </div>
-        </section>
-    );
+  const [userType, setUserType] = useState(undefined);
+  const router = useRouter();
+  return (
+    <section className={styles['login-section']}>
+      <Head>
+        <title>Sign Up • Schooleo</title>
+      </Head>
+      <div className={styles['login-page']}>
+        {!userType ? (
+          <ChooseSignUpMethod setUserType={setUserType} />
+        ) : userType === 'teacher' ? (
+          <TeacherSignUpForm setUserType={setUserType} />
+        ) : (
+          <StudentSignUpForm setUserType={setUserType} />
+        )}
+      </div>
+    </section>
+  );
 }
 
 export default SignUp;

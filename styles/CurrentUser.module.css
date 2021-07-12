@@ -1,37 +1,37 @@
 .current-user {
-    color: #0da3bf;
-    margin-left: 20px;
-    font-size: 110%;
-    padding: 7px 12px;
-    border-radius: 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-    border: 2px solid #0da3bf;
-    height: 100%;
-    position: relative;
-    min-width: 100px;
+  color: #0da3bf;
+  margin-left: 20px;
+  font-size: 110%;
+  padding: 7px 12px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  border: 2px solid #0da3bf;
+  height: 100%;
+  position: relative;
+  min-width: 100px;
 }
 
 .sign-out-button {
-    opacity: 0;
-    transition: opacity 0.2s;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #0da3bf;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #0da3bf;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media screen and (max-width: 680px) {
-    .current-user {
-        height: 40px;
-        margin-left: 0;
-    }
+@media screen and (max-width: 670px) {
+  .current-user {
+    height: 40px;
+    margin-left: 0;
+  }
 }
