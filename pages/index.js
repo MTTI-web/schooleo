@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
-import changeCursor from '../../schooleo-api/utils/changeCursor';
+import changeCursor from '../utils/changeCursor';
 import AboutUsSection from '../components/AboutUsSection';
 import { useGlobalContext } from '../components/context';
 import styles from '../styles/Home.module.css';
