@@ -12,7 +12,7 @@ function ClassroomStream({ classroom }) {
   const { setCursorType, user, setUser } = useGlobalContext();
   const router = useRouter();
   const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const inputElement = e.currentTarget.messageInput;
@@ -42,7 +42,6 @@ function ClassroomStream({ classroom }) {
     messagesContainer.scrollTo(0, messagesContainer.scrollHeight);
   };
   useEffect(() => {
-    setLoading(true);
     // let apiData = {};
     // if (user.userType === 'student') {
     //   apiData = await fetchAPI({
@@ -65,11 +64,14 @@ function ClassroomStream({ classroom }) {
     // }
     // if (apiData.success) setMessages(apiData.stream);
     setMessages(classroom.stream);
-    setLoading(false);
-    setLoading(false);
+  }, []);
+  useEffect(() => {
     const messagesContainer = document.querySelector('#messages');
     messagesContainer.scrollTo(0, messagesContainer.scrollHeight);
-  }, []);
+  }, [messages]);
+  useEffect(() => {
+    console.log('Loading?', loading);
+  }, [loading]);
   return (
     <div className={styles['classroom-stream']}>
       <div

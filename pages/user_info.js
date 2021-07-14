@@ -18,8 +18,10 @@ function UserInfo() {
       <Head>
         <title>User Info</title>
       </Head>
-      <SignOutButton />
-      <div className={styles['section-heading']}>User Info</div>
+      <div className={styles['section-heading']}>
+        User Info
+        <SignOutButton />
+      </div>
       {user && (
         <div className={styles['user-info-content']}>
           <div className={styles['user-info-detail']}>

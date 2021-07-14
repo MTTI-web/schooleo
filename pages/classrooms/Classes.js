@@ -28,10 +28,10 @@ function Classes({ loading, setLoading }) {
               },
             });
             console.log('Classroom from API:', classroomFromAPI);
-            if (classroomFromAPI.success) {
+            if (classroomFromAPI && classroomFromAPI.success) {
               console.log('Successfully fetched classroom.');
               return classroomFromAPI.classroom;
-            } else if (!classroomFromAPI.classroom) {
+            } else if (classroomFromAPI && !classroomFromAPI.classroom) {
               if (user.classrooms.length) {
                 setUser({
                   ...user,
@@ -64,7 +64,9 @@ function Classes({ loading, setLoading }) {
       style={loading ? { marginTop: '0' } : { marginTop: '40px' }}
     >
       {loading && <Loader />}
-      {user && !loading && user.classrooms.length ? (
+      {user &&
+      !loading &&
+      user.classrooms.filter((classroom) => classroom).length ? (
         <div className={styles.classList}>
           {classrooms
             ? classrooms.map((classItem, index) => {
@@ -79,7 +81,11 @@ function Classes({ loading, setLoading }) {
             : null}
         </div>
       ) : (
-        !loading && <NoClassesMessage />
+        user &&
+        !loading &&
+        !user.classrooms.filter((classroom) => classroom).length && (
+          <NoClassesMessage />
+        )
       )}
     </div>
   ) : null;

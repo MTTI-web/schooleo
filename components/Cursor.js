@@ -3,7 +3,7 @@ import styles from '../styles/Cursor.module.css';
 import { useGlobalContext } from './context';
 
 function Cursor() {
-  const { user, cursorType } = useGlobalContext();
+  const { userCursorType, cursorType } = useGlobalContext();
   const [cursorStyles, setCursorStyles] = useState({});
   const [width, setWidth] = useState(1024);
   useEffect(() => {
@@ -31,7 +31,7 @@ function Cursor() {
     }
   }, [cursorType]);
   useEffect(() => {
-    if (user && user.settings.cursorType !== 'default') {
+    if (userCursorType !== 'default') {
       const handleMouseMove = (e) => {
         const cursor = document.querySelector('#cursor');
         const cursorBorder = document.querySelector('#cursor-border');
@@ -56,8 +56,7 @@ function Cursor() {
     }
   }, []);
   return (
-    user &&
-    user.settings.cursorType !== 'default' &&
+    userCursorType !== 'default' &&
     width > 680 && (
       <div className={styles['cursor-background']}>
         <div

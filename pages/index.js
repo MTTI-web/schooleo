@@ -5,10 +5,10 @@ import AboutUsSection from '../components/AboutUsSection';
 import { useGlobalContext } from '../components/context';
 import styles from '../styles/Home.module.css';
 import fetchAPI from '../utils/fetchAPI';
-import classnames from 'classnames';
+import Section from '../components/Section';
 
 export default function Home() {
-  const { user, setUser } = useGlobalContext();
+  const { user, setUser, userCursorType } = useGlobalContext();
   useEffect(async () => {
     if (!user) {
       const userEmailFromLocalStorage = JSON.parse(
@@ -34,12 +34,14 @@ export default function Home() {
     }
   }, []);
   return (
-    <section
+    <Section
       className={styles['homepage']}
       style={
-        user && user.settings.cursorType === 'default'
-          ? { cursor: 'auto' }
-          : { cursor: 'none' }
+        user && user.settings
+          ? userCursorType === 'default'
+            ? { cursor: 'auto' }
+            : { cursor: 'none' }
+          : { cursor: 'auto' }
       }
     >
       <Head>
@@ -47,14 +49,7 @@ export default function Home() {
       </Head>
       <div className={styles['landing-section']}>
         <div className={styles['app-hero']}>
-          <div
-            className={styles['app-name']}
-            onMouseMove={(e) => {
-              changeCursor(e.currentTarget, user.settings.cursorType);
-            }}
-          >
-            Schooleo
-          </div>
+          <div className={styles['app-name']}>Schooleo</div>
           <div className={styles['app-description']}>
             I don't know whether you know that I know web development or not,
             but just telling, I know web dev and I made this website.
@@ -62,6 +57,6 @@ export default function Home() {
         </div>
       </div>
       <AboutUsSection />
-    </section>
+    </Section>
   );
 }

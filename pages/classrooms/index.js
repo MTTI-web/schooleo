@@ -36,7 +36,7 @@ function Classrooms() {
       }
     >
       <Head>
-        <title>Classrooms</title>
+        <title>Classrooms • Schooleo</title>
       </Head>
       <h1 className={styles['section-heading']}>Classrooms</h1>
       <Classes loading={loading} setLoading={setLoading} />

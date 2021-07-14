@@ -54,7 +54,7 @@ function ClassroomDetails({
         <span
           className={styles['copied-code-status']}
           onClick={() => {
-            navigator.clipboard.writeText(classroomDetails.creationTime);
+            navigator.clipboard.writeText(classroomDetails._id);
             setCopiedCodeStatus(true);
           }}
           onMouseEnter={() => setCursorType('pointer')}

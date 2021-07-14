@@ -26,11 +26,9 @@ function CreateAssignment() {
     }
     setLoading(true);
     const classData = await fetchAPI({
-      url: '/class/get_details',
+      url: '/class/get_classroom_details',
       method: 'post',
       body: {
-        email: user.email,
-        userType: user.userType,
         classroomID: router.query.id,
       },
     });
