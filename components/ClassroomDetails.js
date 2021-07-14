@@ -1,14 +1,8 @@
 import { useGlobalContext } from './context';
 import styles from '../styles/ClassroomDetails.module.css';
 import { useState, useEffect } from 'react';
-import ShowMembersButton from './ShowMembersButton';
 
-function ClassroomDetails({
-  showClassroomDetails,
-  classroomDetails,
-  setShowClassroomDetails,
-  setShowMembers,
-}) {
+function ClassroomDetails({ showClassroomDetails, classroomDetails }) {
   const [copiedCodeStatus, setCopiedCodeStatus] = useState(false);
   const { setCursorType, user } = useGlobalContext();
 
@@ -63,12 +57,6 @@ function ClassroomDetails({
           {copiedCodeStatus ? 'Copied to clipboard' : 'Copy join code'}
         </span>
       </div>
-      {user && (
-        <ShowMembersButton
-          setShowClassroomDetails={setShowClassroomDetails}
-          setShowMembers={setShowMembers}
-        />
-      )}
     </div>
   );
 }

@@ -1,69 +1,70 @@
 .members-list-container {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    top: 130px;
-    z-index: 6;
-    height: auto;
-    background-color: #0da3bf;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    transition: all 0.2s;
-    padding-top: 40px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: auto;
+  top: 120px;
+  z-index: 6;
+  height: auto;
+  background-color: #0da3bf;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  transition: all 0.2s;
+  padding-top: 40px;
 }
 
 .members-list-container::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 .members-list-container::-webkit-scrollbar-track {
-    background-color: #b3f5ff;
+  background-color: #b3f5ff;
 }
 
 .members-list-container::-webkit-scrollbar-thumb {
-    background-color: #0da3bf;
-    border-radius: 5px;
+  background-color: #0da3bf;
+  border-radius: 5px;
 }
 
 .members-list-container::-webkit-scrollbar-thumb:hover {
-    background-color: #0da3bf;
+  background-color: #0da3bf;
 }
 
 .close-members-list-button {
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    background-color: #f00;
-    border: none;
-    outline: none;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 120%;
-    padding-right: 1px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: #f00;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 120%;
+  padding-right: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .members-list-heading {
-    width: 100%;
-    font-size: 120%;
-    text-align: center;
-    margin-bottom: 8px;
+  width: 100%;
+  font-size: 120%;
+  text-align: center;
+  margin-bottom: 8px;
 }
 
 .title-underline {
-    display: block;
-    height: 2px;
-    width: 100%;
-    background-color: #fff;
-    content: '';
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #fff;
+  content: '';
 }
 
 .member {
-    margin-left: 30px;
+  margin-left: 30px;
 }

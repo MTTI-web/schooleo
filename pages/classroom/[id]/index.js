@@ -10,6 +10,7 @@ import Loader from '../../../components/Loader';
 import ClassroomDetails from '../../../components/ClassroomDetails';
 import ShowDetailsButton from '../../../components/ShowDetailsButton';
 import ClassroomBackButton from '../../../components/ClassroomBackButton';
+import OpenMembersListButton from '../../../components/OpenMembersListButton';
 
 function Class() {
   const router = useRouter();
@@ -71,6 +72,11 @@ function Class() {
             <div className={styles['main-header-items']}>
               <ClassroomBackButton />
               {classroomDetails && classroomDetails.name}
+              <OpenMembersListButton
+                setShowMembers={setShowMembers}
+                showMembers={showMembers}
+                setShowClassroomDetails={setShowClassroomDetails}
+              />
               <ShowDetailsButton
                 showClassroomDetails={showClassroomDetails}
                 setShowClassroomDetails={setShowClassroomDetails}
@@ -80,8 +86,6 @@ function Class() {
               <ClassroomDetails
                 showClassroomDetails={showClassroomDetails}
                 classroomDetails={classroomDetails}
-                setShowClassroomDetails={setShowClassroomDetails}
-                setShowMembers={setShowMembers}
               />
             )}
           </div>
@@ -92,13 +96,15 @@ function Class() {
                 style={
                   showMembers
                     ? {
-                        height: 'auto',
+                        // right: '0',
+                        width: '30%',
                         overflowY: 'scroll',
                         pointerEvents: 'all',
                         opacity: '100%',
                       }
                     : {
-                        height: '0',
+                        // right: '-300px',
+                        width: '0',
                         overflowY: 'hidden',
                         pointerEvents: 'none',
                         opacity: '0',

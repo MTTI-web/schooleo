@@ -3,6 +3,8 @@
   min-height: 100vh;
   position: relative;
   overflow: -moz-hidden-unscrollable;
+  position: relative;
+  /* overflow-x: hidden; */
 }
 
 .classroom-header {

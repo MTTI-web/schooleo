@@ -1,4 +1,4 @@
-.show-details-button {
+.show-members-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -16,7 +16,7 @@
   font-size: 70%;
   box-shadow: 0 0 5px 3px transparent;
   transition: font-size 0.2s, box-shadow 0.2s;
-  right: 10px;
+  right: 60px;
   font-size: 120%;
   padding-top: 3px;
 }
