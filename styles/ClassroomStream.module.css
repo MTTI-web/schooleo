@@ -102,14 +102,14 @@
 
 .message-author {
   font-weight: 400;
-  font-size: 95%;
+  font-size: 85%;
   color: #0da3bf;
   display: inline-flex;
   margin-right: 10px;
 }
 
 .message-time {
-  font-size: 80%;
+  font-size: 75%;
   color: #ccc;
   font-weight: 400;
   display: inline-flex;
@@ -121,6 +121,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.message-text {
+  font-size: 90%;
 }
 
 .loader-ring {
