@@ -9,8 +9,8 @@
 
 .message-entry-form {
   position: absolute;
-  height: 50px;
-  padding: 1px 15px 4px 15px;
+  height: 55px;
+  padding: 3px 15px 10px 15px;
   bottom: 0;
   display: grid;
   grid-template-columns: auto 50px;
@@ -23,13 +23,13 @@
 .message-entry-form input {
   height: 100%;
   padding: 10px;
-  font-size: 95%;
+  font-size: 85%;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   background-color: transparent;
   outline: none;
   border: 2px solid #0da3bf;
-  color: #0da3bf;
+  color: #fff;
   border-right-width: 0;
   width: 100%;
 }
@@ -56,7 +56,7 @@
 
 .messages {
   width: 100%;
-  height: calc(100% - 50px);
+  height: calc(100% - 55px);
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
