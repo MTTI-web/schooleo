@@ -17,6 +17,7 @@ function ClassroomStream({ classroom }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const inputElement = e.currentTarget.messageInput;
+    if (!inputElement.value.trimStart().trimEnd()) return;
     console.log(`Message is: ${inputElement.value}`);
     const newMessage = {
       author: user.username,
