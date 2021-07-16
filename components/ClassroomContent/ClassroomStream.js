@@ -5,6 +5,7 @@ import { useGlobalContext } from '../context';
 import Send from '../../public/icons/send.svg';
 import fetchAPI from '../../utils/fetchAPI';
 import { useRouter } from 'next/router';
+import isDateInPast from '../../utils/isDateInPast';
 
 // const socket = io.connect('http://localhost:4000');
 
@@ -74,24 +75,22 @@ function ClassroomStream({ classroom }) {
   }, [loading]);
   return (
     <div className={styles['classroom-stream']}>
-      <div
-        className={styles.messages}
-        id="messages"
-        style={
-          loading
-            ? { justifyContent: 'center', alignItems: 'center' }
-            : { justifyContent: 'normal', alignItems: 'normal' }
-        }
-      >
+      <div className={styles.messages} id="messages">
         {messages.length ? (
           messages.map(({ author, message, time }, index) => (
             <div className={styles.message} key={index}>
               <div className={styles['message-header']}>
                 <div className={styles['message-author']}>{author}</div>
                 <div className={styles['message-time']}>
-                  {Date.now() - time > 24 * 60 * 60 * 1000
+                  {isDateInPast(time)
                     ? new Date(time).toLocaleDateString()
-                    : new Date(time).toLocaleTimeString()}
+                    : `${
+                        new Date(time).getHours() > 12
+                          ? 12 - new Date(time).getHours()
+                          : new Date(time).getHours()
+                      }:${new Date(time).getMinutes()} ${
+                        new Date(time).getHours() > 12 ? 'pm' : 'am'
+                      }`}
                 </div>
               </div>
               <div className={styles['message-text']}>{message}</div>
