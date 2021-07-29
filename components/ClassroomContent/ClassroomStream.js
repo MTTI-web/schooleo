@@ -67,7 +67,7 @@ function ClassroomStream({ classroom }) {
 
   useEffect(() => {
     setMessages(classroom.stream);
-    setSocket(io('http://localhost:5000'));
+    setSocket(io('https://schooleo-api.herokuapp.com'));
     return () => {
       setSocket(null);
     };
