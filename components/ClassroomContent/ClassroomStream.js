@@ -2,9 +2,9 @@ import styles from '../../styles/ClassroomStream.module.css';
 import { useEffect, useRef, useState } from 'react';
 import { useGlobalContext } from '../context';
 import Send from '../../public/icons/send.svg';
-import fetchAPI from '../../utils/fetchAPI';
 import isDateInPast from '../../utils/isDateInPast';
 import { io } from 'socket.io-client';
+import getApiUrl from '../../utils/getApiUrl';
 
 function ClassroomStream({ classroom }) {
   const { setCursorType, user, setUser } = useGlobalContext();
@@ -28,6 +28,7 @@ function ClassroomStream({ classroom }) {
       message: newMessage,
       classroomID: classroom._id,
     });
+    setLoading(true);
     // setLoading(true);
     // const apiData = await fetchAPI({
     //   url: '/class/stream/add_message',
@@ -62,12 +63,13 @@ function ClassroomStream({ classroom }) {
     socket.on('receive_message', ({ message }) => {
       console.log('Message:', message);
       setArrivalMessage(message);
+      setLoading(false);
     });
   }, [socket, user]);
 
   useEffect(() => {
     setMessages(classroom.stream);
-    setSocket(io('https://schooleo-api.herokuapp.com'));
+    setSocket(io(getApiUrl()));
     return () => {
       setSocket(null);
     };
