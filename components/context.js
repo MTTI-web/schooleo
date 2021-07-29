@@ -6,6 +6,7 @@ const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [cursorType, setCursorType] = useState('default');
   const [userCursorType, setUserCursorType] = useState('default');
+  const [loadingSession, setLoadingSession] = useState(false);
   useEffect(() => {
     if (user) {
       console.log('Current user:', user);
@@ -27,6 +28,9 @@ const AppProvider = ({ children }) => {
     }
     console.log('User cursor type set to:', userCursorType);
   }, [userCursorType, user]);
+  useEffect(() => {
+    console.log('Is loading session?', loadingSession);
+  }, [loadingSession]);
   return (
     <AppContext.Provider
       value={{
@@ -36,6 +40,8 @@ const AppProvider = ({ children }) => {
         setCursorType,
         userCursorType,
         setUserCursorType,
+        loadingSession,
+        setLoadingSession,
       }}
     >
       {children}

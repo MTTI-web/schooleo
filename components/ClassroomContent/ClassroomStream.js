@@ -1,19 +1,18 @@
 import styles from '../../styles/ClassroomStream.module.css';
-import { useEffect, useState } from 'react';
-import { FaPaperPlane } from 'react-icons/fa';
+import { useEffect, useRef, useState } from 'react';
 import { useGlobalContext } from '../context';
 import Send from '../../public/icons/send.svg';
 import fetchAPI from '../../utils/fetchAPI';
-import { useRouter } from 'next/router';
 import isDateInPast from '../../utils/isDateInPast';
-
-// const socket = io.connect('http://localhost:4000');
+import { io } from 'socket.io-client';
 
 function ClassroomStream({ classroom }) {
   const { setCursorType, user, setUser } = useGlobalContext();
-  const router = useRouter();
+  const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [arrivalMessage, setArrivalMessage] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const inputElement = e.currentTarget.messageInput;
@@ -24,56 +23,75 @@ function ClassroomStream({ classroom }) {
       message: inputElement.value,
       time: Date.now(),
     };
-    setLoading(true);
-    const apiData = await fetchAPI({
-      url: '/class/stream/add_message',
-      method: 'post',
-      body: {
-        classroomID: classroom._id,
-        newMessage,
-      },
+    if (!socket) return;
+    socket.emit('send_message', {
+      message: newMessage,
+      classroomID: classroom._id,
     });
-    setLoading(false);
-    console.log('API Data:', apiData);
-    if (apiData.success) {
-      setMessages([...apiData.stream]);
-      setUser({ ...user, stream: apiData.stream });
-    } else console.log('Could not send message.');
+    // setLoading(true);
+    // const apiData = await fetchAPI({
+    //   url: '/class/stream/add_message',
+    //   method: 'post',
+    //   body: {
+    //     classroomID: classroom._id,
+    //     newMessage,
+    //   },
+    // });
+    // setLoading(false);
+    // console.log('API Data:', apiData);
+    // if (apiData.success) {
+    //   setMessages([...apiData.stream]);
+    // } else console.log('Could not send message.');
     inputElement.value = '';
     const messagesContainer = document.querySelector('#messages');
     messagesContainer.scrollTo(0, messagesContainer.scrollHeight);
   };
+
   useEffect(() => {
-    // let apiData = {};
-    // if (user.userType === 'student') {
-    //   apiData = await fetchAPI({
-    //     url: '/class/stream/get_messages',
-    //     method: 'post',
-    //     body: {
-    //       teacherEmail: classroom.teacherEmail,
-    //       classroomID: classroom.creationTime,
-    //     },
-    //   });
-    // } else {
-    //   apiData = await fetchAPI({
-    //     url: '/class/stream/get_messages',
-    //     method: 'post',
-    //     body: {
-    //       teacherEmail: user.email,
-    //       classroomID: classroom.creationTime,
-    //     },
-    //   });
-    // }
-    // if (apiData.success) setMessages(apiData.stream);
+    if (!socket) return;
+
+    socket.on('connected', (message) => {
+      console.log(message);
+    });
+
+    socket.emit('add_user', {
+      classroomID: classroom._id,
+      userID: user._id,
+    });
+
+    socket.on('receive_message', ({ message }) => {
+      console.log('Message:', message);
+      setArrivalMessage(message);
+    });
+  }, [socket, user]);
+
+  useEffect(() => {
     setMessages(classroom.stream);
+    setSocket(io('http://localhost:5000'));
+    return () => {
+      setSocket(null);
+    };
   }, []);
+
+  useEffect(() => {
+    if (arrivalMessage) {
+      setMessages([...messages, arrivalMessage]);
+    }
+  }, [arrivalMessage]);
+
+  useEffect(() => {
+    console.log('Current messages:', messages);
+  }, [messages]);
+
   useEffect(() => {
     const messagesContainer = document.querySelector('#messages');
     messagesContainer.scrollTo(0, messagesContainer.scrollHeight);
   }, [messages]);
+
   useEffect(() => {
     console.log('Loading?', loading);
   }, [loading]);
+
   return (
     <div className={styles['classroom-stream']}>
       <div className={styles.messages} id="messages">
@@ -87,7 +105,7 @@ function ClassroomStream({ classroom }) {
                     ? new Date(time).toLocaleDateString()
                     : `${
                         new Date(time).getHours() > 12
-                          ? 12 - new Date(time).getHours()
+                          ? new Date(time).getHours() - 12
                           : new Date(time).getHours()
                       }:${new Date(time).getMinutes()} ${
                         new Date(time).getHours() > 12 ? 'pm' : 'am'

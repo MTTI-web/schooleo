@@ -8,7 +8,7 @@
 }
 
 .section-heading {
-  background-color: #0da3bf;
+  background-color: #212121;
   text-align: center;
   width: 100%;
   display: flex;
@@ -20,6 +20,8 @@
   font-weight: 400;
   position: absolute;
   top: 70px;
+  border-bottom: 2px solid #0da3bf;
   right: 0;
   left: 0;
+  color: #0da3bf;
 }

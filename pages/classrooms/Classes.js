@@ -52,7 +52,7 @@ function Classes({ loading, setLoading }) {
       }
     }
     setLoading(false);
-  }, []);
+  }, [user]);
   useEffect(() => {
     if (user) {
       console.log('User classrooms:', user.classrooms);

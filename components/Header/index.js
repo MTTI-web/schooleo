@@ -31,10 +31,20 @@ function Header() {
         onMouseEnter={() => setCursorType('pointer')}
         onMouseLeave={() => setCursorType('default')}
         onClick={() => setIsSidebarOpen(true)}
+        style={
+          user
+            ? { pointerEvents: 'all', opacity: '100%' }
+            : { pointerEvents: 'none', opacity: '0' }
+        }
       >
         <Menu />
       </div>
-      <h1 className={styles['app-name']}>Schooleo</h1>
+      <h1
+        className={styles['app-name']}
+        style={user ? { left: '60px' } : { left: '20px' }}
+      >
+        Schooleo
+      </h1>
       <UserMessage id="clearing-database">
         We are changing the data structure in the database, so all your data
         will be deleted.

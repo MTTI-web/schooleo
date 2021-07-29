@@ -42,6 +42,19 @@ a {
   cursor: pointer;
 }
 
+.animation {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: dissolve 0.2s linear;
+  content: '';
+  background-color: transparent;
+  width: 0;
+  height: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
 @keyframes appear {
   0% {
     transform: translateY(5px);
@@ -50,5 +63,21 @@ a {
   100% {
     transform: translateY(0);
     opacity: 100%;
+  }
+}
+
+@keyframes dissolve {
+  0% {
+    width: 0;
+    height: 0;
+    background-color: #ffffff0e;
+  }
+  50% {
+    background-color: #ffffff50;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
   }
 }

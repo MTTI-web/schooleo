@@ -19,19 +19,31 @@
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #0db8d9;
+  margin-bottom: 20px;
 }
 
 .setting {
   background-color: #121212;
   width: 70%;
-  margin-top: 40px;
   border: 2px solid #0db8d9;
   border-radius: 10px;
   color: #fff;
+  margin-top: 20px;
+}
+
+.setting.big {
   padding: 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.setting.small {
+  height: 70px;
+  padding: 10px 20px;
+  padding-right: 10px;
+  display: grid;
+  grid-template-columns: auto 40%;
 }
 
 .setting-heading {
@@ -44,13 +56,24 @@
   font-size: 110%;
 }
 
+.setting.small .setting-heading {
+  justify-content: flex-start;
+}
+
 .setting-options {
-  width: 100%;
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(2, 1fr);
+}
+
+.setting.big .setting-options {
+  margin-top: 20px;
   grid-gap: 20px;
   min-height: 150px;
-  margin-top: 20px;
+}
+
+.setting.small .setting-options {
+  grid-gap: 10px;
 }
 
 .setting-option {
@@ -62,8 +85,15 @@
   border: 2px solid #0db8d9;
   border-radius: 7px;
   font-weight: 300;
-  font-size: 140%;
   transition: transform 0.2s;
+}
+
+.setting.small .setting-option {
+  font-size: 100%;
+}
+
+.setting.big .setting-option {
+  font-size: 140%;
 }
 
 .setting-option:hover {

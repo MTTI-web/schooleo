@@ -4,33 +4,19 @@ import changeCursor from '../utils/changeCursor';
 import AboutUsSection from '../components/AboutUsSection';
 import { useGlobalContext } from '../components/context';
 import styles from '../styles/Home.module.css';
-import fetchAPI from '../utils/fetchAPI';
 import Section from '../components/Section';
+import signInWithSession from '../utils/signInWithSession';
+import { useRouter } from 'next/router';
 
 export default function Home() {
-  const { user, setUser, userCursorType } = useGlobalContext();
+  const router = useRouter();
+  const { user, setUser, userCursorType, setLoadingSession } =
+    useGlobalContext();
   useEffect(async () => {
-    if (!user) {
-      const userEmailFromLocalStorage = JSON.parse(
-        localStorage.getItem('user')
-      );
-      console.log(
-        `User email from Local Storage: ${userEmailFromLocalStorage}`
-      );
-
-      if (userEmailFromLocalStorage) {
-        const userData = await fetchAPI({
-          url: '/auth/get_user',
-          method: 'post',
-          body: { email: userEmailFromLocalStorage },
-        });
-        console.log('User from Local Storage:', userData);
-        if (userData && userData.success) {
-          setUser(userData.user);
-        } else {
-          console.log('Could not find user in DB.');
-        }
-      }
+    const session = await signInWithSession(user, setLoadingSession);
+    if (session.success) {
+      setUser(session.user);
+      router.replace('/classrooms');
     }
   }, []);
   return (
