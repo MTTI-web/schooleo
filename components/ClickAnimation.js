@@ -17,9 +17,9 @@ function ClickAnimation() {
   };
   useEffect(() => {
     const background = document.querySelector('#background');
-    background.addEventListener('click', handleClick);
+    document.body.addEventListener('click', handleClick);
     console.log('Click background:', background);
-    return () => background.removeEventListener('click', handleClick);
+    return () => document.body.removeEventListener('click', handleClick);
   }, []);
   return (
     <div className={styles['background']} id="background">

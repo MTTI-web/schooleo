@@ -14,7 +14,9 @@ function ClassroomStream({ classroom }) {
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
   const handleSubmit = async (e) => {
+    console.log(e);
     e.preventDefault();
+    e.stopPropagation();
     const inputElement = e.currentTarget.messageInput;
     if (!inputElement.value.trimStart().trimEnd()) return;
     console.log(`Message is: ${inputElement.value}`);
@@ -49,8 +51,11 @@ function ClassroomStream({ classroom }) {
   };
 
   useEffect(() => {
-    if (!socket) return;
+    console.log('Socket:', socket);
+  }, [socket]);
 
+  useEffect(() => {
+    if (!socket) return;
     socket.on('connected', (message) => {
       console.log(message);
     });
@@ -72,6 +77,8 @@ function ClassroomStream({ classroom }) {
     setSocket(io(getApiUrl()));
     return () => {
       setSocket(null);
+      socket.disconnect();
+      socket.off();
     };
   }, []);
 
