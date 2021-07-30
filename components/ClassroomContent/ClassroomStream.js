@@ -76,9 +76,11 @@ function ClassroomStream({ classroom }) {
     setMessages(classroom.stream);
     setSocket(io(getApiUrl()));
     return () => {
+      if (socket) {
+        socket.disconnect();
+        socket.off();
+      }
       setSocket(null);
-      socket.disconnect();
-      socket.off();
     };
   }, []);
 
