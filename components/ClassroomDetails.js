@@ -34,17 +34,21 @@ function ClassroomDetails({ showClassroomDetails, classroomDetails }) {
             }
       }
     >
-      <div className={styles['classroom-subject']}>
+      <div className={styles['classroom-detail']}>
         <span className={styles['detail-title']}>Subject:</span>{' '}
-        {classroomDetails.subject}
+        <span className={styles['detail-content']}>
+          {classroomDetails.subject}
+        </span>
       </div>
-      <div className={styles['classroom-creation-time']}>
+      <div className={styles['classroom-detail']}>
         <span className={styles['detail-title']}>Classroom created at:</span>{' '}
-        {new Date(classroomDetails.creationTime).toLocaleDateString()}
+        <span className={styles['detail-content']}>
+          {new Date(classroomDetails.creationTime).toLocaleDateString()}
+        </span>
       </div>
-      <div className={styles['classroom-join-code']}>
+      <div className={styles['classroom-detail']}>
         <span className={styles['detail-title']}>Join code:</span>{' '}
-        {classroomDetails._id}
+        <span className={styles['detail-content']}>{classroomDetails._id}</span>
         <span
           className={styles['copied-code-status']}
           onClick={() => {

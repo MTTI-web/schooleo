@@ -1,21 +1,38 @@
 .classroom-details {
-    position: absolute;
-    top: -100%;
-    background-color: #0da3bf;
-    font-size: 110%;
-    font-weight: 400;
-    width: 100%;
-    padding: 10px;
-    transition: top 0.2s, opacity 0.2s;
-    z-index: 5;
+  position: absolute;
+  top: -100%;
+  background-color: #212121;
+  font-size: 110%;
+  font-weight: 400;
+  width: 100%;
+  padding: 15px;
+  transition: top 0.2s, opacity 0.2s;
+  z-index: 5;
+  border-bottom: 2px solid #0da3bf;
+}
+
+.classroom-detail {
+  padding: 5px 15px;
+  background-color: #303030;
+  border-radius: 7px;
+}
+
+.classroom-detail:not(:last-child) {
+  margin-bottom: 8px;
 }
 
 .detail-title {
-    color: #424242;
+  color: #9c9c9c;
+  font-size: 90%;
+}
+
+.detail-content {
+  color: #d3d3d3;
+  font-size: 90%;
 }
 
 .copied-code-status {
-    color: #282828;
-    font-size: 80%;
-    margin-left: 5px;
+  color: #d3d3d3;
+  font-size: 80%;
+  margin-left: 5px;
 }
