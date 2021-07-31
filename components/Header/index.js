@@ -58,6 +58,9 @@ function Header() {
         We are changing the data structure in the database, so all your data
         will be deleted.
       </UserMessage>
+      <UserMessage id="custom-cursor-available">
+        You can now enable the custom cursor in Settings.
+      </UserMessage>
       <nav
         className={styles.nav}
         style={
