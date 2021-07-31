@@ -44,10 +44,13 @@ function UserMessage({ children, id }) {
           )
             ? JSON.parse(localStorage.getItem('read-user-message'))
             : {};
-          localStorage.setItem('read-user-message', {
-            ...previouslyReadMessages,
-            ...JSON.stringify(userMessage),
-          });
+          localStorage.setItem(
+            'read-user-message',
+            JSON.stringify({
+              ...previouslyReadMessages,
+              ...userMessage,
+            })
+          );
         }}
         onMouseEnter={() => setCursorType('pointer')}
         onMouseLeave={() => setCursorType('default')}

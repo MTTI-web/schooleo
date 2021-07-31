@@ -82,7 +82,16 @@ function Settings() {
     }
   }, [user]);
   return (
-    <section className={styles['settings-section']}>
+    <section
+      className={styles['settings-section']}
+      style={
+        user && user.settings
+          ? user.settings.cursorType === 'default'
+            ? { cursor: 'auto' }
+            : { cursor: 'none' }
+          : { cursor: 'auto' }
+      }
+    >
       <Head>
         <title>Settings • Schooleo</title>
       </Head>
