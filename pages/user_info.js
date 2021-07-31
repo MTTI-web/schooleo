@@ -14,7 +14,16 @@ function UserInfo() {
     }
   }, [user]);
   return (
-    <section className={styles['user-info-section']}>
+    <section
+      className={styles['user-info-section']}
+      style={
+        user && user.settings
+          ? user.settings.cursorType === 'default'
+            ? { cursor: 'auto' }
+            : { cursor: 'none' }
+          : { cursor: 'auto' }
+      }
+    >
       <Head>
         <title>User Info</title>
       </Head>

@@ -41,7 +41,15 @@ function CreateClass() {
     }
   };
   return (
-    <section>
+    <section
+      style={
+        user && user.settings
+          ? user.settings.cursorType === 'default'
+            ? { cursor: 'auto' }
+            : { cursor: 'none' }
+          : { cursor: 'auto' }
+      }
+    >
       <Head>
         <title>Create Classroom • Schooleo</title>
       </Head>

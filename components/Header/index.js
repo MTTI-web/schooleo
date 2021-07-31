@@ -21,7 +21,16 @@ function Header() {
     () => removeEventListener('resize', handler);
   }, []);
   return (
-    <header className={styles.header}>
+    <header
+      className={styles.header}
+      style={
+        user && user.settings
+          ? user.settings.cursorType === 'default'
+            ? { cursor: 'auto' }
+            : { cursor: 'none' }
+          : { cursor: 'auto' }
+      }
+    >
       <Sidebar
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}

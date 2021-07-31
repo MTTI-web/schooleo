@@ -11,7 +11,22 @@ function Settings() {
     useGlobalContext();
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-  useState('Is settings loading?', loading);
+
+  const saveSettings = async (settings) => {
+    const apiData = await fetchAPI({
+      url: '/settings/update',
+      body: {
+        email: user.email,
+        userType: user.userType,
+        newSettings: settings,
+      },
+      method: 'post',
+    });
+    if (apiData.success) {
+      setUser(apiData.user);
+    }
+  };
+
   useEffect(async () => {
     if (!user) {
       router.replace('/');
@@ -78,14 +93,34 @@ function Settings() {
             <div className={styles['setting-heading']}>Change Cursor</div>
             <div className={styles['setting-options']}>
               <SettingOption
-                selected={userCursorType === 'default'}
-                onClick={() => setUserCursorType('default')}
+                selected={
+                  user.settings
+                    ? user.settings.cursorType
+                      ? user.settings.cursorType === 'default'
+                      : true
+                    : true
+                }
+                onClick={async () => {
+                  if (user.settings.cursorType !== 'default') {
+                    await saveSettings({ cursorType: 'default' });
+                  }
+                }}
               >
                 Default
               </SettingOption>
               <SettingOption
-                selected={userCursorType === 'custom'}
-                onClick={() => setUserCursorType('custom')}
+                selected={
+                  user.settings
+                    ? user.settings.cursorType
+                      ? user.settings.cursorType === 'custom'
+                      : false
+                    : false
+                }
+                onClick={async () => {
+                  if (user.settings.cursorType !== 'custom') {
+                    await saveSettings({ cursorType: 'custom' });
+                  }
+                }}
               >
                 Custom
               </SettingOption>
@@ -97,18 +132,7 @@ function Settings() {
               <SettingOption
                 onClick={async () => {
                   if (!user.settings.isDeveloper) {
-                    const apiData = await fetchAPI({
-                      url: '/settings/update',
-                      body: {
-                        email: user.email,
-                        userType: user.userType,
-                        newSettings: { isDeveloper: true },
-                      },
-                      method: 'post',
-                    });
-                    if (apiData.success) {
-                      setUser(apiData.user);
-                    }
+                    await saveSettings({ isDeveloper: true });
                   }
                 }}
                 selected={
@@ -124,18 +148,7 @@ function Settings() {
               <SettingOption
                 onClick={async () => {
                   if (user.settings.isDeveloper) {
-                    const apiData = await fetchAPI({
-                      url: '/settings/update',
-                      body: {
-                        email: user.email,
-                        userType: user.userType,
-                        newSettings: { isDeveloper: false },
-                      },
-                      method: 'post',
-                    });
-                    if (apiData.success) {
-                      setUser(apiData.user);
-                    }
+                    await saveSettings({ isDeveloper: false });
                   }
                 }}
                 selected={

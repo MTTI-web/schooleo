@@ -46,6 +46,19 @@ function Classrooms() {
               justifyContent: 'normal',
             }
       }
+      style={
+        user && user.settings
+          ? user.settings.cursorType === 'default'
+            ? loading
+              ? { cursor: 'auto', justifyContent: 'center' }
+              : { cursor: 'auto', justifyContent: 'normal' }
+            : loading
+            ? { cursor: 'none', justifyContent: 'center' }
+            : { cursor: 'none', justifyContent: 'normal' }
+          : loading
+          ? { cursor: 'auto', justifyContent: 'center' }
+          : { cursor: 'auto', justifyContent: 'normal' }
+      }
     >
       <Head>
         <title>Classrooms • Schooleo</title>

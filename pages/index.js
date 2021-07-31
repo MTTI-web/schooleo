@@ -24,7 +24,7 @@ export default function Home() {
       className={styles['homepage']}
       style={
         user && user.settings
-          ? userCursorType === 'default'
+          ? user.settings.cursorType === 'default'
             ? { cursor: 'auto' }
             : { cursor: 'none' }
           : { cursor: 'auto' }

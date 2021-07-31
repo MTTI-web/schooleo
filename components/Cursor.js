@@ -3,7 +3,7 @@ import styles from '../styles/Cursor.module.css';
 import { useGlobalContext } from './context';
 
 function Cursor() {
-  const { userCursorType, cursorType } = useGlobalContext();
+  const { userCursorType, cursorType, user } = useGlobalContext();
   const [cursorStyles, setCursorStyles] = useState({});
   const [width, setWidth] = useState(1024);
   useEffect(() => {
@@ -31,32 +31,36 @@ function Cursor() {
     }
   }, [cursorType]);
   useEffect(() => {
-    if (userCursorType !== 'default') {
-      const handleMouseMove = (e) => {
-        const cursor = document.querySelector('#cursor');
-        const cursorBorder = document.querySelector('#cursor-border');
-        const cursorInnerPointer = document.querySelector(
-          '#cursor-inner-pointer'
-        );
-        const position = { x: e.pageX, y: e.pageY };
-        cursor.style.left = `${position.x}px`;
-        cursor.style.top = `${position.y}px`;
-        //   cursor.style.boxShadow = `0 0 ${(e.movementX + e.movementY) / 4}px ${
-        //     (e.movementX + e.movementY) / 4
-        //   }px #fff`;
-        cursorBorder.style.left = `${position.x}px`;
-        cursorBorder.style.top = `${position.y}px`;
-        cursorInnerPointer.style.left = `${position.x}px`;
-        cursorInnerPointer.style.top = `${position.y}px`;
-      };
-      addEventListener('mousemove', handleMouseMove);
-      return () => removeEventListener('mousemove', handleMouseMove);
-    } else {
-      return;
+    if (user) {
+      if (user.settings && user.settings.cursorType === 'custom') {
+        const handleMouseMove = (e) => {
+          const cursor = document.querySelector('#cursor');
+          const cursorBorder = document.querySelector('#cursor-border');
+          const cursorInnerPointer = document.querySelector(
+            '#cursor-inner-pointer'
+          );
+          const position = { x: e.pageX, y: e.pageY };
+          cursor.style.left = `${position.x}px`;
+          cursor.style.top = `${position.y}px`;
+          //   cursor.style.boxShadow = `0 0 ${(e.movementX + e.movementY) / 4}px ${
+          //     (e.movementX + e.movementY) / 4
+          //   }px #fff`;
+          cursorBorder.style.left = `${position.x}px`;
+          cursorBorder.style.top = `${position.y}px`;
+          cursorInnerPointer.style.left = `${position.x}px`;
+          cursorInnerPointer.style.top = `${position.y}px`;
+        };
+        addEventListener('mousemove', handleMouseMove);
+        return () => removeEventListener('mousemove', handleMouseMove);
+      } else {
+        return;
+      }
     }
-  }, []);
+  }, [user]);
   return (
-    userCursorType !== 'default' &&
+    user &&
+    user.settings &&
+    user.settings.cursorType === 'custom' &&
     width > 680 && (
       <div className={styles['cursor-background']}>
         <div
