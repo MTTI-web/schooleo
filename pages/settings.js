@@ -7,8 +7,7 @@ import classNames from 'classnames';
 import fetchAPI from '../utils/fetchAPI';
 
 function Settings() {
-  const { user, setUser, setUserCursorType, userCursorType } =
-    useGlobalContext();
+  const { user, setUser } = useGlobalContext();
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -179,6 +178,7 @@ function Settings() {
 }
 
 const SettingOption = ({ selected, children, onClick }) => {
+  const { setCursorType } = useGlobalContext();
   return (
     <div
       className={styles['setting-option']}
@@ -187,6 +187,8 @@ const SettingOption = ({ selected, children, onClick }) => {
           ? { backgroundColor: '#0db8d9', color: '#000', fontWeight: '500' }
           : {}
       }
+      onMouseEnter={() => setCursorType('pointer')}
+      onMouseLeave={() => setCursorType('default')}
       onClick={() => onClick()}
     >
       {children}

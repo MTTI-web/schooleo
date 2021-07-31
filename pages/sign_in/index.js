@@ -10,7 +10,7 @@ import fetchAPI from '../../utils/fetchAPI';
 import { useState } from 'react';
 
 function SignIn() {
-  const { user, setUser, setCursorType, userCursorType } = useGlobalContext();
+  const { user, setUser, setCursorType } = useGlobalContext();
   const router = useRouter();
   const [doesUserExist, setDoesUserExist] = useState(true);
   const [isPasswordCorrect, setIsPasswordCorrect] = useState(true);
@@ -50,7 +50,7 @@ function SignIn() {
     <section
       style={
         user && user.settings
-          ? userCursorType === 'default'
+          ? user.settings.cursorType === 'default'
             ? { cursor: 'auto' }
             : { cursor: 'none' }
           : { cursor: 'auto' }

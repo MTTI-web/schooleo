@@ -3,7 +3,7 @@ import styles from '../styles/Cursor.module.css';
 import { useGlobalContext } from './context';
 
 function Cursor() {
-  const { userCursorType, cursorType, user } = useGlobalContext();
+  const { cursorType, user } = useGlobalContext();
   const [cursorStyles, setCursorStyles] = useState({});
   const [width, setWidth] = useState(1024);
   useEffect(() => {

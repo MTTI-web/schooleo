@@ -5,7 +5,6 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [cursorType, setCursorType] = useState('default');
-  const [userCursorType, setUserCursorType] = useState('default');
   const [loadingSession, setLoadingSession] = useState(false);
   useEffect(() => {
     if (user) {
@@ -13,21 +12,6 @@ const AppProvider = ({ children }) => {
       localStorage.setItem('user', JSON.stringify(user.email));
     }
   }, [user]);
-  useEffect(() => {
-    const savedCursorType = localStorage.getItem('cursorType');
-    if (savedCursorType) {
-      setCursorType(JSON.parse(savedCursorType));
-    } else {
-      localStorage.setItem('cursorType', JSON.stringify('default'));
-      setUserCursorType('default');
-    }
-  }, [user]);
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem('cursorType', JSON.stringify(userCursorType));
-    }
-    console.log('User cursor type set to:', userCursorType);
-  }, [userCursorType, user]);
   useEffect(() => {
     console.log('Is loading session?', loadingSession);
   }, [loadingSession]);
@@ -38,8 +22,6 @@ const AppProvider = ({ children }) => {
         setUser,
         cursorType,
         setCursorType,
-        userCursorType,
-        setUserCursorType,
         loadingSession,
         setLoadingSession,
       }}

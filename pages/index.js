@@ -10,8 +10,7 @@ import { useRouter } from 'next/router';
 
 export default function Home() {
   const router = useRouter();
-  const { user, setUser, userCursorType, setLoadingSession } =
-    useGlobalContext();
+  const { user, setUser, setLoadingSession } = useGlobalContext();
   useEffect(async () => {
     const session = await signInWithSession(user, setLoadingSession);
     if (session.success) {
