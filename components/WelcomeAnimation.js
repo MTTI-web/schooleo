@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/WelcomeAnimation.module.css';
+import { useGlobalContext } from './context';
 
 function WelcomeAnimation() {
   const [visible, setVisible] = useState(true);
+  const { user } = useGlobalContext();
   useEffect(() => {
     const timeout = setTimeout(() => {
       setVisible(false);
     }, 4000);
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
