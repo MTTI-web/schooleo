@@ -14,7 +14,8 @@ import OpenMembersListButton from '../../../components/OpenMembersListButton';
 
 function Class() {
   const router = useRouter();
-  const { user, setCursorType } = useGlobalContext();
+  const { user } = useGlobalContext();
+  const [loadingStyles, setLoadingStyles] = useState({});
   const classroomID = router.query.id;
   const [loading, setLoading] = useState(true);
   const [classroomDetails, setClassroomDetails] = useState(null);
@@ -42,21 +43,32 @@ function Class() {
       router.replace('/');
     }
   }, [user]);
+
+  useEffect(() => {
+    if (loading) {
+      setLoadingStyles({
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      });
+    } else {
+      setLoadingStyles({
+        display: 'block',
+        justifyContent: 'none',
+        alignItems: 'normal',
+      });
+    }
+  }, [loading]);
+
   return (
     <section
       className={styles['classroom-section']}
       style={
-        loading
-          ? {
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }
-          : {
-              display: 'block',
-              justifyContent: 'none',
-              alignItems: 'normal',
-            }
+        user && user.settings
+          ? user.settings.cursorType === 'default'
+            ? { cursor: 'auto', ...loadingStyles }
+            : { cursor: 'none', ...loadingStyles }
+          : { cursor: 'auto', ...loadingStyles }
       }
     >
       <Head>

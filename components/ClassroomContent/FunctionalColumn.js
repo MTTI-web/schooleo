@@ -93,6 +93,13 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
             onClick={handleAssignmentCreation}
             onMouseEnter={() => setCursorType('pointer')}
             onMouseLeave={() => setCursorType('default')}
+            style={
+              user && user.settings
+                ? user.settings.cursorType === 'default'
+                  ? { cursor: 'auto' }
+                  : { cursor: 'none' }
+                : { cursor: 'auto' }
+            }
           >
             Create Assignment
           </button>

@@ -65,7 +65,16 @@ function CreateAssignment() {
     });
   };
   return (
-    <section className={styles['create-assignment-section']}>
+    <section
+      className={styles['create-assignment-section']}
+      style={
+        user && user.settings
+          ? user.settings.cursorType === 'default'
+            ? { cursor: 'auto' }
+            : { cursor: 'none' }
+          : { cursor: 'auto' }
+      }
+    >
       <Head>
         <title>
           {loading ? 'Loading...' : `${assignment.name} • Schooleo`}
