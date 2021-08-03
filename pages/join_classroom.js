@@ -9,7 +9,7 @@ import { useGlobalContext } from '../components/context';
 import { useRouter } from 'next/router';
 
 function JoinClassroom() {
-  const { user, setUser, setCursorType } = useGlobalContext();
+  const { user, setUser, setCursorType, log } = useGlobalContext();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [isPasswordCorrect, setIsPasswordCorrect] = useState(true);
@@ -17,7 +17,7 @@ function JoinClassroom() {
     e.preventDefault();
     setIsPasswordCorrect(true);
     setLoading(true);
-    console.log(`Join code: ${e.currentTarget.joinCode.value}`);
+    log(`Join code: ${e.currentTarget.joinCode.value}`);
     const classroomData = await fetchAPI({
       url: '/class/join',
       method: 'post',
@@ -28,7 +28,7 @@ function JoinClassroom() {
       },
     });
     setLoading(false);
-    console.log('Classroom joining data from API:', classroomData);
+    log('Classroom joining data from API:', classroomData);
     if (classroomData.success) {
       setUser(classroomData.user);
       router.replace('/classrooms');
@@ -36,7 +36,7 @@ function JoinClassroom() {
     } else {
       if (!classroomData.isPasswordCorrect) {
         setIsPasswordCorrect(false);
-        console.log('Password entered while joining classroom is wrong.');
+        log('Password entered while joining classroom is wrong.');
       }
     }
   };

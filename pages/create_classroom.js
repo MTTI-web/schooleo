@@ -10,7 +10,7 @@ import fetchAPI from '../utils/fetchAPI';
 
 function CreateClass() {
   const router = useRouter();
-  const { user, setUser } = useGlobalContext();
+  const { user, setUser, log } = useGlobalContext();
   useEffect(() => {
     if (!user) {
       router.replace('/');
@@ -21,7 +21,7 @@ function CreateClass() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (user.email) {
-      console.log(`New class name is: ${e.currentTarget.className.value}`);
+      log(`New class name is: ${e.currentTarget.className.value}`);
       const userData = await fetchAPI({
         url: '/class/create',
         method: 'post',
@@ -33,7 +33,7 @@ function CreateClass() {
           subject: e.currentTarget.subject.value,
         },
       });
-      console.log('New class created in DB:', userData);
+      log('New class created in DB:', userData);
       if (userData.user) {
         setUser(userData.user);
         router.replace('/classrooms');

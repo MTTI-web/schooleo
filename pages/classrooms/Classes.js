@@ -7,19 +7,19 @@ import ClassroomListItem from '../../components/ClassroomListItem';
 import NoClassesMessage from '../../components/NoClassesMessage';
 
 function Classes({ loading, setLoading }) {
-  const { user, setUser } = useGlobalContext();
+  const { user, setUser, log } = useGlobalContext();
   const [classrooms, setClassrooms] = useState(null);
   useEffect(() => {
-    console.log('Current classrooms:', classrooms);
+    log('Current classrooms:', classrooms);
   }, [classrooms]);
   useEffect(async () => {
     setLoading(true);
     if (user) {
-      console.log('User classrooms:', user.classrooms);
+      log('User classrooms:', user.classrooms);
       if (user.classrooms.length) {
         const classroomPromisesFromAPI = await user.classrooms.map(
           async (classroom) => {
-            console.log('Getting details for the classroom:', classroom);
+            log('Getting details for the classroom:', classroom);
             const classroomFromAPI = await fetchAPI({
               url: '/class/get_classroom_details',
               method: 'post',
@@ -27,16 +27,16 @@ function Classes({ loading, setLoading }) {
                 classroomID: classroom,
               },
             });
-            console.log('Classroom from API:', classroomFromAPI);
+            log('Classroom from API:', classroomFromAPI);
             if (classroomFromAPI && classroomFromAPI.success) {
-              console.log('Successfully fetched classroom.');
+              log('Successfully fetched classroom.');
               return classroomFromAPI.classroom;
             } else if (classroomFromAPI && !classroomFromAPI.classroom) {
               if (user.classrooms.length) {
                 setUser({
                   ...user,
                   classrooms: user.classrooms.filter((currentClassroom) => {
-                    console.log(currentClassroom, classroom);
+                    log(currentClassroom, classroom);
                     return currentClassroom != classroom;
                   }),
                 });
@@ -46,7 +46,7 @@ function Classes({ loading, setLoading }) {
         );
         const classroomsFromAPI = await Promise.all(classroomPromisesFromAPI);
         setLoading(false);
-        console.log('Classrooms from API:', classroomsFromAPI);
+        log('Classrooms from API:', classroomsFromAPI);
         setClassrooms(classroomsFromAPI);
         return;
       }
@@ -55,7 +55,7 @@ function Classes({ loading, setLoading }) {
   }, [user]);
   useEffect(() => {
     if (user) {
-      console.log('User classrooms:', user.classrooms);
+      log('User classrooms:', user.classrooms);
     }
   }, [user]);
   return user ? (

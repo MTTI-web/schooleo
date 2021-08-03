@@ -8,13 +8,20 @@ const AppProvider = ({ children }) => {
   const [loadingSession, setLoadingSession] = useState(false);
   useEffect(() => {
     if (user) {
-      console.log('Current user:', user);
+      log('Current user:', user);
       localStorage.setItem('user', JSON.stringify(user.email));
     }
   }, [user]);
   useEffect(() => {
-    console.log('Is loading session?', loadingSession);
+    log('Is loading session?', loadingSession);
   }, [loadingSession]);
+
+  const log = (...args) => {
+    if (user && user.settings && user.settings.isDeveloper) {
+      console.log(...args);
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -24,6 +31,7 @@ const AppProvider = ({ children }) => {
         setCursorType,
         loadingSession,
         setLoadingSession,
+        log,
       }}
     >
       {children}

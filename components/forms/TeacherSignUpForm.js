@@ -12,12 +12,12 @@ import fetchAPI from '../../utils/fetchAPI';
 function TeacherSignUpForm({ setUserType }) {
   const [country, setCountry] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { setUser, setCursorType } = useGlobalContext();
+  const { setUser, setCursorType, log } = useGlobalContext();
   const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setCursorType('default');
-    console.log('Teacher name:', e.currentTarget.teacherName.value);
+    log('Teacher name:', e.currentTarget.teacherName.value);
     if (country) {
       setLoading(true);
       const userData = await fetchAPI({
@@ -31,7 +31,7 @@ function TeacherSignUpForm({ setUserType }) {
         },
       });
       setLoading(false);
-      console.log('User:', userData.user);
+      log('User:', userData.user);
       setUser(userData.user);
       router.replace('/classrooms');
     }

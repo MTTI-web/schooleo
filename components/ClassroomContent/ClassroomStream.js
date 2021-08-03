@@ -7,19 +7,19 @@ import { io } from 'socket.io-client';
 import getApiUrl from '../../utils/getApiUrl';
 
 function ClassroomStream({ classroom }) {
-  const { setCursorType, user, setUser } = useGlobalContext();
+  const { setCursorType, user, setUser, log } = useGlobalContext();
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
   const handleSubmit = async (e) => {
-    console.log(e);
+    log(e);
     e.preventDefault();
     e.stopPropagation();
     const inputElement = e.currentTarget.messageInput;
     if (!inputElement.value.trimStart().trimEnd()) return;
-    console.log(`Message is: ${inputElement.value}`);
+    log(`Message is: ${inputElement.value}`);
     const newMessage = {
       author: user.username,
       message: inputElement.value,
@@ -41,23 +41,23 @@ function ClassroomStream({ classroom }) {
     //   },
     // });
     // setLoading(false);
-    // console.log('API Data:', apiData);
+    // log('API Data:', apiData);
     // if (apiData.success) {
     //   setMessages([...apiData.stream]);
-    // } else console.log('Could not send message.');
+    // } else log('Could not send message.');
     inputElement.value = '';
     const messagesContainer = document.querySelector('#messages');
     messagesContainer.scrollTo(0, messagesContainer.scrollHeight);
   };
 
   useEffect(() => {
-    console.log('Socket:', socket);
+    log('Socket:', socket);
   }, [socket]);
 
   useEffect(() => {
     if (!socket) return;
     socket.on('connected', (message) => {
-      console.log(message);
+      log(message);
     });
 
     socket.emit('add_user', {
@@ -66,7 +66,7 @@ function ClassroomStream({ classroom }) {
     });
 
     socket.on('receive_message', ({ message }) => {
-      console.log('Message:', message);
+      log('Message:', message);
       setArrivalMessage(message);
       setLoading(false);
     });
@@ -91,7 +91,7 @@ function ClassroomStream({ classroom }) {
   }, [arrivalMessage]);
 
   useEffect(() => {
-    console.log('Current messages:', messages);
+    log('Current messages:', messages);
   }, [messages]);
 
   useEffect(() => {
@@ -100,7 +100,7 @@ function ClassroomStream({ classroom }) {
   }, [messages]);
 
   useEffect(() => {
-    console.log('Loading?', loading);
+    log('Loading?', loading);
   }, [loading]);
 
   return (

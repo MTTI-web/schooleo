@@ -11,7 +11,7 @@ import fetchAPI from '../../../../../utils/fetchAPI';
 import { FaCheck, FaSave } from 'react-icons/fa';
 
 function CreateAssignment() {
-  const { user, setCursorType } = useGlobalContext();
+  const { user, setCursorType, log } = useGlobalContext();
   const router = useRouter();
   const [assignment, setAssignment] = useState({});
   const [loading, setLoading] = useState(true);
@@ -31,10 +31,10 @@ function CreateAssignment() {
         classroomID: router.query.id,
       },
     });
-    console.log('Class data:', classData);
+    log('Class data:', classData);
     if (classData.success) {
       setClassroom(classData.classroom);
-      console.log('New classroom details set:', classData.classroom);
+      log('New classroom details set:', classData.classroom);
       setAssignment(
         classData.classroom.assignments.find(
           ({ creationTime }) =>
@@ -42,13 +42,13 @@ function CreateAssignment() {
         )
       );
     } else {
-      console.log('Could not find details for the given class.');
+      log('Could not find details for the given class.');
     }
     setLoading(false);
   }, []);
 
   useEffect(() => {
-    console.log('Assignment updated', assignment);
+    log('Assignment updated', assignment);
   }, [assignment]);
 
   const handleCreateQuestionButtonClick = () => {
@@ -58,7 +58,7 @@ function CreateAssignment() {
       answer: '',
       index: assignment.questions.length,
     };
-    console.log('New question:', newQuestion);
+    log('New question:', newQuestion);
     setAssignment({
       ...assignment,
       questions: [...assignment.questions, newQuestion],
@@ -97,7 +97,7 @@ function CreateAssignment() {
               },
             });
             setIsSaveLoading(false);
-            console.log('Assignment save data:', apiData);
+            log('Assignment save data:', apiData);
           }}
         >
           <div className={styles['assignment-name-container']}>

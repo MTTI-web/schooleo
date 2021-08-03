@@ -14,7 +14,7 @@ import OpenMembersListButton from '../../../components/OpenMembersListButton';
 
 function Class() {
   const router = useRouter();
-  const { user } = useGlobalContext();
+  const { user, log } = useGlobalContext();
   const [loadingStyles, setLoadingStyles] = useState({});
   const classroomID = router.query.id;
   const [loading, setLoading] = useState(true);
@@ -32,12 +32,12 @@ function Class() {
         },
       });
       setLoading(false);
-      console.log('Class data:', classData);
+      log('Class data:', classData);
       if (classData.success) {
         setClassroomDetails(classData.classroom);
-        console.log('New classroom details set:', classData.classroom);
+        log('New classroom details set:', classData.classroom);
       } else {
-        console.log('Could not find details for the given class.');
+        log('Could not find details for the given class.');
       }
     } else {
       router.replace('/');

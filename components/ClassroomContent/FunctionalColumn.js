@@ -8,9 +8,9 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
   const [width, setWidth] = useState(1024);
   const router = useRouter();
   const classroomID = router.query.id;
-  const { user, setCursorType } = useGlobalContext();
+  const { user, setCursorType, log } = useGlobalContext();
   useEffect(() => {
-    console.log(`The classroom ID is: ${classroomID}.`);
+    log(`The classroom ID is: ${classroomID}.`);
     setWidth(innerWidth);
     const handler = () => {
       setWidth(innerWidth);
@@ -26,7 +26,7 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
       questions: [],
       students: [
         ...classroomDetails.students.map((student) => {
-          console.log(student);
+          log(student);
           return {
             id: student.id,
             username: student.name,
@@ -44,9 +44,9 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
       method: 'post',
     });
     if (apiData.success) {
-      console.log('New assignment created:', apiData);
+      log('New assignment created:', apiData);
     } else {
-      console.log('New assignment could not be created.');
+      log('New assignment could not be created.');
     }
     router.replace(
       `/classroom/${classroomID}/assignment/${assignmentCreationTime}/edit`

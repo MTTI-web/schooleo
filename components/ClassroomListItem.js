@@ -6,7 +6,7 @@ import fetchAPI from '../utils/fetchAPI';
 import { useRouter } from 'next/router';
 
 function ClassroomListItem({ classItem }) {
-  const { user, setCursorType, setUser } = useGlobalContext();
+  const { user, setCursorType, setUser, log } = useGlobalContext();
   const [showMoreClassroomOptions, setShowMoreClassroomOptions] =
     useState(false);
   const router = useRouter();
@@ -20,7 +20,7 @@ function ClassroomListItem({ classItem }) {
         classroomID: classItem.creationTime,
       },
     });
-    console.log(classroomLeaveData);
+    log(classroomLeaveData);
     if (classroomLeaveData.success) {
       setUser(classroomLeaveData.student);
     }
@@ -29,7 +29,7 @@ function ClassroomListItem({ classItem }) {
     <div
       className={styles.class}
       onClick={(e) => {
-        console.log(
+        log(
           !(
             e.target.closest('#more-classroom-options-button') ||
             e.target.closest('#more-classroom-options-container')

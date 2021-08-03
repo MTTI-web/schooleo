@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 import styles from '../styles/ClickAnimation.module.css';
+import { useGlobalContext } from './context';
 
 function ClickAnimation() {
+  const { log } = useGlobalContext();
   const handleClick = (e) => {
-    console.log(e);
+    log(e);
     const animationContainer = document.querySelector('#animation-container');
-    console.log(animationContainer);
+    log(animationContainer);
     animationContainer.style.left = `${e.clientX}px`;
     animationContainer.style.top = `${e.clientY}px`;
     const newAnimation = document.createElement('div');
@@ -18,7 +20,7 @@ function ClickAnimation() {
   useEffect(() => {
     const background = document.querySelector('#background');
     document.body.addEventListener('click', handleClick);
-    console.log('Click background:', background);
+    log('Click background:', background);
     return () => document.body.removeEventListener('click', handleClick);
   }, []);
   return (
