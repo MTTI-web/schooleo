@@ -18,6 +18,8 @@
   top: 50%;
   transform: translateY(-50%);
   color: #0da3bf;
+  height: 40px;
+  width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +29,8 @@
 }
 
 .open-sidebar-button svg {
-  transform: scale(1.4);
+  height: 35px;
+  width: 35px;
 }
 
 .app-name {
@@ -81,12 +84,11 @@
 
 .open-nav-button {
   position: fixed;
-  top: 40px;
+  top: 35px;
   transform: translateY(-50%);
   right: 20px;
   font-size: 160%;
-  width: 30px;
-  height: 30px;
+  width: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,9 +96,24 @@
   pointer-events: none;
 }
 
+.buttons-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .open-nav-svg {
   color: #0da3bf;
-  font-size: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+
+.open-nav-svg path {
+  height: 100%;
+  width: 100%;
 }
 
 @media screen and (max-width: 670px) {

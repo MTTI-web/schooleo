@@ -7,7 +7,6 @@ import styles from '../../../../../styles/CreateAssignment.module.css';
 import AssignmentQuestion from '../../../../../components/AttemptAssignmentQuestion';
 import Loader from '../../../../../components/Loader';
 import fetchAPI from '../../../../../utils/fetchAPI';
-import { FaCheck, FaSave } from 'react-icons/fa';
 
 function CreateAssignment() {
   const { user, setCursorType, log } = useGlobalContext();

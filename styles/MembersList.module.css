@@ -86,3 +86,9 @@
   padding: 10px 15px;
   background-color: #303030;
 }
+
+@media screen and (max-width: 680px) {
+  .members-list-container {
+    border-left-width: 0;
+  }
+}

@@ -45,6 +45,24 @@ function Class() {
   }, [user]);
 
   useEffect(() => {
+    const closeMembersList = () => setShowMembers(false);
+    addEventListener('resize', closeMembersList);
+    return () => removeEventListener('resize', closeMembersList);
+  }, []);
+
+  useEffect(() => {
+    if (showMembers) {
+      setShowClassroomDetails(false);
+    }
+  }, [showMembers]);
+
+  useEffect(() => {
+    if (showClassroomDetails) {
+      setShowMembers(false);
+    }
+  }, [showClassroomDetails]);
+
+  useEffect(() => {
     if (loading) {
       setLoadingStyles({
         display: 'flex',
@@ -109,7 +127,7 @@ function Class() {
                   showMembers
                     ? {
                         // right: '0',
-                        width: '30%',
+                        width: innerWidth > 680 ? '30%' : '100%',
                         overflowY: 'scroll',
                         pointerEvents: 'all',
                         opacity: '100%',
