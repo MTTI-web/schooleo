@@ -8,6 +8,7 @@ import Section from '../components/Section';
 import signInWithSession from '../utils/signInWithSession';
 import { useRouter } from 'next/router';
 
+// Home page
 export default function Home() {
   const router = useRouter();
   const { user, setUser, setLoadingSession, log } = useGlobalContext();
