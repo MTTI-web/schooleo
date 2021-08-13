@@ -61,22 +61,17 @@
   font-size: 110%;
   /* background-color: #292929; */
   padding: 2px 10px;
-  border-radius: 7px;
+  border-radius: 5px;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   user-select: none;
   position: relative;
-  height: 40px;
   /* box-shadow: 0 2.5px #575757; */
-  border: 2px solid #0da3bf;
+  border: 1.5px solid #0da3bf;
+  height: 40px;
   transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.nav-link:hover {
-  /* box-shadow: 0 1.5px #b3f5ff; */
-  /* transform: translateY(2px); */
 }
 
 .nav-link:active {

@@ -3,13 +3,13 @@
   margin-left: 20px;
   font-size: 110%;
   padding: 7px 10px;
-  border-radius: 7px;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   user-select: none;
-  border: 2px solid #0da3bf;
-  height: 100%;
+  border: 1.5px solid #0da3bf;
+  height: 40px;
   position: relative;
   min-width: 100px;
 }
