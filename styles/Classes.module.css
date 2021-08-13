@@ -45,7 +45,7 @@
 }
 
 .class {
-  border: 2px solid #0da3bf;
+  border: 1.5px solid #bfbfbf;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -53,14 +53,13 @@
   flex-direction: column;
   color: #0db8d9;
   border-radius: 7px;
-  box-shadow: 0 0 2px 0.001px #b3f5ff;
   transition: box-shadow 0.1s;
   background-color: #121212;
   position: relative;
 }
 
 .class:hover {
-  box-shadow: 0 0 6px 3px #b3f5ff;
+  box-shadow: 0 0 6px 1px #bfbfbf;
 }
 
 .class-name {

@@ -61,7 +61,7 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
           : { opacity: '100%', pointerEvents: 'all' }
       }
     >
-      Functional Column
+      Assignments
       <div className={styles['assignments-container']}>
         {classroomDetails.assignments.length > 0 ? (
           classroomDetails.assignments.map(({ name, creationTime }, index) => (

@@ -1,14 +1,17 @@
 .functional-column {
-  background-color: #212121;
+  background-color: #121212;
   transition: opacity 0.2s;
   color: #fefefe;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  padding: 30px 20px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   max-height: calc(100vh - 120px);
+  border: 1.5px solid #bfbfbf;
+  margin: 15px;
+  padding-top: 15px;
+  border-radius: 5px;
 }
 
 .functional-column::-webkit-scrollbar {
@@ -33,43 +36,45 @@
   font-size: 100%;
   background-color: transparent;
   outline: none;
-  border: 2px solid #0db8d9;
-  color: #0db8d9;
-  border-radius: 5px;
-  transition: background-color 0.2s;
-  font-weight: 400;
+  color: #fefefe;
+  transition: background-color 0.2s, color 0.2s;
+  font-weight: 300;
   width: 100%;
-  margin-top: 10px;
+  height: 40px;
+  border: none;
+  border-bottom: 1.5px solid #bfbfbf;
 }
 
 .create-assignment-button:hover {
-  background-color: #0db8d9;
-  color: #212121;
+  background-color: #282828;
+  color: #fff;
 }
 
 .assignments-container {
-  background-color: #424242;
-  padding: 10px;
-  width: 80%;
-  border-radius: 10px;
   margin-top: 20px;
-  border: 2px solid #0db8d9;
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 100%;
+  border-top: 1.5px solid #bfbfbf;
 }
 
 .assignment {
-  background-color: #212121;
   padding: 10px;
-  border-radius: 7px;
-  border: 1.5px solid #0db8d9;
-  color: #0db8d9;
+  padding-left: 20px;
+  border-bottom: 1.5px solid #bfbfbf;
+  color: #fefefe;
   width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.assignment:not(:first-child) {
-  margin-top: 10px;
+.assignment:hover {
+  background-color: #282828;
+  color: #fff;
 }
 
 @media screen and (max-width: 730px) {

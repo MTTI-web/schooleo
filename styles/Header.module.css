@@ -68,6 +68,7 @@
   align-items: center;
   user-select: none;
   position: relative;
+  height: 40px;
   /* box-shadow: 0 2.5px #575757; */
   border: 2px solid #0da3bf;
   transition: box-shadow 0.2s, transform 0.2s;

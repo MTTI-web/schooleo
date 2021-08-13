@@ -1,5 +1,5 @@
 .classroom-stream {
-  background-color: #282828;
+  background-color: #212121;
   height: calc(100vh - 120px);
   position: relative;
   display: flex;
@@ -28,10 +28,19 @@
   border-bottom-left-radius: 10px;
   background-color: transparent;
   outline: none;
-  border: 2px solid #0da3bf;
+  border: 1.5px solid #bfbfbf;
   color: #fff;
   border-right-width: 0;
   width: 100%;
+  transition: background-color 0.1s;
+}
+
+.message-entry-form input::placeholder {
+  color: #dedede;
+}
+
+.message-entry-form input:focus {
+  background-color: #282828;
 }
 
 .message-entry-form button {
@@ -42,15 +51,15 @@
   align-items: center;
   background-color: transparent;
   outline: none;
-  border: 2px solid #0da3bf;
-  color: #0da3bf;
+  border: 1.5px solid #bfbfbf;
+  color: #bfbfbf;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   transition: background-color 0.2s, color 0.2s;
 }
 
 .message-entry-form button:hover {
-  background-color: #0da3bf;
+  background-color: #282828;
   color: #fff;
 }
 
@@ -64,7 +73,6 @@
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #282828;
 }
 
 .messages::-webkit-scrollbar {
