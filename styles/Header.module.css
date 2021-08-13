@@ -1,6 +1,6 @@
 .header {
   height: 70px;
-  border-bottom: 2px solid #0da3bf;
+  border-bottom: 1.5px solid #bfbfbf;
   background-color: #121212;
   display: flex;
   align-items: center;
@@ -17,7 +17,7 @@
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  color: #0da3bf;
+  color: #bfbfbf;
   height: 40px;
   width: 40px;
   display: flex;
@@ -36,7 +36,7 @@
 .app-name {
   font-size: 160%;
   font-weight: 400;
-  color: #0da3bf;
+  color: #bfbfbf;
   position: absolute;
   transition: left 0.2s ease-in-out;
 }
@@ -56,7 +56,7 @@
 }
 
 .nav-link {
-  color: #0da3bf;
+  color: #bfbfbf;
   margin-left: 20px;
   font-size: 110%;
   /* background-color: #292929; */
@@ -69,7 +69,7 @@
   user-select: none;
   position: relative;
   /* box-shadow: 0 2.5px #575757; */
-  border: 1.5px solid #0da3bf;
+  border: 1.5px solid #bfbfbf;
   height: 40px;
   transition: box-shadow 0.2s, transform 0.2s;
 }

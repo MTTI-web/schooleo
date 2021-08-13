@@ -7,7 +7,7 @@
   z-index: 11;
   height: 100vh;
   padding: 15px;
-  border-right: 2px solid #0da3bf;
+  border-right: 1.5px solid #bfbfbf;
   transform: translateX(-101.5%);
   transition: transform 0.2s ease-out;
 }
@@ -17,8 +17,8 @@
   grid-template-columns: 40px auto 40px;
   align-items: center;
   justify-items: center;
-  color: #0da3bf;
-  border-bottom: 2px solid #0da3bf;
+  color: #bfbfbf;
+  border-bottom: 2px solid #bfbfbf;
   padding-bottom: 5px;
 }
 

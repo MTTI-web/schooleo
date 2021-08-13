@@ -3,8 +3,8 @@
   top: 50%;
   transform: translateY(-50%);
   background-color: transparent;
-  color: #0da3bf;
-  border: 1.5px solid #0da3bf;
+  color: #bfbfbf;
+  border: 1.5px solid #bfbfbf;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -22,5 +22,5 @@
 }
 
 .show-members-button:hover {
-  box-shadow: 0 0 5px 0.5px #b3f5ff;
+  box-shadow: 0 0 5px 0.5px #bfbfbf;
 }

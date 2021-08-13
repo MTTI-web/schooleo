@@ -13,7 +13,7 @@
   padding: 10px;
   transition: all 0.2s;
   padding-top: 40px;
-  border-left: 2px solid #0da3bf;
+  border-left: 1.5px solid #bfbfbf;
 }
 
 .members-list-container::-webkit-scrollbar {
@@ -40,20 +40,21 @@
   right: 10px;
   top: 10px;
   background-color: transparent;
-  border: 1.5px solid #0da3bf;
+  border: 1.5px solid #bfbfbf;
   outline: none;
   border-radius: 50%;
-  color: #0da3bf;
+  color: #bfbfbf;
   font-size: 110%;
   padding-right: 0.2px;
   padding-bottom: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: box-shadow 0.1s;
 }
 
 .close-members-list-button:hover {
-  box-shadow: 0 0 5px 0.5px #b3f5ff;
+  box-shadow: 0 0 5px 0.1px #bfbfbf;
 }
 
 .members-list-heading {
