@@ -11,7 +11,8 @@
 }
 
 .section-heading {
-  background-color: #0da3bf;
+  background-color: #121212;
+  color: #0da3bf;
   text-align: center;
   width: 100%;
   display: flex;
@@ -19,12 +20,12 @@
   justify-content: center;
   padding: 7px;
   font-size: 150%;
-  font-weight: 400;
   height: 50px;
   position: absolute;
   top: 70px;
   right: 0;
   left: 0;
+  border-bottom: 1.5px solid #bfbfbf;
 }
 
 .user-info-content {
@@ -65,5 +66,5 @@
 }
 
 .user-info-detail-content {
-  color: #776e6e;
+  color: #0da3bf;
 }

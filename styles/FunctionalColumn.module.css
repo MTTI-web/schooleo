@@ -55,7 +55,7 @@
 
 .create-assignment-button:hover {
   background-color: #282828;
-  color: #fff;
+  color: #0da3bf;
 }
 
 .assignments-container {
@@ -91,7 +91,7 @@
 
 .assignment:hover {
   background-color: #282828;
-  color: #fff;
+  color: #0da3bf;
 }
 
 @media screen and (max-width: 730px) {

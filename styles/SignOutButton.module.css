@@ -1,6 +1,6 @@
 .sign-out-button {
-  background-color: #0da3bf;
-  color: #000;
+  background-color: #121212;
+  color: #fefefe;
   right: 0;
   border-radius: 5px;
   padding: 2px;
@@ -9,14 +9,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 400;
-  border: 1.5px solid #000;
+  border: 1.5px solid #bfbfbf;
   position: absolute;
-  right: 2px;
-  margin-right: 10px;
-  transition: width 0.2s, font-size 0.2s, height 0.2s, box-shadow 0.2s;
+  margin-right: 5px;
+  transition: box-shadow 0.1s, background-color 0.1s, color 0.1s;
 }
 
 .sign-out-button:hover {
-  box-shadow: 0 0 6px 0.1px #0da3bf;
+  box-shadow: 0 0 5px 0.2px #0da3bf;
+  color: #0da3bf;
+  background-color: #282828;
 }
