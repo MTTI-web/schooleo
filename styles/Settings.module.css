@@ -14,21 +14,26 @@
   align-items: center;
   width: 100%;
   color: #282828;
-  font-weight: 400;
+  border-bottom: 1.5px solid #bfbfbf;
   font-size: 130%;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: #0db8d9;
+  background-color: #121212;
+  color: #0db8d9;
   margin-bottom: 20px;
 }
 
 .setting {
   background-color: #121212;
   width: 70%;
-  border: 2px solid #0db8d9;
+  border: 1.5px solid #bfbfbf;
   border-radius: 10px;
   color: #fff;
   margin-top: 20px;
+}
+
+.setting:hover > .setting-heading {
+  color: #0db8d9;
 }
 
 .setting.big {
@@ -47,13 +52,13 @@
 }
 
 .setting-heading {
-  font-weight: 400;
-  color: #0db8d9;
+  color: #fefefe;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 110%;
+  transition: color 0.1s;
 }
 
 .setting.small .setting-heading {
@@ -81,8 +86,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #212121;
-  border: 2px solid #0db8d9;
+  background-color: #121212;
+  border: 1.5px solid #bfbfbf;
   border-radius: 7px;
   font-weight: 300;
   transition: transform 0.2s;

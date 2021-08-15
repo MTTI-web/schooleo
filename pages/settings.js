@@ -182,11 +182,7 @@ const SettingOption = ({ selected, children, onClick }) => {
   return (
     <div
       className={styles['setting-option']}
-      style={
-        selected
-          ? { backgroundColor: '#0db8d9', color: '#000', fontWeight: '500' }
-          : {}
-      }
+      style={selected ? { backgroundColor: '#282828', color: '#0db8d9' } : {}}
       onMouseEnter={() => setCursorType('pointer')}
       onMouseLeave={() => setCursorType('default')}
       onClick={() => onClick()}
