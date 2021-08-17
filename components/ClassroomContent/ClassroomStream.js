@@ -7,7 +7,7 @@ import { io } from 'socket.io-client';
 import getApiUrl from '../../utils/getApiUrl';
 
 function ClassroomStream({ classroom }) {
-  const { setCursorType, user, setUser, log } = useGlobalContext();
+  const { setCursorType, user, log, showNotification } = useGlobalContext();
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -18,11 +18,17 @@ function ClassroomStream({ classroom }) {
     e.preventDefault();
     e.stopPropagation();
     const inputElement = e.currentTarget.messageInput;
-    if (!inputElement.value.trimStart().trimEnd()) return;
-    log(`Message is: ${inputElement.value}`);
+    const messageContent = inputElement.value.trimStart().trimEnd();
+    if (!messageContent) return;
+    if (messageContent.split('').length > 50) {
+      return showNotification(
+        'Message cannot be more than 50 characters long.'
+      );
+    }
+    log(`Message is: ${messageContent}`);
     const newMessage = {
       author: user.username,
-      message: inputElement.value,
+      message: messageContent,
       time: Date.now(),
     };
     if (!socket) return;
