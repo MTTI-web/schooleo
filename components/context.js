@@ -6,12 +6,31 @@ const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [cursorType, setCursorType] = useState('default');
   const [loadingSession, setLoadingSession] = useState(false);
+  const [notification, setNotification] = useState(null);
   useEffect(() => {
     if (user) {
       log('Current user:', user);
       localStorage.setItem('user', JSON.stringify(user.email));
     }
   }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      showNotification(`Signed in as ${user.email}`);
+    }
+  }, [user]);
+
+  useEffect(() => {
+    const timeout = setTimeout(
+      () => {
+        if (!notification) return;
+        setNotification(null);
+      },
+      notification ? notification.timeout : 1
+    );
+    return () => clearTimeout(timeout);
+  }, [notification]);
+
   useEffect(() => {
     log('Is loading session?', loadingSession);
   }, [loadingSession]);
@@ -20,6 +39,10 @@ const AppProvider = ({ children }) => {
     if (user && user.settings && user.settings.isDeveloper) {
       console.log(...args);
     }
+  };
+
+  const showNotification = (content, timeout = 4000) => {
+    setNotification(content ? { content, timeout } : null);
   };
 
   return (
@@ -32,6 +55,8 @@ const AppProvider = ({ children }) => {
         loadingSession,
         setLoadingSession,
         log,
+        notification,
+        showNotification,
       }}
     >
       {children}

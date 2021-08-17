@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import fetchAPI from '../utils/fetchAPI';
 
 function Settings() {
-  const { user, setUser } = useGlobalContext();
+  const { user, setUser, showNotification } = useGlobalContext();
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -111,6 +111,7 @@ function Settings() {
                 onClick={async () => {
                   if (user.settings.cursorType !== 'default') {
                     await saveSettings({ cursorType: 'default' });
+                    showNotification('Default cursor enabled.');
                   }
                 }}
               >
@@ -127,6 +128,7 @@ function Settings() {
                 onClick={async () => {
                   if (user.settings.cursorType !== 'custom') {
                     await saveSettings({ cursorType: 'custom' });
+                    showNotification('Custom cursor enabled.');
                   }
                 }}
               >
@@ -141,6 +143,7 @@ function Settings() {
                 onClick={async () => {
                   if (!user.settings.isDeveloper) {
                     await saveSettings({ isDeveloper: true });
+                    showNotification('Developer Mode turned on.');
                   }
                 }}
                 selected={
@@ -157,6 +160,7 @@ function Settings() {
                 onClick={async () => {
                   if (user.settings.isDeveloper) {
                     await saveSettings({ isDeveloper: false });
+                    showNotification('Developer Mode turned off.');
                   }
                 }}
                 selected={
