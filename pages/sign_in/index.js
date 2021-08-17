@@ -10,7 +10,7 @@ import fetchAPI from '../../utils/fetchAPI';
 import { useState } from 'react';
 
 function SignIn() {
-  const { user, setUser, setCursorType, log } = useGlobalContext();
+  const { user, setUser, setCursorType, log, showNotification } = useGlobalContext();
   const router = useRouter();
   const [doesUserExist, setDoesUserExist] = useState(true);
   const [isPasswordCorrect, setIsPasswordCorrect] = useState(true);
@@ -38,6 +38,7 @@ function SignIn() {
     log('Logged in user:', userData);
     if (userData.user) {
       setUser(userData.user);
+      showNotification(`Signed in as ${userData.user.email}.`);
     } else if (!userData.success) {
       if (userData.message === 'No user found') {
         setDoesUserExist(false);
