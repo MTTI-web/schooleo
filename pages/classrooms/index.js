@@ -9,7 +9,7 @@ import { useState } from 'react';
 import signInWithSession from '../../utils/signInWithSession';
 
 function Classrooms() {
-  const { user, setUser, setLoadingSession, setCursorType } =
+  const { user, setUser, setLoadingSession, setCursorType, showNotification } =
     useGlobalContext();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
@@ -17,6 +17,7 @@ function Classrooms() {
   useEffect(async () => {
     const session = await signInWithSession(user, setLoadingSession);
     if (session.success) {
+      showNotification(`Signed in as ${session.user.email}`);
       setUser(session.user);
     }
   }, []);

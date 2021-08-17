@@ -23,6 +23,7 @@
   align-items: center;
   font-size: 1.3rem;
   border-radius: 50%;
+  transition: background-color 0.1s;
 }
 
 .close-notification-button:hover {

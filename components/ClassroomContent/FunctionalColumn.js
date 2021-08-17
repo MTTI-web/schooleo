@@ -8,7 +8,7 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
   const [width, setWidth] = useState(1024);
   const router = useRouter();
   const classroomID = router.query.id;
-  const { user, setCursorType, log } = useGlobalContext();
+  const { user, setCursorType, log, showNotification } = useGlobalContext();
   useEffect(() => {
     log(`The classroom ID is: ${classroomID}.`);
     setWidth(innerWidth);
@@ -19,6 +19,7 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
     return () => removeEventListener('resize', handler);
   }, []);
   const handleAssignmentCreation = async () => {
+    showNotification('Creating Assignment...');
     const assignmentCreationTime = Date.now();
     const newAssignment = {
       creationTime: assignmentCreationTime,
@@ -45,8 +46,10 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
     });
     if (apiData.success) {
       log('New assignment created:', apiData);
+      showNotification('New assignment created.');
     } else {
       log('New assignment could not be created.');
+      showNotification('New assignment could not be created.');
     }
     router.replace(
       `/classroom/${classroomID}/assignment/${assignmentCreationTime}/edit`

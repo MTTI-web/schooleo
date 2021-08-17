@@ -11,7 +11,7 @@ import fetchAPI from '../../../../../utils/fetchAPI';
 import { FaCheck, FaSave } from 'react-icons/fa';
 
 function CreateAssignment() {
-  const { user, setCursorType, log } = useGlobalContext();
+  const { user, setCursorType, log, showNotification } = useGlobalContext();
   const router = useRouter();
   const [assignment, setAssignment] = useState({});
   const [loading, setLoading] = useState(true);
@@ -97,6 +97,7 @@ function CreateAssignment() {
               },
             });
             setIsSaveLoading(false);
+            showNotification('Changes to this assignment are saved.');
             log('Assignment save data:', apiData);
           }}
         >

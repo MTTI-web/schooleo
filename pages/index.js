@@ -11,11 +11,13 @@ import { useRouter } from 'next/router';
 // Home page
 export default function Home() {
   const router = useRouter();
-  const { user, setUser, setLoadingSession, log } = useGlobalContext();
+  const { user, setUser, setLoadingSession, log, showNotification } =
+    useGlobalContext();
   useEffect(async () => {
     const session = await signInWithSession(user, setLoadingSession);
     if (session.success) {
       setUser(session.user);
+      showNotification(`Signed in as ${session.user.email}`);
       router.replace('/classrooms');
     }
     log('Hello', 'World');

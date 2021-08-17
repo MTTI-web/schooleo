@@ -15,12 +15,6 @@ const AppProvider = ({ children }) => {
   }, [user]);
 
   useEffect(() => {
-    if (user) {
-      showNotification(`Signed in as ${user.email}`);
-    }
-  }, [user]);
-
-  useEffect(() => {
     const timeout = setTimeout(
       () => {
         if (!notification) return;

@@ -33,6 +33,7 @@ function TeacherSignUpForm({ setUserType }) {
       setLoading(false);
       log('User:', userData.user);
       setUser(userData.user);
+      showNotification(`Signed in as ${userData.user.email}`);
       router.replace('/classrooms');
     }
   };

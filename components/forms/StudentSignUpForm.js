@@ -11,7 +11,7 @@ import fetchAPI from '../../utils/fetchAPI';
 
 function StudentSignUpForm({ setUserType }) {
   const [country, setCountry] = useState(null);
-  const { setUser, setCursorType, log } = useGlobalContext();
+  const { setUser, setCursorType, log, showNotification } = useGlobalContext();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const handleSubmit = async (e) => {
@@ -33,6 +33,7 @@ function StudentSignUpForm({ setUserType }) {
       setLoading(false);
       log('User:', userData.user);
       setUser(userData.user);
+      showNotification(`Signed in as ${userData.user.email}`);
       router.replace('/classrooms');
     }
   };

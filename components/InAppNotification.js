@@ -3,7 +3,7 @@ import styles from '../styles/InAppNotification.module.css';
 import { useGlobalContext } from './context';
 
 function InAppNotification() {
-  const { notification, showNotification } = useGlobalContext();
+  const { notification, showNotification, log } = useGlobalContext();
   const [currentNotif, setCurrentNotif] = useState(null);
 
   useEffect(() => {
@@ -11,6 +11,10 @@ function InAppNotification() {
       setCurrentNotif(notification.content);
     }
   }, [notification]);
+
+  useEffect(() => {
+    log(currentNotif);
+  }, [currentNotif]);
   return (
     <div
       className={styles['in-app-notification']}
@@ -20,9 +24,7 @@ function InAppNotification() {
         pointerEvents: notification ? 'all' : 'none',
       }}
     >
-      <div className={styles['notification-content']}>
-        {currentNotif ? currentNotif : null}
-      </div>
+      <div className={styles['notification-content']}>{currentNotif}</div>
       <div
         className={styles['close-notification-button']}
         onClick={() => showNotification(null)}
