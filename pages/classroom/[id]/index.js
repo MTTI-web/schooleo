@@ -25,7 +25,7 @@ function Class() {
   useEffect(async () => {
     if (user) {
       const classData = await fetchAPI({
-        url: '/class/get_classroom_details',
+        url: '/class/get_details',
         method: 'post',
         body: {
           classroomID,

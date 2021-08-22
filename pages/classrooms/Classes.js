@@ -17,37 +17,59 @@ function Classes({ loading, setLoading }) {
     if (user) {
       log('User classrooms:', user.classrooms);
       if (user.classrooms.length) {
-        const classroomPromisesFromAPI = await user.classrooms.map(
-          async (classroom) => {
-            log('Getting details for the classroom:', classroom);
-            const classroomFromAPI = await fetchAPI({
-              url: '/class/get_classroom_details',
-              method: 'post',
-              body: {
-                classroomID: classroom,
-              },
-            });
-            log('Classroom from API:', classroomFromAPI);
-            if (classroomFromAPI && classroomFromAPI.success) {
-              log('Successfully fetched classroom.');
-              return classroomFromAPI.classroom;
-            } else if (classroomFromAPI && !classroomFromAPI.classroom) {
-              if (user.classrooms.length) {
-                setUser({
-                  ...user,
-                  classrooms: user.classrooms.filter((currentClassroom) => {
-                    log(currentClassroom, classroom);
-                    return currentClassroom != classroom;
-                  }),
-                });
-              }
-            }
-          }
-        );
-        const classroomsFromAPI = await Promise.all(classroomPromisesFromAPI);
+        // const classroomPromisesFromAPI = await user.classrooms.map(
+        //   async (classroom) => {
+        //     log('Getting details for the classroom:', classroom);
+        //     const classroomFromAPI = await fetchAPI({
+        // url: '/class/get_classroom_details',
+        // method: 'post',
+        // body: {
+        //   classroomID: classroom,
+        // },
+        //     });
+        //     log('Classroom from API:', classroomFromAPI);
+        //     if (classroomFromAPI && classroomFromAPI.success) {
+        //       log('Successfully fetched classroom.');
+        //       return classroomFromAPI.classroom;
+        //     } else if (classroomFromAPI && !classroomFromAPI.classroom) {
+        //       if (user.classrooms.length) {
+        //         setUser({
+        //           ...user,
+        //           classrooms: user.classrooms.filter((currentClassroom) => {
+        //             log(currentClassroom, classroom);
+        //             return currentClassroom != classroom;
+        //           }),
+        //         });
+        //       }
+        //     }
+        //   }
+        // );
+        // const classroomsFromAPI = await Promise.all(classroomPromisesFromAPI);
+        let apiData = null;
+        if (user.userType === 'teacher') {
+          apiData = await fetchAPI({
+            url: '/class/get_classroom_details',
+            method: 'post',
+            body: {
+              classroomIDs: user.classrooms,
+              userID: user._id,
+              userType: user.userType,
+            },
+          });
+        } else if (user.userType === 'student') {
+          apiData = await fetchAPI({
+            url: '/class/get_user_classrooms',
+            method: 'post',
+            body: {
+              classroomIDs: user.classrooms,
+              userID: user._id,
+              userType: user.userType,
+            },
+          });
+        }
         setLoading(false);
-        log('Classrooms from API:', classroomsFromAPI);
-        setClassrooms(classroomsFromAPI);
+        log('Classrooms from API:', apiData);
+        setClassrooms(apiData.classrooms);
         return;
       }
     }
@@ -66,7 +88,8 @@ function Classes({ loading, setLoading }) {
       {loading && <Loader />}
       {user &&
       !loading &&
-      user.classrooms.filter((classroom) => classroom).length ? (
+      classrooms &&
+      classrooms.filter((classroom) => classroom).length ? (
         <div className={styles.classList}>
           {classrooms
             ? classrooms.map((classItem, index) => {
@@ -83,7 +106,8 @@ function Classes({ loading, setLoading }) {
       ) : (
         user &&
         !loading &&
-        !user.classrooms.filter((classroom) => classroom).length && (
+        classrooms &&
+        !classrooms.filter((classroom) => classroom).length && (
           <NoClassesMessage />
         )
       )}

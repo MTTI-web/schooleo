@@ -13,6 +13,13 @@ function ClassroomStream({ classroom }) {
   const [loading, setLoading] = useState(false);
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
+  const sendNotification = (content = '') => {
+    log(`Notification to send: ${content}`);
+    if (!('Notification' in window)) {
+      alert('This browser does not support desktop notifications.');
+    }
+  };
+
   const handleSubmit = async (e) => {
     log(e);
     e.preventDefault();
@@ -36,6 +43,7 @@ function ClassroomStream({ classroom }) {
       message: newMessage,
       classroomID: classroom._id,
     });
+    sendNotification('Hello');
     setLoading(true);
     // setLoading(true);
     // const apiData = await fetchAPI({
