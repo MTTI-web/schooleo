@@ -1,0 +1,148 @@
+.header {
+  height: 70px;
+  border-bottom: 1.5px solid #bfbfbf;
+  background-color: #121212;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 11;
+  /* box-shadow: 0 0 10px 0.1px #b3f5ff; */
+}
+
+.open-sidebar-button {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #bfbfbf;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.open-sidebar-button svg {
+  height: 35px;
+  width: 35px;
+}
+
+.app-name {
+  font-size: 160%;
+  font-weight: 400;
+  color: #bfbfbf;
+  position: absolute;
+  transition: left 0.2s ease-in-out;
+}
+
+.nav {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  opacity: 100%;
+  pointer-events: all;
+  transition: opacity 0.2s;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-link {
+  color: #bfbfbf;
+  margin-left: 20px;
+  font-size: 110%;
+  /* background-color: #292929; */
+  padding: 2px 10px;
+  border-radius: 5px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  position: relative;
+  /* box-shadow: 0 2.5px #575757; */
+  border: 1.5px solid #bfbfbf;
+  height: 40px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.nav-link:active {
+  transform: scale(0.97);
+}
+
+.open-nav-button {
+  position: fixed;
+  top: 35px;
+  transform: translateY(-50%);
+  right: 20px;
+  font-size: 160%;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.buttons-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.open-nav-svg {
+  color: #0da3bf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+
+.open-nav-svg path {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 670px) {
+  .nav {
+    top: 100%;
+    height: calc(100vh - 70px);
+    width: 100vw;
+    background-color: #212121;
+    z-index: -1;
+    flex-direction: column;
+    right: 0;
+    padding-top: 20px;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .nav-links {
+    flex-direction: column;
+    width: 80%;
+  }
+  .nav-link {
+    background-color: none;
+    height: 40px;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+  .open-nav-button {
+    opacity: 100%;
+    pointer-events: all;
+  }
+}
+@media screen and (min-width: 670px) {
+  .nav {
+    pointer-events: all !important;
+    opacity: 100% !important;
+  }
+}

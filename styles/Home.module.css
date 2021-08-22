@@ -1,0 +1,57 @@
+.homepage {
+  background-color: #212121;
+}
+
+.landing-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 70px);
+  position: relative;
+  background-color: transparent;
+  z-index: 1;
+  border-bottom: 2px solid #0da3bf;
+  min-height: 225px;
+}
+
+.landing-section::before {
+  display: flex;
+  position: absolute;
+  content: '';
+  width: 75%;
+  height: 35%;
+  top: 0;
+  left: 0;
+  background-color: #79e2f2;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.landing-section::after {
+  display: flex;
+  position: absolute;
+  content: '';
+  width: 55%;
+  height: 25%;
+  bottom: 0;
+  right: 0;
+  background-color: #79e2f2;
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+}
+
+.app-hero {
+  width: 70%;
+  transform: translateX(-50px);
+}
+
+.app-name {
+  font-size: 350%;
+  font-weight: 700;
+  color: #0da3bf;
+}
+
+.app-description {
+  font-size: 115%;
+  color: #b3f5ff;
+  max-width: 85%;
+  text-align: left;
+}

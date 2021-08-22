@@ -1,0 +1,27 @@
+.loader {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  animation: spin linear infinite 0.7s;
+  z-index: 10;
+  font-size: 120%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader svg {
+  font-size: 160%;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,29 @@
+.about-us-section {
+  display: block;
+  padding-top: 40px;
+  /* min-height: calc(100vh - 70px); */
+  min-height: 412px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.about-us-card {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #121212;
+  padding: 22px 25px;
+  border-radius: 10px;
+  margin-top: 30px;
+  border: 2px solid #0da3bf;
+  margin-bottom: 40px;
+  margin-left: 10%;
+}
+
+.about-us-content {
+  color: #0da3bf;
+  word-spacing: 1px;
+  letter-spacing: 0.7px;
+  text-align: justify;
+}

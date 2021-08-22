@@ -1,0 +1,108 @@
+.functional-column {
+  background-color: #121212;
+  transition: opacity 0.2s;
+  color: #fefefe;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  /* overflow-y: scroll; */
+  max-height: calc(100vh - 120px);
+  border: 1.5px solid #bfbfbf;
+  margin: 15px;
+  /* padding-top: 15px; */
+  border-radius: 5px;
+}
+
+.functional-column::-webkit-scrollbar {
+  width: 10px;
+}
+
+.functional-column::-webkit-scrollbar-track {
+  background-color: #212121;
+}
+
+.functional-column::-webkit-scrollbar-thumb {
+  background-color: #0da3bf;
+  border-radius: 5px;
+}
+
+.functional-column::-webkit-scrollbar-thumb:hover {
+  background-color: #0da3bf;
+}
+
+.assignments-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+}
+
+.create-assignment-button {
+  padding: 5px 6px;
+  font-size: 100%;
+  background-color: transparent;
+  outline: none;
+  color: #fefefe;
+  transition: background-color 0.2s, color 0.2s;
+  font-weight: 300;
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-bottom: 1.5px solid #bfbfbf;
+}
+
+.create-assignment-button:hover {
+  background-color: #282828;
+  color: #0da3bf;
+}
+
+.assignments-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  border-top: 1.5px solid #bfbfbf;
+}
+
+.no-assignments-message {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1.5px solid #bfbfbf;
+  width: 100%;
+}
+
+.assignment {
+  padding: 10px;
+  padding-left: 20px;
+  border-bottom: 1.5px solid #bfbfbf;
+  color: #fefefe;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.assignment:hover {
+  background-color: #282828;
+  color: #0da3bf;
+}
+
+@media screen and (max-width: 730px) {
+  .functional-column {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+}

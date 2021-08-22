@@ -1,0 +1,106 @@
+.settings-section {
+  background-color: #212121;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 50px;
+}
+
+.settings-section-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: #282828;
+  border-bottom: 1.5px solid #bfbfbf;
+  font-size: 130%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #121212;
+  color: #0db8d9;
+  margin-bottom: 20px;
+}
+
+.setting {
+  background-color: #121212;
+  width: 70%;
+  border: 1.5px solid #bfbfbf;
+  border-radius: 10px;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.setting:hover > .setting-heading {
+  color: #0db8d9;
+}
+
+.setting.big {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.setting.small {
+  height: 70px;
+  padding: 10px 20px;
+  padding-right: 10px;
+  display: grid;
+  grid-template-columns: auto 40%;
+}
+
+.setting-heading {
+  color: #fefefe;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 110%;
+  transition: color 0.1s;
+}
+
+.setting.small .setting-heading {
+  justify-content: flex-start;
+}
+
+.setting-options {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.setting.big .setting-options {
+  margin-top: 20px;
+  grid-gap: 20px;
+  min-height: 150px;
+}
+
+.setting.small .setting-options {
+  grid-gap: 10px;
+}
+
+.setting-option {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #121212;
+  border: 1.5px solid #bfbfbf;
+  border-radius: 7px;
+  font-weight: 300;
+  transition: transform 0.2s;
+}
+
+.setting.small .setting-option {
+  font-size: 100%;
+}
+
+.setting.big .setting-option {
+  font-size: 140%;
+}
+
+.setting-option:hover {
+  transform: scale(1.03);
+}

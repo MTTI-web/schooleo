@@ -1,0 +1,27 @@
+.dashboard {
+  background-color: #212121;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 130px;
+  padding-bottom: 40px;
+}
+
+.section-heading {
+  background-color: #121212;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 7px;
+  font-size: 150%;
+  position: absolute;
+  top: 70px;
+  border-bottom: 1.5px solid #bfbfbf;
+  right: 0;
+  left: 0;
+  color: #0da3bf;
+}

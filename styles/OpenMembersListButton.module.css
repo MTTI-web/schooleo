@@ -1,0 +1,26 @@
+.show-members-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  color: #bfbfbf;
+  border: 1.5px solid #bfbfbf;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1.5px;
+  transition: box-shadow 0.1s;
+  font-size: 80%;
+  box-shadow: 0 0 5px 3px transparent;
+  transition: font-size 0.2s, box-shadow 0.2s;
+  right: 60px;
+  font-size: 120%;
+  padding-top: 3px;
+}
+
+.show-members-button:hover {
+  box-shadow: 0 0 5px 0.5px #bfbfbf;
+}

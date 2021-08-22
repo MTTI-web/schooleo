@@ -1,0 +1,22 @@
+.sign-out-button {
+  background-color: #121212;
+  color: #fefefe;
+  right: 0;
+  border-radius: 5px;
+  padding: 2px;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1.5px solid #bfbfbf;
+  position: absolute;
+  margin-right: 5px;
+  transition: box-shadow 0.1s, background-color 0.1s, color 0.1s;
+}
+
+.sign-out-button:hover {
+  box-shadow: 0 0 5px 0.2px #0da3bf;
+  color: #0da3bf;
+  background-color: #282828;
+}
