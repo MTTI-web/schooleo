@@ -33,25 +33,41 @@ function UserInfo() {
       </div>
       {user && (
         <div className={styles['user-info-content']}>
-          <div className={styles['user-info-detail']}>
+          <div
+            className={styles['user-info-detail']}
+            style={{ animationDelay: '0.1s' }}
+            onAnimationEnd={(e) => (e.currentTarget.style.opacity = '100%')}
+          >
             <div className={styles['user-info-detail-title']}>Account Type</div>
             <div className={styles['user-info-detail-content']}>
               {user.userType}
             </div>
           </div>
-          <div className={styles['user-info-detail']}>
+          <div
+            className={styles['user-info-detail']}
+            style={{ animationDelay: '0.2s' }}
+            onAnimationEnd={(e) => (e.currentTarget.style.opacity = '100%')}
+          >
             <div className={styles['user-info-detail-title']}>Username</div>
             <div className={styles['user-info-detail-content']}>
               {user.username}
             </div>
           </div>
-          <div className={styles['user-info-detail']}>
+          <div
+            className={styles['user-info-detail']}
+            style={{ animationDelay: '0.3s' }}
+            onAnimationEnd={(e) => (e.currentTarget.style.opacity = '100%')}
+          >
             <div className={styles['user-info-detail-title']}>Email</div>
             <div className={styles['user-info-detail-content']}>
               {user.email}
             </div>
           </div>
-          <div className={styles['user-info-detail']}>
+          <div
+            className={styles['user-info-detail']}
+            style={{ animationDelay: '0.4s' }}
+            onAnimationEnd={(e) => (e.currentTarget.style.opacity = '100%')}
+          >
             <div className={styles['user-info-detail-title']}>Nationality</div>
             <div className={styles['user-info-detail-content']}>
               {user.nationality}

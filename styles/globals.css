@@ -58,10 +58,12 @@ a {
   0% {
     transform: translateY(5px);
     opacity: 0;
+    pointer-events: none;
   }
   100% {
     transform: translateY(0);
     opacity: 100%;
+    pointer-events: all;
   }
 }
 

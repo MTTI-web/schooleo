@@ -21,6 +21,20 @@
   background-color: #121212;
   color: #0db8d9;
   margin-bottom: 20px;
+  animation: title-appear 0.2s linear;
+}
+
+@keyframes title-appear {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+    pointer-events: all;
+  }
 }
 
 .setting {
@@ -30,6 +44,7 @@
   border-radius: 10px;
   color: #fff;
   margin-top: 20px;
+  animation: appear 0.2s linear;
 }
 
 .setting:hover > .setting-heading {
