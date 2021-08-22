@@ -5,21 +5,18 @@
   flex-direction: column;
   margin-top: 40px;
 }
-
 .no-classes-message {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-
 .no-classes-message h3 {
   font-weight: 400;
   color: #0db8d9;
   font-size: 140%;
   margin-bottom: 17px;
 }
-
 .no-classes-message button {
   padding: 7px 10px;
   font-size: 110%;
@@ -31,19 +28,16 @@
   transition: background-color 0.2s;
   font-weight: 400;
 }
-
 .no-classes-message button:hover {
   background-color: #0db8d9;
   color: #212121;
 }
-
 .classList {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   width: 80%;
   grid-gap: 15px;
 }
-
 .class {
   border: 1.5px solid #bfbfbf;
   padding: 10px;
@@ -56,32 +50,42 @@
   transition: box-shadow 0.1s;
   background-color: #121212;
   position: relative;
+  animation: appear 0.2s linear;
 }
 
 .class:hover {
   box-shadow: 0 0 6px 1px #bfbfbf;
 }
 
+@keyframes appear {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+    pointer-events: all;
+  }
+}
+
 .class-name {
   font-size: 130%;
 }
-
 .class-details {
   width: 90%;
   margin-top: 10px;
 }
-
 .detail-title {
   color: #aaa;
   margin-right: 6px;
   display: inline-flex;
 }
-
 .class-subject {
   color: #f0f0f0;
   font-size: 90%;
 }
-
 .more-classroom-options-button {
   position: absolute;
   top: 5px;
@@ -97,11 +101,9 @@
   z-index: 5;
   transition: transform 0.1s;
 }
-
 .more-classroom-options-button:hover {
   transform: scale(1.2);
 }
-
 .more-classroom-options-container {
   position: absolute;
   top: 0;
@@ -117,7 +119,6 @@
   align-items: center;
   transition: opacity 0.2s;
 }
-
 .more-classroom-option {
   background-color: #424242;
   padding: 3px 10px;
@@ -125,18 +126,15 @@
   border: 1.5px solid #0db8d9;
   transition: transform 0.1s, box-shadow 0.1s;
 }
-
 .more-classroom-option:hover {
   transform: scale(1.05);
   box-shadow: 0 0 5px 2px #0db8d9;
 }
-
 @media screen and (max-width: 950px) {
   .classList {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media screen and (max-width: 570px) {
   .classList {
     grid-template-columns: 1fr;

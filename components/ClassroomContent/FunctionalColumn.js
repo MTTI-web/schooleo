@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useGlobalContext } from '../context';
 import fetchAPI from '../../utils/fetchAPI';
-
 function FunctionalColumn({ isColumnOpen, classroomDetails }) {
   const [width, setWidth] = useState(1024);
   const router = useRouter();
@@ -79,8 +78,10 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
                   }`
                 );
               }}
+              style={{ animationDelay: `${(index + 1.5) / 10}s` }}
               onMouseEnter={() => setCursorType('pointer')}
               onMouseLeave={() => setCursorType('default')}
+              onAnimationEnd={(e) => (e.currentTarget.style.opacity = '100%')}
             >
               {name}
             </div>
@@ -103,6 +104,12 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
                   : { cursor: 'none' }
                 : { cursor: 'auto' }
             }
+            style={{
+              animationDelay: `${
+                (classroomDetails.assignments.length * 1.5) / 10
+              }s`,
+            }}
+            onAnimationEnd={(e) => (e.currentTarget.style.opacity = '100%')}
           >
             Create Assignment
           </button>
@@ -111,5 +118,4 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
     </div>
   );
 }
-
 export default FunctionalColumn;

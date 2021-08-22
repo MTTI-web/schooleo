@@ -6,7 +6,6 @@
   position: relative;
   /* overflow-x: hidden; */
 }
-
 .classroom-header {
   background-color: #121212;
   border-bottom: 1.5px solid #bfbfbf;
@@ -19,6 +18,20 @@
   padding: 7px;
   position: relative;
   z-index: 6;
+  animation: appear 0.2s linear;
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+    pointer-events: all;
+  }
 }
 
 .main-header-items {
@@ -26,7 +39,6 @@
   text-align: center;
   font-size: 150%;
 }
-
 .back-button:hover,
 .show-details-button:hover {
   font-size: 80%;
