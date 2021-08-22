@@ -48,7 +48,7 @@ function Classes({ loading, setLoading }) {
         let apiData = null;
         if (user.userType === 'teacher') {
           apiData = await fetchAPI({
-            url: '/class/get_classroom_details',
+            url: '/class/get_user_classrooms',
             method: 'post',
             body: {
               classroomIDs: user.classrooms,
