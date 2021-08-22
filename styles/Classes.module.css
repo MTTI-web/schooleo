@@ -56,10 +56,24 @@
   transition: box-shadow 0.1s;
   background-color: #121212;
   position: relative;
+  animation: appear 0.2s linear;
 }
 
 .class:hover {
   box-shadow: 0 0 6px 1px #bfbfbf;
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+    pointer-events: all;
+  }
 }
 
 .class-name {

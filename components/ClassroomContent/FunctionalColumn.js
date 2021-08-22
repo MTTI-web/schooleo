@@ -79,8 +79,10 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
                   }`
                 );
               }}
+              style={{ animationDelay: `${(index + 1.5) / 10}s` }}
               onMouseEnter={() => setCursorType('pointer')}
               onMouseLeave={() => setCursorType('default')}
+              onAnimationEnd={(e) => (e.currentTarget.style.opacity = '100%')}
             >
               {name}
             </div>
@@ -103,6 +105,12 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
                   : { cursor: 'none' }
                 : { cursor: 'auto' }
             }
+            style={{
+              animationDelay: `${
+                (classroomDetails.assignments.length * 1.5) / 10
+              }s`,
+            }}
+            onAnimationEnd={(e) => (e.currentTarget.style.opacity = '100%')}
           >
             Create Assignment
           </button>

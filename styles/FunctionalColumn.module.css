@@ -12,6 +12,20 @@
   margin: 15px;
   /* padding-top: 15px; */
   border-radius: 5px;
+  animation: appear 0.2s linear;
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(15px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+    pointer-events: all;
+  }
 }
 
 .functional-column::-webkit-scrollbar {
@@ -48,9 +62,11 @@
   transition: background-color 0.2s, color 0.2s;
   font-weight: 300;
   width: 100%;
+  opacity: 0;
   height: 40px;
   border: none;
   border-bottom: 1.5px solid #bfbfbf;
+  animation: appear-assignment 0.2s linear;
 }
 
 .create-assignment-button:hover {
@@ -87,6 +103,19 @@
   align-items: center;
   justify-content: flex-start;
   transition: background-color 0.2s, color 0.2s;
+  animation: appear-assignment 0.2s linear;
+  opacity: 0;
+}
+
+@keyframes appear-assignment {
+  0% {
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    opacity: 100%;
+    pointer-events: all;
+  }
 }
 
 .assignment:hover {

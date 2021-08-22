@@ -19,6 +19,20 @@
   padding: 7px;
   position: relative;
   z-index: 6;
+  animation: appear 0.2s linear;
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+    pointer-events: all;
+  }
 }
 
 .main-header-items {

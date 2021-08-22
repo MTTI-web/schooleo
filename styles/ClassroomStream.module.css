@@ -11,6 +11,20 @@
   border-radius: 5px;
   background-color: #121212;
   border: 1.5px solid #bfbfbf;
+  animation: appear 0.2s linear;
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(15px);
+    opacity: 0;
+    pointer-events: none;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+    pointer-events: all;
+  }
 }
 
 .message-entry-form {
