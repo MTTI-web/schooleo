@@ -23,22 +23,13 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
     const newAssignment = {
       creationTime: assignmentCreationTime,
       name: 'Untitled Assignment',
+      owner: user._id,
+      classroom: classroomID,
       questions: [],
-      students: [
-        ...classroomDetails.students.map((student) => {
-          log(student);
-          return {
-            id: student.id,
-            username: student.name,
-            score: null,
-          };
-        }),
-      ],
     };
     const apiData = await fetchAPI({
       url: '/class/assignment/create',
       body: {
-        classroomID,
         assignment: newAssignment,
       },
       method: 'post',
@@ -66,14 +57,14 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
       <div className={styles['assignments-title']}>Assignments</div>
       <div className={styles['assignments-container']}>
         {classroomDetails.assignments.length > 0 ? (
-          classroomDetails.assignments.map(({ name, creationTime }, index) => (
+          classroomDetails.assignments.map(({ name, _id }, index) => (
             <div
               key={index}
               className={styles.assignment}
               onClick={() => {
                 setCursorType('default');
                 router.replace(
-                  `/classroom/${classroomID}/assignment/${creationTime}/${
+                  `/classroom/${classroomID}/assignment/${_id}/${
                     user.userType === 'teacher' ? 'edit' : 'attempt'
                   }`
                 );

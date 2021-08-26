@@ -15,32 +15,27 @@ function CreateAssignment() {
   const router = useRouter();
   const [assignment, setAssignment] = useState({});
   const [loading, setLoading] = useState(true);
-  const [classroom, setClassroom] = useState(null);
   const [showSavedAlert, setShowSavedAlert] = useState(true);
   const [isSaveLoading, setIsSaveLoading] = useState(false);
   useEffect(async () => {
     if (!user) {
       router.replace('/');
       return;
+    } else if (user && user.userType === 'student') {
+      router.replace('/');
+      return;
     }
     setLoading(true);
     const classData = await fetchAPI({
-      url: '/class/get_classroom_details',
+      url: '/class/assignment/get_details',
       method: 'post',
       body: {
-        classroomID: router.query.id,
+        assignmentID: router.query.assignmentID,
       },
     });
     log('Class data:', classData);
     if (classData.success) {
-      setClassroom(classData.classroom);
-      log('New classroom details set:', classData.classroom);
-      setAssignment(
-        classData.classroom.assignments.find(
-          ({ creationTime }) =>
-            creationTime === parseInt(router.query.assignmentID)
-        )
-      );
+      setAssignment(classData.assignment);
     } else {
       log('Could not find details for the given class.');
     }
@@ -92,8 +87,7 @@ function CreateAssignment() {
               method: 'post',
               body: {
                 assignment,
-                classroomID: classroom._id,
-                assignmentID: assignment.creationTime,
+                assignmentID: assignment._id,
               },
             });
             setIsSaveLoading(false);

@@ -19,28 +19,21 @@ function CreateAssignment() {
     if (!user) {
       router.replace('/');
       return;
-    } else if (user && user.userType === 'teacher') {
+    } else if (user && user.userType === 'student') {
       router.replace('/');
       return;
     }
     setLoading(true);
     const classData = await fetchAPI({
-      url: '/class/get_classroom_details',
+      url: '/class/assignment/get_details',
       method: 'post',
       body: {
-        classroomID: router.query.id,
+        assignmentID: router.query.assignmentID,
       },
     });
     log('Class data:', classData);
     if (classData.success) {
-      setClassroom(classData.classroom);
-      log('New classroom details set:', classData.classroom);
-      setAssignment(
-        classData.classroom.assignments.find(
-          ({ creationTime }) =>
-            creationTime === parseInt(router.query.assignmentID)
-        )
-      );
+      setAssignment(classData.assignment);
     } else {
       log('Could not find details for the given class.');
     }
