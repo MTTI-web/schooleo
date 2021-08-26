@@ -10,7 +10,7 @@
   width: calc(100% - 15px);
   border-radius: 5px;
   background-color: #121212;
-  border: 1.5px solid #bfbfbf;
+  border: 1.5px solid #4b4b4b;
   animation: appear 0.2s linear;
 }
 
@@ -47,11 +47,11 @@
   border-bottom-left-radius: 5px;
   background-color: transparent;
   outline: none;
-  border: 1.5px solid #bfbfbf;
+  border: 1.5px solid #4b4b4b;
   color: #fff;
   border-right-width: 0;
   width: 100%;
-  transition: background-color 0.1s;
+  transition: background-color 0.15s, border 0.15s;
 }
 .message-entry-form input::placeholder {
   color: #dedede;
@@ -59,6 +59,7 @@
 .message-entry-form input:focus {
   background-color: #282828;
 }
+
 .message-entry-form button {
   display: flex;
   height: 100%;
@@ -67,7 +68,7 @@
   align-items: center;
   background-color: transparent;
   outline: none;
-  border: 1.5px solid #bfbfbf;
+  border: 1.5px solid #4b4b4b;
   color: #bfbfbf;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
