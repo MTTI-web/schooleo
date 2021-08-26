@@ -3,21 +3,21 @@ import styles from '../styles/ClassroomBackButton.module.css';
 import { useGlobalContext } from './context';
 
 function ClassroomBackButton() {
-    const router = useRouter();
-    const { setCursorType } = useGlobalContext();
-    return (
-        <div
-            className={styles['back-button']}
-            onClick={() => {
-                router.replace('/classrooms');
-                setCursorType('default');
-            }}
-            onMouseEnter={() => setCursorType('pointer')}
-            onMouseLeave={() => setCursorType('default')}
-        >
-            ←
-        </div>
-    );
+  const router = useRouter();
+  const { setCursorType } = useGlobalContext();
+  return (
+    <div
+      className={styles['back-button']}
+      onClick={() => {
+        router.replace('/classrooms');
+        setCursorType('default');
+      }}
+      onMouseEnter={() => setCursorType('pointer')}
+      onMouseLeave={() => setCursorType('default')}
+    >
+      ←
+    </div>
+  );
 }
 
 export default ClassroomBackButton;

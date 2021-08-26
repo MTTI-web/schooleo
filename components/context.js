@@ -35,7 +35,7 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  const showNotification = (content, timeout = 4000) => {
+  const showNotification = (content, timeout = 5000) => {
     setNotification(content ? { content, timeout } : null);
   };
 

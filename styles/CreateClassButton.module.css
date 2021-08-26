@@ -12,8 +12,8 @@
   outline: none;
   border: 2px solid #0da3bf;
   color: #0da3bf;
-  font-size: 170%;
-  padding-bottom: 1.5px;
+  font-size: 2rem;
+  padding-bottom: 6px;
   transition: background-color 0.2s, color, 0.2s;
   animation: appear 0.2s linear;
 }
