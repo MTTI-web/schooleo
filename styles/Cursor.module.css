@@ -12,8 +12,8 @@
   content: '';
   height: 5px;
   width: 5px;
-  background-color: #0da3bf;
-  box-shadow: 0 0 5px 3px #0da3bf;
+  background-color: #00ffff;
+  box-shadow: 0 0 5px 3px #00ffff;
   border-radius: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -27,7 +27,7 @@
   content: '';
   display: block;
   transform: translate(-50%, -50%);
-  border: 1px solid #0da3bf;
+  border: 1px solid #00ffff;
   border-radius: 50%;
   transition: width 0.1s, height 0.1s, left 0.01s, top 0.01s;
   mix-blend-mode: difference;

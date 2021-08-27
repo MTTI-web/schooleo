@@ -7,7 +7,7 @@
 
 .section-heading-text {
   font-size: 200%;
-  color: #0da3bf;
+  color: #00ffff;
   font-weight: 300;
 }
 
@@ -17,5 +17,5 @@
   height: 2px;
   width: 100px;
   content: '';
-  background-color: #0da3bf;
+  background-color: #00ffff;
 }

@@ -10,7 +10,7 @@
   position: relative;
   background-color: transparent;
   z-index: 1;
-  border-bottom: 2px solid #0da3bf;
+  border-bottom: 2px solid #00ffff;
   min-height: 225px;
 }
 
@@ -46,7 +46,7 @@
 .app-name {
   font-size: 350%;
   font-weight: 700;
-  color: #0da3bf;
+  color: #00ffff;
 }
 
 .app-description {

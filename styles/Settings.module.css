@@ -19,7 +19,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #121212;
-  color: #0db8d9;
+  color: #00ffff;
   margin-bottom: 20px;
   animation: title-appear 0.2s linear;
 }
@@ -48,7 +48,7 @@
 }
 
 .setting:hover > .setting-heading {
-  color: #0db8d9;
+  color: #00ffff;
 }
 
 .setting.big {

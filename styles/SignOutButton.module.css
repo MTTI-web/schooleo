@@ -16,7 +16,7 @@
 }
 
 .sign-out-button:hover {
-  box-shadow: 0 0 5px 0.2px #0da3bf;
-  color: #0da3bf;
+  box-shadow: 0 0 5px 0.2px #00ffff;
+  color: #00ffff;
   background-color: #282828;
 }

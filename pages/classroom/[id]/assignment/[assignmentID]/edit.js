@@ -98,7 +98,7 @@ function CreateAssignment() {
           <div className={styles['assignment-name-container']}>
             <div
               className={styles['back-to-classroom-button']}
-              onClick={() => router.replace(`/classroom/${classroom._id}`)}
+              onClick={() => router.replace(`/classroom/${router.query.id}`)}
             >
               ←
             </div>

@@ -12,7 +12,7 @@
 
 .section-heading {
   background-color: #121212;
-  color: #0da3bf;
+  color: #00ffff;
   text-align: center;
   width: 100%;
   display: flex;
@@ -72,7 +72,7 @@
   grid-gap: 10px;
   width: 100%;
   animation: appear 0.2s linear;
-  color: #0da3bf;
+  color: #00ffff;
   opacity: 0;
 }
 
@@ -96,5 +96,5 @@
 }
 
 .user-info-detail-content {
-  color: #0da3bf;
+  color: #00ffff;
 }

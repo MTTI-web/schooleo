@@ -30,7 +30,7 @@ function ClassroomDetails({ showClassroomDetails, classroomDetails }) {
               top: '-100%',
               opacity: '0',
               pointerEvents: 'none',
-              color: '#0da3bf',
+              color: '#00ffff',
             }
       }
     >

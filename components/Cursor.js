@@ -25,7 +25,7 @@ function Cursor() {
     if (cursorType === 'default') {
       setCursorStyles({
         backgroundColor: '#0dc7e6',
-        boxShadow: '0 0 5px 3px #0da3bf50',
+        boxShadow: '0 0 5px 3px #00ffff50',
         opacity: '100%',
       });
     }

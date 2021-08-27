@@ -4,17 +4,17 @@
   border-radius: 5px;
   border: none;
   outline: none;
-  background-color: #0da3bf;
+  background-color: #00ffff;
   transition: background-color 0.2s, color 0.2s;
   font-size: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #0da3bf;
+  border: 2px solid #00ffff;
   color: #282828;
 }
 
 .form-submit-button:hover {
   background-color: transparent;
-  color: #0da3bf;
+  color: #00ffff;
 }

@@ -19,23 +19,36 @@
   justify-items: center;
   color: #bfbfbf;
   border-bottom: 2px solid #bfbfbf;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .settings-button,
 .close-button {
-  height: 40px;
+  height: 35px;
   display: flex;
-  width: 40px;
+  width: 35px;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.15s;
+  border-radius: 5px;
+}
+
+.settings-button:hover,
+.close-button:hover {
+  background-color: #bfbfbf40;
+}
+
+.settings-button:hover > svg,
+.close-button:hover > svg {
+  color: #00ffff;
 }
 
 .settings-button svg,
 .close-button svg {
-  color: '#0da3bf';
-  width: 30px;
-  height: 30px;
+  color: #bfbfbf;
+  width: 28px;
+  height: 28px;
+  transition: color 0.15s;
 }
 
 .app-name {

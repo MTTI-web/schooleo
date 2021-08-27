@@ -19,7 +19,7 @@ function CreateAssignment() {
     if (!user) {
       router.replace('/');
       return;
-    } else if (user && user.userType === 'student') {
+    } else if (user && user.userType === 'teacher') {
       router.replace('/');
       return;
     }
@@ -83,6 +83,12 @@ function CreateAssignment() {
           }}
         >
           <div className={styles['assignment-name-container']}>
+            <div
+              className={styles['back-to-classroom-button']}
+              onClick={() => router.replace(`/classroom/${router.query.id}`)}
+            >
+              ←
+            </div>
             <div className={styles['attempt-assignment-name']}>
               {assignment.name}
             </div>

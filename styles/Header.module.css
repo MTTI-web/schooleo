@@ -36,7 +36,7 @@
 .app-name {
   font-size: 160%;
   font-weight: 400;
-  color: #bfbfbf;
+  color: #0ff;
   position: absolute;
   transition: left 0.2s ease-in-out;
 }
@@ -71,7 +71,14 @@
   /* box-shadow: 0 2.5px #575757; */
   border: 1.5px solid #bfbfbf;
   height: 40px;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.2s, transform 0.2s, color 0.2s, border-color 0.2s,
+    background-color 0.2s;
+}
+
+.nav-link:hover {
+  color: #00ffff;
+  border-color: #00ffff;
+  background-color: #282828;
 }
 
 .nav-link:active {
@@ -100,7 +107,7 @@
 }
 
 .open-nav-svg {
-  color: #0da3bf;
+  color: #00ffff;
   display: flex;
   justify-content: center;
   align-items: center;

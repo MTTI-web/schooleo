@@ -14,7 +14,12 @@
   min-width: 100px;
 }
 
+.current-user:hover {
+  border-color: #0ff;
+}
+
 .sign-out-button {
+  color: #0ff;
   opacity: 0;
   transition: opacity 0.2s;
   position: absolute;
@@ -24,7 +29,6 @@
   left: 0;
   background-color: #121212;
   border-radius: 7px;
-  color: #bfbfbf;
   display: flex;
   justify-content: center;
   align-items: center;

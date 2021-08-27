@@ -35,11 +35,11 @@
   background-color: #212121;
 }
 .functional-column::-webkit-scrollbar-thumb {
-  background-color: #0da3bf;
+  background-color: #00ffff;
   border-radius: 5px;
 }
 .functional-column::-webkit-scrollbar-thumb:hover {
-  background-color: #0da3bf;
+  background-color: #00ffff;
 }
 .assignments-title {
   display: flex;
@@ -66,7 +66,7 @@
 
 .create-assignment-button:hover {
   background-color: #282828;
-  color: #0da3bf;
+  color: #00ffff;
 }
 .assignments-container {
   display: flex;
@@ -112,7 +112,7 @@
 
 .assignment:hover {
   background-color: #282828;
-  color: #0da3bf;
+  color: #00ffff;
 }
 @media screen and (max-width: 730px) {
   .functional-column {
