@@ -50,7 +50,10 @@ function CreateAssignment() {
     setShowSavedAlert(false);
     const newQuestion = {
       question: '',
-      answer: '',
+      options: [
+        { name: 'Option 1', correct: true, index: 0 },
+        { name: 'Option 2', correct: false, index: 1 },
+      ],
       index: assignment.questions.length,
     };
     log('New question:', newQuestion);

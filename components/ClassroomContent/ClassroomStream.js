@@ -123,21 +123,26 @@ function ClassroomStream({ classroom }) {
         {messages.length ? (
           messages.map(({ author, message, time }, index) => (
             <div className={styles.message} key={index}>
-              <div className={styles['message-header']}>
-                <div className={styles['message-author']}>{author}</div>
-                <div className={styles['message-time']}>
-                  {isDateInPast(time)
-                    ? new Date(time).toLocaleDateString()
-                    : `${
-                        new Date(time).getHours() > 12
-                          ? new Date(time).getHours() - 12
-                          : new Date(time).getHours()
-                      }:${new Date(time).getMinutes()} ${
-                        new Date(time).getHours() > 12 ? 'pm' : 'am'
-                      }`}
-                </div>
+              <div className={styles['message-author-dp']}>
+                {author.split('')[0]}
               </div>
-              <div className={styles['message-text']}>{message}</div>
+              <div className="message-content">
+                <div className={styles['message-header']}>
+                  <div className={styles['message-author']}>{author}</div>
+                  <div className={styles['message-time']}>
+                    {isDateInPast(time)
+                      ? new Date(time).toLocaleDateString()
+                      : `${
+                          new Date(time).getHours() > 12
+                            ? new Date(time).getHours() - 12
+                            : new Date(time).getHours()
+                        }:${new Date(time).getMinutes()} ${
+                          new Date(time).getHours() > 12 ? 'pm' : 'am'
+                        }`}
+                  </div>
+                </div>
+                <div className={styles['message-text']}>{message}</div>
+              </div>
             </div>
           ))
         ) : (

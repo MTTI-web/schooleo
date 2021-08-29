@@ -52,6 +52,7 @@
   width: 100%;
   background-color: #00ffff;
   top: 0;
+  color: #121212;
   right: 0;
   left: 0;
   border-top-right-radius: 10px;
@@ -66,7 +67,8 @@
   width: 80%;
   background-color: transparent;
   height: 90%;
-  color: #fff;
+  color: #121212;
+  font-weight: 700;
   font-size: 120%;
   display: flex;
   justify-content: center;
@@ -102,6 +104,28 @@
   align-items: center;
 }
 
+.question-container {
+  position: relative;
+}
+
+.add-option-button {
+  position: absolute;
+  left: -5px;
+  top: calc(50px);
+  transform: translateY(-50%);
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5px;
+  padding-left: 3px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  color: #fff;
+  background-color: #282828;
+}
+
 .attempt-question-container {
   width: 90%;
   color: #79e2f2;
@@ -116,6 +140,7 @@
 
 .answer-container {
   margin-bottom: 20px;
+  flex-direction: column;
 }
 
 .options-column {
@@ -124,13 +149,13 @@
   max-height: 100%;
   margin: 10px;
   margin-left: 0;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-rows: 2;
 }
 
-.delete-question-button {
+.question-option {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -139,9 +164,12 @@
   transition: background-color 0.2s, color 0.2s;
 }
 
-.delete-question-button:hover {
-  background-color: #00ffff;
-  color: #fff;
+.question-option:hover {
+  background-color: #00ffff30;
+}
+
+.question-option:not(:last-child) {
+  border-bottom: 1.5px solid #00ffff;
 }
 
 .save-button {

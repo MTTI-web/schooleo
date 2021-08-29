@@ -39,6 +39,7 @@
   align-items: center;
   width: 100%;
 }
+
 .message-entry-form input {
   height: 100%;
   padding: 10px;
@@ -111,20 +112,39 @@
   color: #fff;
 }
 .message {
-  width: 100%;
+  width: calc(100% - 50px);
   color: #fefefe;
   padding-top: 5px;
+  font-size: 0.9rem;
   padding-bottom: 5px;
+  position: relative;
+  margin-left: 50px;
 }
+
+.message-author-dp {
+  height: 40px;
+  width: 40px;
+  border: 1.5px solid #00ffff;
+  border-radius: 50%;
+  color: #00ffff;
+  display: flex;
+  left: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
 .message-author {
   font-weight: 400;
-  font-size: 90%;
+  font-size: 0.8rem;
   color: #fefefe;
   display: inline-flex;
   margin-right: 10px;
 }
 .message-time {
-  font-size: 75%;
+  font-size: 0.7rem;
   color: #ccc;
   font-weight: 400;
   display: inline-flex;

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useGlobalContext } from '../components/context';
 import styles from '../styles/Settings.module.css';
 import Head from 'next/head';
@@ -69,6 +69,21 @@ function Settings() {
           userType: user.userType,
           email: user.email,
           newSettings: { isDeveloper: false },
+        },
+        method: 'post',
+      });
+      if (apiData.success) {
+        setUser(apiData.user);
+      }
+      setLoading(false);
+    } else if (user.settings.clickAnimation === undefined) {
+      setLoading(true);
+      const apiData = await fetchAPI({
+        url: '/settings/update',
+        body: {
+          userType: user.userType,
+          email: user.email,
+          newSettings: { clickAnimation: false },
         },
         method: 'post',
       });
@@ -167,6 +182,45 @@ function Settings() {
                   user.settings
                     ? user.settings.isDeveloper
                       ? user.settings.isDeveloper === false
+                      : true
+                    : true
+                }
+              >
+                Off
+              </SettingOption>
+            </div>
+          </div>
+          <div className={classNames(styles.setting, styles.small)}>
+            <div className={styles['setting-heading']}>Click Animation</div>
+            <div className={styles['setting-options']}>
+              <SettingOption
+                onClick={async () => {
+                  if (!user.settings.clickAnimation) {
+                    await saveSettings({ clickAnimation: true });
+                    showNotification('Click animation enabled.');
+                  }
+                }}
+                selected={
+                  user.settings
+                    ? user.settings.clickAnimation
+                      ? user.settings.clickAnimation === true
+                      : false
+                    : false
+                }
+              >
+                On
+              </SettingOption>
+              <SettingOption
+                onClick={async () => {
+                  if (user.settings.clickAnimation) {
+                    await saveSettings({ clickAnimation: false });
+                    showNotification('Click animation disabled.');
+                  }
+                }}
+                selected={
+                  user.settings
+                    ? user.settings.clickAnimation
+                      ? user.settings.clickAnimation === false
                       : true
                     : true
                 }

@@ -7,6 +7,7 @@ import SectionHeading from '../components/SectionHeading';
 import FormLabel from '../components/FormLabel';
 import FormSubmitButton from '../components/FormSubmitButton';
 import fetchAPI from '../utils/fetchAPI';
+import RippleButton from '../components/RippleButton';
 
 function CreateClass() {
   const router = useRouter();
@@ -69,7 +70,9 @@ function CreateClass() {
           <FormLabel type="password" id="password">
             Password
           </FormLabel>
-          <FormSubmitButton>Create Class</FormSubmitButton>
+          <RippleButton style={{ marginTop: '20px' }}>
+            Create Class
+          </RippleButton>
         </form>
       </div>
     </section>

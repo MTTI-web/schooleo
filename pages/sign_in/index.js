@@ -8,9 +8,11 @@ import SectionHeading from '../../components/SectionHeading';
 import styles from '../../styles/SignIn.module.css';
 import fetchAPI from '../../utils/fetchAPI';
 import { useState } from 'react';
+import RippleButton from '../../components/RippleButton';
 
 function SignIn() {
-  const { user, setUser, setCursorType, log, showNotification } = useGlobalContext();
+  const { user, setUser, setCursorType, log, showNotification } =
+    useGlobalContext();
   const router = useRouter();
   const [doesUserExist, setDoesUserExist] = useState(true);
   const [isPasswordCorrect, setIsPasswordCorrect] = useState(true);
@@ -83,9 +85,9 @@ function SignIn() {
               The password entered is incorrect.
             </p>
           ) : null}
-          <FormSubmitButton disabled={loading}>
+          <RippleButton disabled={loading} style={{ marginTop: '20px' }}>
             {loading ? 'Loading...' : 'Sign In'}
-          </FormSubmitButton>
+          </RippleButton>
         </form>
       </div>
     </section>

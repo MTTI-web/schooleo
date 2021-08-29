@@ -3,8 +3,11 @@ import styles from '../styles/ClickAnimation.module.css';
 import { useGlobalContext } from './context';
 
 function ClickAnimation() {
-  const { log } = useGlobalContext();
+  const { log, user } = useGlobalContext();
   const handleClick = (e) => {
+    if (!user) return;
+    if (!user.settings) return;
+    if (!user.settings.clickAnimation) return;
     log(e);
     const animationContainer = document.querySelector('#animation-container');
     log(animationContainer);
@@ -18,18 +21,28 @@ function ClickAnimation() {
     animationContainer.appendChild(newAnimation);
   };
   useEffect(() => {
-    const background = document.querySelector('#background');
-    document.body.addEventListener('click', handleClick);
-    log('Click background:', background);
-    return () => document.body.removeEventListener('click', handleClick);
-  }, []);
+    if (!user) return;
+    if (!user.settings) return;
+    if (!user.settings.clickAnimation) {
+      document.body.removeEventListener('click', handleClick);
+    } else {
+      const background = document.querySelector('#background');
+      document.body.addEventListener('click', handleClick);
+      log('Click background:', background);
+      return () => document.body.removeEventListener('click', handleClick);
+    }
+  }, [user]);
   return (
-    <div className={styles['background']} id="background">
-      <div
-        className={styles['animation-container']}
-        id="animation-container"
-      ></div>
-    </div>
+    user &&
+    user.settings &&
+    user.settings.clickAnimation && (
+      <div className={styles['background']} id="background">
+        <div
+          className={styles['animation-container']}
+          id="animation-container"
+        ></div>
+      </div>
+    )
   );
 }
 

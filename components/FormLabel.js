@@ -8,6 +8,8 @@ function FormLabel({
   id,
   initialValue = '',
   style = {},
+  inputStyle = {},
+  labelStyle = {},
   onInput = null,
 }) {
   const [active, setActive] = useState(false);
@@ -30,8 +32,9 @@ function FormLabel({
                 top: '0px',
                 left: '7px',
                 color: '#79e2f2',
+                ...labelStyle,
               }
-            : null
+            : labelStyle
         }
       >
         {children}
@@ -53,8 +56,9 @@ function FormLabel({
           active || currentInput
             ? {
                 borderColor: '#79e2f2',
+                ...inputStyle,
               }
-            : null
+            : inputStyle
         }
       />
     </label>
