@@ -31,7 +31,7 @@ function Settings() {
 
   useEffect(async () => {
     if (!user) {
-      router.replace('/');
+      router.replace('/classrooms');
       return;
     }
     if (!user.settings) {
@@ -99,150 +99,152 @@ function Settings() {
     }
   }, [user]);
   return (
-    <section
-      className={styles['settings-section']}
-      style={
-        user && user.settings
-          ? user.settings.cursorType === 'default'
-            ? { cursor: 'auto' }
-            : { cursor: 'none' }
-          : { cursor: 'auto' }
-      }
-    >
-      <Head>
-        <title>Settings • Schooleo</title>
-      </Head>
-      <h1 className={styles['settings-section-heading']}>Settings</h1>
-      <div
-        className={styles['loading-screen']}
+    user && (
+      <section
+        className={styles['settings-section']}
         style={
-          loading
-            ? { opacity: '100%', pointerEvents: 'all' }
-            : { opacity: '0', pointerEvents: 'none' }
+          user && user.settings
+            ? user.settings.cursorType === 'default'
+              ? { cursor: 'auto' }
+              : { cursor: 'none' }
+            : { cursor: 'auto' }
         }
       >
-        <Loader />
-      </div>
-      <>
-        <div className={classNames(styles.setting, styles.small)}>
-          <div className={styles['setting-heading']}>Change Cursor</div>
-          <div className={styles['setting-options']}>
-            <SettingOption
-              selected={
-                user.settings
-                  ? user.settings.cursorType
-                    ? user.settings.cursorType === 'default'
-                    : true
-                  : true
-              }
-              onClick={async () => {
-                if (user.settings.cursorType !== 'default') {
-                  await saveSettings({ cursorType: 'default' });
-                  showNotification('Default cursor enabled.');
-                }
-              }}
-            >
-              Default
-            </SettingOption>
-            <SettingOption
-              selected={
-                user.settings
-                  ? user.settings.cursorType
-                    ? user.settings.cursorType === 'custom'
-                    : false
-                  : false
-              }
-              onClick={async () => {
-                if (user.settings.cursorType !== 'custom') {
-                  await saveSettings({ cursorType: 'custom' });
-                  showNotification('Custom cursor enabled.');
-                }
-              }}
-            >
-              Custom
-            </SettingOption>
-          </div>
+        <Head>
+          <title>Settings • Schooleo</title>
+        </Head>
+        <h1 className={styles['settings-section-heading']}>Settings</h1>
+        <div
+          className={styles['loading-screen']}
+          style={
+            loading
+              ? { opacity: '100%', pointerEvents: 'all' }
+              : { opacity: '0', pointerEvents: 'none' }
+          }
+        >
+          <Loader />
         </div>
-        <div className={classNames(styles.setting, styles.small)}>
-          <div className={styles['setting-heading']}>Developer Mode</div>
-          <div className={styles['setting-options']}>
-            <SettingOption
-              onClick={async () => {
-                if (!user.settings.isDeveloper) {
-                  await saveSettings({ isDeveloper: true });
-                  showNotification('Developer Mode turned on.');
-                }
-              }}
-              selected={
-                user.settings
-                  ? user.settings.isDeveloper
-                    ? user.settings.isDeveloper === true
-                    : false
-                  : false
-              }
-            >
-              On
-            </SettingOption>
-            <SettingOption
-              onClick={async () => {
-                if (user.settings.isDeveloper) {
-                  await saveSettings({ isDeveloper: false });
-                  showNotification('Developer Mode turned off.');
-                }
-              }}
-              selected={
-                user.settings
-                  ? user.settings.isDeveloper
-                    ? user.settings.isDeveloper === false
+        <>
+          <div className={classNames(styles.setting, styles.small)}>
+            <div className={styles['setting-heading']}>Change Cursor</div>
+            <div className={styles['setting-options']}>
+              <SettingOption
+                selected={
+                  user.settings
+                    ? user.settings.cursorType
+                      ? user.settings.cursorType === 'default'
+                      : true
                     : true
-                  : true
-              }
-            >
-              Off
-            </SettingOption>
-          </div>
-        </div>
-        <div className={classNames(styles.setting, styles.small)}>
-          <div className={styles['setting-heading']}>Click Animation</div>
-          <div className={styles['setting-options']}>
-            <SettingOption
-              onClick={async () => {
-                if (!user.settings.clickAnimation) {
-                  await saveSettings({ clickAnimation: true });
-                  showNotification('Click animation enabled.');
                 }
-              }}
-              selected={
-                user.settings
-                  ? user.settings.clickAnimation
-                    ? user.settings.clickAnimation === true
+                onClick={async () => {
+                  if (user.settings.cursorType !== 'default') {
+                    await saveSettings({ cursorType: 'default' });
+                    showNotification('Default cursor enabled.');
+                  }
+                }}
+              >
+                Default
+              </SettingOption>
+              <SettingOption
+                selected={
+                  user.settings
+                    ? user.settings.cursorType
+                      ? user.settings.cursorType === 'custom'
+                      : false
                     : false
-                  : false
-              }
-            >
-              On
-            </SettingOption>
-            <SettingOption
-              onClick={async () => {
-                if (user.settings.clickAnimation) {
-                  await saveSettings({ clickAnimation: false });
-                  showNotification('Click animation disabled.');
                 }
-              }}
-              selected={
-                user.settings
-                  ? user.settings.clickAnimation
-                    ? user.settings.clickAnimation === false
-                    : true
-                  : true
-              }
-            >
-              Off
-            </SettingOption>
+                onClick={async () => {
+                  if (user.settings.cursorType !== 'custom') {
+                    await saveSettings({ cursorType: 'custom' });
+                    showNotification('Custom cursor enabled.');
+                  }
+                }}
+              >
+                Custom
+              </SettingOption>
+            </div>
           </div>
-        </div>
-      </>
-    </section>
+          <div className={classNames(styles.setting, styles.small)}>
+            <div className={styles['setting-heading']}>Developer Mode</div>
+            <div className={styles['setting-options']}>
+              <SettingOption
+                onClick={async () => {
+                  if (!user.settings.isDeveloper) {
+                    await saveSettings({ isDeveloper: true });
+                    showNotification('Developer Mode turned on.');
+                  }
+                }}
+                selected={
+                  user.settings
+                    ? user.settings.isDeveloper
+                      ? user.settings.isDeveloper === true
+                      : false
+                    : false
+                }
+              >
+                On
+              </SettingOption>
+              <SettingOption
+                onClick={async () => {
+                  if (user.settings.isDeveloper) {
+                    await saveSettings({ isDeveloper: false });
+                    showNotification('Developer Mode turned off.');
+                  }
+                }}
+                selected={
+                  user.settings
+                    ? user.settings.isDeveloper
+                      ? user.settings.isDeveloper === false
+                      : true
+                    : true
+                }
+              >
+                Off
+              </SettingOption>
+            </div>
+          </div>
+          <div className={classNames(styles.setting, styles.small)}>
+            <div className={styles['setting-heading']}>Click Animation</div>
+            <div className={styles['setting-options']}>
+              <SettingOption
+                onClick={async () => {
+                  if (!user.settings.clickAnimation) {
+                    await saveSettings({ clickAnimation: true });
+                    showNotification('Click animation enabled.');
+                  }
+                }}
+                selected={
+                  user.settings
+                    ? user.settings.clickAnimation
+                      ? user.settings.clickAnimation === true
+                      : false
+                    : false
+                }
+              >
+                On
+              </SettingOption>
+              <SettingOption
+                onClick={async () => {
+                  if (user.settings.clickAnimation) {
+                    await saveSettings({ clickAnimation: false });
+                    showNotification('Click animation disabled.');
+                  }
+                }}
+                selected={
+                  user.settings
+                    ? user.settings.clickAnimation
+                      ? user.settings.clickAnimation === false
+                      : true
+                    : true
+                }
+              >
+                Off
+              </SettingOption>
+            </div>
+          </div>
+        </>
+      </section>
+    )
   );
 }
 
