@@ -4,6 +4,7 @@ import { useGlobalContext } from '../components/context';
 import styles from '../styles/Settings.module.css';
 import Head from 'next/head';
 import classNames from 'classnames';
+import Loader from '../components/Loader';
 import fetchAPI from '../utils/fetchAPI';
 
 function Settings() {
@@ -12,6 +13,7 @@ function Settings() {
   const router = useRouter();
 
   const saveSettings = async (settings) => {
+    setLoading(true);
     const apiData = await fetchAPI({
       url: '/settings/update',
       body: {
@@ -24,6 +26,7 @@ function Settings() {
     if (apiData.success) {
       setUser(apiData.user);
     }
+    setLoading(false);
   };
 
   useEffect(async () => {
@@ -110,127 +113,135 @@ function Settings() {
         <title>Settings • Schooleo</title>
       </Head>
       <h1 className={styles['settings-section-heading']}>Settings</h1>
-      {!loading && (
-        <>
-          <div className={classNames(styles.setting, styles.small)}>
-            <div className={styles['setting-heading']}>Change Cursor</div>
-            <div className={styles['setting-options']}>
-              <SettingOption
-                selected={
-                  user.settings
-                    ? user.settings.cursorType
-                      ? user.settings.cursorType === 'default'
-                      : true
+      <div
+        className={styles['loading-screen']}
+        style={
+          loading
+            ? { opacity: '100%', pointerEvents: 'all' }
+            : { opacity: '0', pointerEvents: 'none' }
+        }
+      >
+        <Loader />
+      </div>
+      <>
+        <div className={classNames(styles.setting, styles.small)}>
+          <div className={styles['setting-heading']}>Change Cursor</div>
+          <div className={styles['setting-options']}>
+            <SettingOption
+              selected={
+                user.settings
+                  ? user.settings.cursorType
+                    ? user.settings.cursorType === 'default'
                     : true
+                  : true
+              }
+              onClick={async () => {
+                if (user.settings.cursorType !== 'default') {
+                  await saveSettings({ cursorType: 'default' });
+                  showNotification('Default cursor enabled.');
                 }
-                onClick={async () => {
-                  if (user.settings.cursorType !== 'default') {
-                    await saveSettings({ cursorType: 'default' });
-                    showNotification('Default cursor enabled.');
-                  }
-                }}
-              >
-                Default
-              </SettingOption>
-              <SettingOption
-                selected={
-                  user.settings
-                    ? user.settings.cursorType
-                      ? user.settings.cursorType === 'custom'
-                      : false
+              }}
+            >
+              Default
+            </SettingOption>
+            <SettingOption
+              selected={
+                user.settings
+                  ? user.settings.cursorType
+                    ? user.settings.cursorType === 'custom'
                     : false
+                  : false
+              }
+              onClick={async () => {
+                if (user.settings.cursorType !== 'custom') {
+                  await saveSettings({ cursorType: 'custom' });
+                  showNotification('Custom cursor enabled.');
                 }
-                onClick={async () => {
-                  if (user.settings.cursorType !== 'custom') {
-                    await saveSettings({ cursorType: 'custom' });
-                    showNotification('Custom cursor enabled.');
-                  }
-                }}
-              >
-                Custom
-              </SettingOption>
-            </div>
+              }}
+            >
+              Custom
+            </SettingOption>
           </div>
-          <div className={classNames(styles.setting, styles.small)}>
-            <div className={styles['setting-heading']}>Developer Mode</div>
-            <div className={styles['setting-options']}>
-              <SettingOption
-                onClick={async () => {
-                  if (!user.settings.isDeveloper) {
-                    await saveSettings({ isDeveloper: true });
-                    showNotification('Developer Mode turned on.');
-                  }
-                }}
-                selected={
-                  user.settings
-                    ? user.settings.isDeveloper
-                      ? user.settings.isDeveloper === true
-                      : false
-                    : false
+        </div>
+        <div className={classNames(styles.setting, styles.small)}>
+          <div className={styles['setting-heading']}>Developer Mode</div>
+          <div className={styles['setting-options']}>
+            <SettingOption
+              onClick={async () => {
+                if (!user.settings.isDeveloper) {
+                  await saveSettings({ isDeveloper: true });
+                  showNotification('Developer Mode turned on.');
                 }
-              >
-                On
-              </SettingOption>
-              <SettingOption
-                onClick={async () => {
-                  if (user.settings.isDeveloper) {
-                    await saveSettings({ isDeveloper: false });
-                    showNotification('Developer Mode turned off.');
-                  }
-                }}
-                selected={
-                  user.settings
-                    ? user.settings.isDeveloper
-                      ? user.settings.isDeveloper === false
-                      : true
+              }}
+              selected={
+                user.settings
+                  ? user.settings.isDeveloper
+                    ? user.settings.isDeveloper === true
+                    : false
+                  : false
+              }
+            >
+              On
+            </SettingOption>
+            <SettingOption
+              onClick={async () => {
+                if (user.settings.isDeveloper) {
+                  await saveSettings({ isDeveloper: false });
+                  showNotification('Developer Mode turned off.');
+                }
+              }}
+              selected={
+                user.settings
+                  ? user.settings.isDeveloper
+                    ? user.settings.isDeveloper === false
                     : true
-                }
-              >
-                Off
-              </SettingOption>
-            </div>
+                  : true
+              }
+            >
+              Off
+            </SettingOption>
           </div>
-          <div className={classNames(styles.setting, styles.small)}>
-            <div className={styles['setting-heading']}>Click Animation</div>
-            <div className={styles['setting-options']}>
-              <SettingOption
-                onClick={async () => {
-                  if (!user.settings.clickAnimation) {
-                    await saveSettings({ clickAnimation: true });
-                    showNotification('Click animation enabled.');
-                  }
-                }}
-                selected={
-                  user.settings
-                    ? user.settings.clickAnimation
-                      ? user.settings.clickAnimation === true
-                      : false
+        </div>
+        <div className={classNames(styles.setting, styles.small)}>
+          <div className={styles['setting-heading']}>Click Animation</div>
+          <div className={styles['setting-options']}>
+            <SettingOption
+              onClick={async () => {
+                if (!user.settings.clickAnimation) {
+                  await saveSettings({ clickAnimation: true });
+                  showNotification('Click animation enabled.');
+                }
+              }}
+              selected={
+                user.settings
+                  ? user.settings.clickAnimation
+                    ? user.settings.clickAnimation === true
                     : false
+                  : false
+              }
+            >
+              On
+            </SettingOption>
+            <SettingOption
+              onClick={async () => {
+                if (user.settings.clickAnimation) {
+                  await saveSettings({ clickAnimation: false });
+                  showNotification('Click animation disabled.');
                 }
-              >
-                On
-              </SettingOption>
-              <SettingOption
-                onClick={async () => {
-                  if (user.settings.clickAnimation) {
-                    await saveSettings({ clickAnimation: false });
-                    showNotification('Click animation disabled.');
-                  }
-                }}
-                selected={
-                  user.settings
-                    ? user.settings.clickAnimation
-                      ? user.settings.clickAnimation === false
-                      : true
+              }}
+              selected={
+                user.settings
+                  ? user.settings.clickAnimation
+                    ? user.settings.clickAnimation === false
                     : true
-                }
-              >
-                Off
-              </SettingOption>
-            </div>
+                  : true
+              }
+            >
+              Off
+            </SettingOption>
           </div>
-        </>
-      )}
+        </div>
+      </>
     </section>
   );
 }
@@ -240,7 +251,7 @@ const SettingOption = ({ selected, children, onClick }) => {
   return (
     <div
       className={styles['setting-option']}
-      style={selected ? { backgroundColor: '#282828', color: '#00ffff' } : {}}
+      style={selected ? { backgroundColor: '#00ffff20', color: '#00ffff' } : {}}
       onMouseEnter={() => setCursorType('pointer')}
       onMouseLeave={() => setCursorType('default')}
       onClick={() => onClick()}
