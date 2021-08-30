@@ -51,8 +51,8 @@ function CreateAssignment() {
     const newQuestion = {
       question: '',
       options: [
-        { name: 'Option 1', correct: true, index: 0 },
-        { name: 'Option 2', correct: false, index: 1 },
+        { name: '', correct: true, index: 0 },
+        { name: '', correct: false, index: 1 },
       ],
       index: assignment.questions.length,
     };

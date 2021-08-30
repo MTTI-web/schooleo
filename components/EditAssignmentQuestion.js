@@ -1,5 +1,5 @@
 import styles from '../styles/CreateAssignment.module.css';
-import FormLabel from './FormLabel';
+import classNames from 'classnames';
 import { FaTrash } from 'react-icons/fa';
 import { useGlobalContext } from './context';
 
@@ -15,11 +15,13 @@ function AssignmentQuestion({
     <div className={styles.question}>
       <div className={styles['question-column']}>
         <div className={styles['question-container']}>
-          <div className={styles['add-option-button']}>+</div>
-          <FormLabel
-            initialValue={question.question}
+          <div className={styles['question-index']}>{index + 1}</div>
+          <input
             id="question-text"
+            value={question.question}
             type="text"
+            required
+            className={styles['assignment-input']}
             onInput={(e) => {
               const questionText = e.currentTarget.value;
               setAssignment({
@@ -38,49 +40,37 @@ function AssignmentQuestion({
               });
               setShowSavedAlert(false);
             }}
-          >
-            Question
-          </FormLabel>
+            placeholder="Question"
+          />
         </div>
         <div className={styles['answer-container']}>
           {question.options.map((option, i) => (
-            <FormLabel
-              initialValue=""
-              style={{
-                height: '40px',
-                marginTop: '20px',
-              }}
-              inputStyle={{
-                border: 'none',
-                borderBottom: '1.5px solid #0ff',
-                borderRadius: '0',
-                fontSize: '0.8rem',
-                paddingBottom: '3px',
-                paddingLeft: '7px',
-              }}
-              labelStyle={{ left: '2px' }}
+            <input
+              key={i}
               id="answer-text"
+              value={option.name}
               type="text"
+              required
+              className={classNames(
+                styles['assignment-input'],
+                styles['option-input']
+              )}
+              placeholder={`Option ${i + 1}`}
               onInput={(e) => {
                 const currentOption = e.currentTarget.value;
+                const question = assignment.questions.find(
+                  (_q, i) => i === index
+                );
                 setAssignment({
                   ...assignment,
                   questions: [
-                    ...assignment.questions.filter(
-                      (question) => question.index !== index
-                    ),
+                    ...assignment.questions.filter((_q, i) => i !== index),
                     {
-                      ...assignment.questions.find(
-                        (question) => question.index === index
-                      ),
+                      ...question,
                       options: [
-                        ...assignment.questions
-                          .find((question) => question.index === index)
-                          .options.filter((o) => o.index !== i),
+                        ...question.options.filter((_o, index) => index !== i),
                         {
-                          ...assignment.questions
-                            .find((question) => question.index === index)
-                            .options.find((o) => o.index === i),
+                          ...question.options.find((_o, index) => index === i),
                           name: currentOption,
                         },
                       ],
@@ -89,9 +79,7 @@ function AssignmentQuestion({
                 });
                 setShowSavedAlert(false);
               }}
-            >
-              Option {i + 1}
-            </FormLabel>
+            />
           ))}
         </div>
       </div>
@@ -108,7 +96,7 @@ function AssignmentQuestion({
             const newAssignment = {
               ...assignment,
               questions: [
-                ...assignment.questions.filter((q) => q.index !== index),
+                ...assignment.questions.filter((q, i) => i !== index),
                 {
                   ...question,
                   options: [
