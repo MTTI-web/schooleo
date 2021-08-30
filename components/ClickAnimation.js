@@ -33,16 +33,12 @@ function ClickAnimation() {
     }
   }, [user]);
   return (
-    user &&
-    user.settings &&
-    user.settings.clickAnimation && (
-      <div className={styles['background']} id="background">
-        <div
-          className={styles['animation-container']}
-          id="animation-container"
-        ></div>
-      </div>
-    )
+    <div className={styles['background']} id="background">
+      <div
+        className={styles['animation-container']}
+        id="animation-container"
+      ></div>
+    </div>
   );
 }
 
