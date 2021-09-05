@@ -1,34 +1,31 @@
 .current-user {
   color: #bfbfbf;
-  margin-left: 20px;
+  margin-left: 10px;
   font-size: 110%;
   padding: 7px 10px;
-  border-radius: 5px;
+  padding-left: 20px;
   display: flex;
+  border-left: 1.5px solid #bfbfbf;
   justify-content: center;
   align-items: center;
   user-select: none;
-  border: 1.5px solid #bfbfbf;
   height: 40px;
   position: relative;
   min-width: 100px;
 }
 
-.current-user:hover {
-  border-color: #0ff;
-}
-
 .sign-out-button {
-  color: #0ff;
+  color: #fff;
   opacity: 0;
+  width: 100%;
   transition: opacity 0.2s;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
-  background-color: #121212;
-  border-radius: 7px;
+  left: 10px;
+  background-color: #404040;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;

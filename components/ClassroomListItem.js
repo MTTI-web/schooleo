@@ -82,10 +82,7 @@ function ClassroomListItem({ classItem }) {
       )}
       <div className={styles['class-name']}>{classItem.name}</div>
       <div className={styles['class-details']}>
-        <div className={styles['class-subject']}>
-          <div className={styles['detail-title']}>Subject:</div>
-          {classItem.subject}
-        </div>
+        <div className={styles['class-subject']}>{classItem.subject}</div>
       </div>
     </div>
   );

@@ -56,22 +56,14 @@
 }
 
 .setting {
-  background-color: #121212;
-  width: 70%;
-  border: 1.5px solid #4b4b4b;
-  border-radius: 5px;
+  width: 100%;
   color: #fff;
-  margin-top: 20px;
   animation: appear 0.2s linear;
   transition: border-color 0.2s;
 }
 
-.setting:hover {
-  border-color: #bfbfbf;
-}
-
-.setting:hover > .setting-heading {
-  color: #00ffff;
+.setting:not(:last-child) {
+  border-bottom: 1.5px solid #404040;
 }
 
 .setting.big {
@@ -82,9 +74,7 @@
 }
 
 .setting.small {
-  height: 70px;
-  padding: 10px 20px;
-  padding-right: 10px;
+  padding: 20px;
   display: grid;
   grid-template-columns: auto 40%;
 }
@@ -92,10 +82,11 @@
 .setting-heading {
   color: #fefefe;
   width: 100%;
+  font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 110%;
+  font-size: 0.96rem;
   transition: color 0.1s;
 }
 
@@ -105,6 +96,7 @@
 
 .setting-options {
   display: grid;
+  height: 50px;
   width: 100%;
   grid-template-columns: repeat(2, 1fr);
 }

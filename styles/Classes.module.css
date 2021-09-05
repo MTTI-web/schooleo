@@ -39,22 +39,22 @@
   grid-gap: 15px;
 }
 .class {
-  border: 1.5px solid #bfbfbf;
-  padding: 10px;
+  border: 1.5px solid #404040;
+  padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   color: #00ffff;
   border-radius: 7px;
-  transition: box-shadow 0.1s;
+  transition: border-color 0.2s;
   background-color: #121212;
   position: relative;
   animation: appear 0.2s linear;
 }
 
 .class:hover {
-  box-shadow: 0 0 6px 1px #bfbfbf;
+  border-color: #0ff;
 }
 
 @keyframes appear {
@@ -71,20 +71,19 @@
 }
 
 .class-name {
-  font-size: 130%;
+  font-size: 1.15rem;
+  font-weight: 500;
+  width: 100%;
+  letter-spacing: 1px;
 }
 .class-details {
-  width: 90%;
+  width: 100%;
   margin-top: 10px;
-}
-.detail-title {
-  color: #aaa;
-  margin-right: 6px;
-  display: inline-flex;
 }
 .class-subject {
   color: #f0f0f0;
   font-size: 90%;
+  font-weight: 500;
 }
 .more-classroom-options-button {
   position: absolute;

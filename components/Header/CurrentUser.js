@@ -19,6 +19,16 @@ function CurrentUser({ setIsNavOpen }) {
         setCursorType('default');
       }}
     >
+      <span
+        style={{
+          color: '#fff',
+          fontWeight: '600',
+          marginRight: '5px',
+          marginBottom: '5px',
+        }}
+      >
+        @
+      </span>{' '}
       {user.username}
       <div
         className={styles['sign-out-button']}
