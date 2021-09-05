@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useGlobalContext } from '../context';
 import fetchAPI from '../../utils/fetchAPI';
-function FunctionalColumn({ isColumnOpen, classroomDetails }) {
+function FunctionalColumn({ isColumnOpen, classroomDetails, open }) {
   const [width, setWidth] = useState(1024);
   const router = useRouter();
   const classroomID = router.query.id;
@@ -51,7 +51,9 @@ function FunctionalColumn({ isColumnOpen, classroomDetails }) {
       style={
         width <= 730 && !isColumnOpen
           ? { opacity: 0, pointerEvents: 'none' }
-          : { opacity: '100%', pointerEvents: 'all' }
+          : open
+          ? { opacity: '100%', pointerEvents: 'all' }
+          : { opacity: '0', pointerEvents: 'all' }
       }
     >
       <div className={styles['assignments-title']}>Assignments</div>

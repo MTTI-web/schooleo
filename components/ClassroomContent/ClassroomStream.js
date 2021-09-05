@@ -6,7 +6,7 @@ import isDateInPast from '../../utils/isDateInPast';
 import { io } from 'socket.io-client';
 import getApiUrl from '../../utils/getApiUrl';
 
-function ClassroomStream({ classroom }) {
+function ClassroomStream({ classroom, open }) {
   const { setCursorType, user, log, showNotification } = useGlobalContext();
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -118,7 +118,14 @@ function ClassroomStream({ classroom }) {
   }, [loading]);
 
   return (
-    <div className={styles['classroom-stream']}>
+    <div
+      className={styles['classroom-stream']}
+      style={
+        open
+          ? { opacity: '100%', pointerEvents: 'all' }
+          : { opacity: '0', pointerEvents: 'none' }
+      }
+    >
       <div className={styles.messages} id="messages">
         {messages.length ? (
           messages.map(({ author, message, time }, index) => (

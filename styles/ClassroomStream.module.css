@@ -1,16 +1,17 @@
 .classroom-stream {
   background-color: #212121;
-  height: calc(100vh - 150px);
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 15px;
-  margin-left: 0;
-  width: calc(100% - 15px);
-  border-radius: 5px;
+  height: calc(100vh - 120px);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  top: 0;
   background-color: #121212;
-  border: 1.5px solid #4b4b4b;
+  transition: opacity 0.2s;
   animation: appear 0.2s linear;
 }
 
