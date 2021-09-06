@@ -1,17 +1,37 @@
 .classroom-content {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 25% 75%;
   position: relative;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 105px);
+  overflow: hidden;
 }
 
 .classroom-page-nav-container {
   background-color: #121212;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* align-items: center; */
   height: 100%;
   border-right: 2px solid #404040;
+  overflow-y: scroll;
+}
+
+.classroom-page-nav-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.classroom-page-nav-container::-webkit-scrollbar-track {
+  background-color: #121212;
+}
+
+.classroom-page-nav-container::-webkit-scrollbar-thumb {
+  background-color: #00ffff;
+  border-radius: 5px;
+}
+
+.classroom-page-nav-container::-webkit-scrollbar-thumb:hover {
+  background-color: #00ffff;
 }
 
 .classroom-page-nav {

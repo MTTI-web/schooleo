@@ -12,7 +12,12 @@ function SignOutButton() {
         showNotification('Signed out.');
         setCursorType('default');
       }}
-      style={{ position: 'absolute', right: '0', height: '40px' }}
+      style={{
+        position: 'absolute',
+        right: '0',
+        height: 'calc(100% - 6px)',
+        fontSize: '0.9rem',
+      }}
     >
       Sign Out
     </RippleButton>

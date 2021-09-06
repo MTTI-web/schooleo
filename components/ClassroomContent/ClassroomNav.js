@@ -13,7 +13,7 @@ function ClassroomNav({ currentPage, setCurrentPage }) {
               currentPage === nav
                 ? {
                     borderLeftColor: '#0ff',
-                    borderLeftWidth: '2px',
+                    borderLeftWidth: '3px',
                     backgroundColor: '#ffffff30',
                   }
                 : {}

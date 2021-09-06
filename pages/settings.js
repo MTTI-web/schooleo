@@ -125,7 +125,11 @@ function Settings() {
           <Loader />
         </div>
         <>
-          <div className={classNames(styles.setting, styles.small)}>
+          <div
+            className={classNames(styles.setting, styles.small)}
+            onAnimationEnd={(e) => (e.currentTarget.style.opacity = '100%')}
+            style={{ animationDelay: '0.1s' }}
+          >
             <div className={styles['setting-heading']}>Change Cursor</div>
             <div className={styles['setting-options']}>
               <SettingOption
@@ -164,7 +168,11 @@ function Settings() {
               </SettingOption>
             </div>
           </div>
-          <div className={classNames(styles.setting, styles.small)}>
+          <div
+            className={classNames(styles.setting, styles.small)}
+            onAnimationEnd={(e) => (e.currentTarget.style.opacity = '100%')}
+            style={{ animationDelay: '0.2s' }}
+          >
             <div className={styles['setting-heading']}>Developer Mode</div>
             <div className={styles['setting-options']}>
               <SettingOption
@@ -203,7 +211,11 @@ function Settings() {
               </SettingOption>
             </div>
           </div>
-          <div className={classNames(styles.setting, styles.small)}>
+          <div
+            className={classNames(styles.setting, styles.small)}
+            onAnimationEnd={(e) => (e.currentTarget.style.opacity = '100%')}
+            style={{ animationDelay: '0.3s' }}
+          >
             <div className={styles['setting-heading']}>Click Animation</div>
             <div className={styles['setting-options']}>
               <SettingOption
