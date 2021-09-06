@@ -20,7 +20,6 @@ function Class() {
   const [loading, setLoading] = useState(true);
   const [classroomDetails, setClassroomDetails] = useState(null);
   const [showClassroomDetails, setShowClassroomDetails] = useState(false);
-  const [showMembers, setShowMembers] = useState(false);
 
   useEffect(async () => {
     if (user) {
@@ -43,24 +42,6 @@ function Class() {
       router.replace('/');
     }
   }, [user]);
-
-  useEffect(() => {
-    const closeMembersList = () => setShowMembers(false);
-    addEventListener('resize', closeMembersList);
-    return () => removeEventListener('resize', closeMembersList);
-  }, []);
-
-  useEffect(() => {
-    if (showMembers) {
-      setShowClassroomDetails(false);
-    }
-  }, [showMembers]);
-
-  useEffect(() => {
-    if (showClassroomDetails) {
-      setShowMembers(false);
-    }
-  }, [showClassroomDetails]);
 
   useEffect(() => {
     if (loading) {
@@ -102,11 +83,6 @@ function Class() {
             <div className={styles['main-header-items']}>
               <ClassroomBackButton />
               {classroomDetails && classroomDetails.name}
-              <OpenMembersListButton
-                setShowMembers={setShowMembers}
-                showMembers={showMembers}
-                setShowClassroomDetails={setShowClassroomDetails}
-              />
               <ShowDetailsButton
                 showClassroomDetails={showClassroomDetails}
                 setShowClassroomDetails={setShowClassroomDetails}
@@ -120,33 +96,10 @@ function Class() {
             )}
           </div>
           {user && classroomDetails && (
-            <>
-              <MembersList
-                students={classroomDetails.students}
-                style={
-                  showMembers
-                    ? {
-                        // right: '0',
-                        width: innerWidth > 680 ? '30%' : '100%',
-                        overflowY: 'scroll',
-                        pointerEvents: 'all',
-                        opacity: '100%',
-                      }
-                    : {
-                        // right: '-300px',
-                        width: '0',
-                        overflowY: 'hidden',
-                        pointerEvents: 'none',
-                        opacity: '0',
-                      }
-                }
-                setShowMembers={setShowMembers}
-              />
-              <ClassroomContent
-                classroom={classroomDetails}
-                classroomDetails={classroomDetails}
-              />
-            </>
+            <ClassroomContent
+              classroom={classroomDetails}
+              classroomDetails={classroomDetails}
+            />
           )}
         </>
       ) : (

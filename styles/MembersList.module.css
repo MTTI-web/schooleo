@@ -3,17 +3,15 @@
   bottom: 0;
   right: 0;
   left: auto;
-  top: 120px;
-  z-index: 6;
-  height: auto;
+  z-index: 2;
+  height: 100%;
   background-color: #212121;
-  width: 30%;
+  width: 100%;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  padding: 10px;
   transition: all 0.2s;
   padding-top: 40px;
-  border-left: 1.5px solid #bfbfbf;
 }
 
 .members-list-container::-webkit-scrollbar {
@@ -33,60 +31,28 @@
   background-color: #00ffff;
 }
 
-.close-members-list-button {
-  height: 30px;
-  width: 30px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  background-color: transparent;
-  border: 1.5px solid #bfbfbf;
-  outline: none;
-  border-radius: 50%;
-  color: #bfbfbf;
-  font-size: 110%;
-  padding-right: 0.2px;
-  padding-bottom: 2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: box-shadow 0.1s;
-}
-
-.close-members-list-button:hover {
-  box-shadow: 0 0 5px 0.1px #bfbfbf;
-}
-
 .members-list-heading {
   width: 100%;
   font-size: 120%;
   text-align: center;
   color: #eee;
-  margin-bottom: 7px;
-}
-
-.title-underline {
-  display: block;
-  height: 2px;
-  width: 100%;
-  background-color: #7e7e7e;
-  content: '';
-  margin-top: 7px;
+  padding-bottom: 20px;
 }
 
 .members-list {
   list-style-type: none;
-  padding: 0 10px;
+  border-top: 1.5px solid #404040;
 }
 
 .member {
-  margin: 10px 10px 10px 0;
   font-size: 85%;
-  border-radius: 10px;
   color: #eee;
-  padding: 10px 15px;
-  background-color: #303030;
-  border: 1.5px solid #4b4b4b;
+  padding: 20px 40px;
+  font-weight: 500;
+}
+
+.member:not(:last-child) {
+  border-bottom: 1.5px solid #404040;
 }
 
 @media screen and (max-width: 680px) {

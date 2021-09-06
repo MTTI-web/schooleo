@@ -5,7 +5,7 @@ import { useState } from 'react';
 import fetchAPI from '../utils/fetchAPI';
 import { useRouter } from 'next/router';
 
-function ClassroomListItem({ classItem }) {
+function ClassroomListItem({ classItem, index }) {
   const { user, setCursorType, setUser, log } = useGlobalContext();
   const [showMoreClassroomOptions, setShowMoreClassroomOptions] =
     useState(false);
@@ -28,6 +28,8 @@ function ClassroomListItem({ classItem }) {
   return (
     <div
       className={styles.class}
+      style={{ animationDelay: `${index / 10}s` }}
+      onAnimationEnd={(e) => (e.currentTarget.style.opacity = '100%')}
       onClick={(e) => {
         log(
           !(

@@ -95,7 +95,11 @@ function Classes({ loading, setLoading }) {
             ? classrooms.map((classItem, index) => {
                 if (classItem) {
                   return (
-                    <ClassroomListItem classItem={classItem} key={index} />
+                    <ClassroomListItem
+                      classItem={classItem}
+                      key={index}
+                      index={index}
+                    />
                   );
                 } else {
                   return null;

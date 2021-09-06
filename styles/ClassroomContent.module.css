@@ -31,6 +31,7 @@
   border-left: 0 solid transparent;
   transition: background-color 0.2s, border 0.2s;
   margin-right: 20px;
+  text-transform: capitalize;
 }
 
 .classroom-page-nav-link:hover {

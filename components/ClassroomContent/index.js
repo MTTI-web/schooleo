@@ -2,7 +2,9 @@ import styles from '../../styles/ClassroomContent.module.css';
 import ClassroomStream from './ClassroomStream';
 import FunctionalColumn from './FunctionalColumn';
 import { useEffect, useState } from 'react';
+import MembersList from '../MembersList';
 import { FaEllipsisV, FaTimes } from 'react-icons/fa';
+import ClassroomNav from './ClassroomNav';
 
 function ClassroomContent({ classroom, classroomDetails }) {
   const [isColumnOpen, setIsColumnOpen] = useState(false);
@@ -31,40 +33,7 @@ function ClassroomContent({ classroom, classroomDetails }) {
           )}
         </div>
       )}
-      <aside className={styles['classroom-page-nav-container']}>
-        <nav className={styles['classroom-page-nav']}>
-          <div
-            className={styles['classroom-page-nav-link']}
-            style={
-              currentPage === 'stream'
-                ? {
-                    borderLeftColor: '#0ff',
-                    borderLeftWidth: '2px',
-                    backgroundColor: '#ffffff30',
-                  }
-                : {}
-            }
-            onClick={() => setCurrentPage('stream')}
-          >
-            Stream
-          </div>
-          <div
-            className={styles['classroom-page-nav-link']}
-            onClick={() => setCurrentPage('assignments')}
-            style={
-              currentPage === 'assignments'
-                ? {
-                    borderLeft: '2px solid #0ff',
-                    backgroundColor: '#ffffff30',
-                    borderLeftWidth: '2px',
-                  }
-                : {}
-            }
-          >
-            Assignments
-          </div>
-        </nav>
-      </aside>
+      <ClassroomNav currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <div className={styles['classroom-page-container']}>
         <FunctionalColumn
           isColumnOpen={isColumnOpen}
@@ -74,6 +43,22 @@ function ClassroomContent({ classroom, classroomDetails }) {
         <ClassroomStream
           classroom={classroom}
           open={currentPage === 'stream'}
+        />
+        <MembersList
+          students={classroomDetails.students}
+          style={
+            currentPage === 'members'
+              ? {
+                  // right: '0',
+                  pointerEvents: 'all',
+                  opacity: '100%',
+                }
+              : {
+                  // right: '-300px',
+                  pointerEvents: 'none',
+                  opacity: '0',
+                }
+          }
         />
       </div>
     </div>

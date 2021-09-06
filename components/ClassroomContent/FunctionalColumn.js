@@ -42,7 +42,7 @@ function FunctionalColumn({ isColumnOpen, classroomDetails, open }) {
       showNotification('New assignment could not be created.');
     }
     router.replace(
-      `/classroom/${classroomID}/assignment/${assignmentCreationTime}/edit`
+      `/classroom/${classroomID}/assignment/${apiData.assignment._id}/edit`
     );
   };
   return (
@@ -53,7 +53,7 @@ function FunctionalColumn({ isColumnOpen, classroomDetails, open }) {
           ? { opacity: 0, pointerEvents: 'none' }
           : open
           ? { opacity: '100%', pointerEvents: 'all' }
-          : { opacity: '0', pointerEvents: 'all' }
+          : { opacity: '0', pointerEvents: 'none' }
       }
     >
       <div className={styles['assignments-title']}>Assignments</div>
